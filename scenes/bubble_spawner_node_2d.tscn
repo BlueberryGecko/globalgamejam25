@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cfij667mgbb2h"]
+
+[node name="BubbleSpawner_Node2D" type="Node2D"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

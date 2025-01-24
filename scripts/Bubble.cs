@@ -27,9 +27,12 @@ public partial class Bubble : RigidBody2D {
 	public void CaptureInCircle(MouseCollectionCircle mouseCollectionCircle) {
 		manualCollision = true;
 		collectionCircleDuringManualCollision = mouseCollectionCircle;
+		// TODO: set collision mask, probably
 	}
 
 	public void ReleaseFromCircle() {
 		manualCollision = false;
 	}
+
+	public float GetRadius() => ((CircleShape2D)collisionShape2D.Shape).Radius;
 }
