@@ -1,6 +1,11 @@
-[gd_scene format=3 uid="uid://cfij667mgbb2h"]
+[gd_scene load_steps=3 format=3 uid="uid://cfij667mgbb2h"]
+
+[ext_resource type="Script" path="res://scripts/BubbleSpawner.cs" id="1_uiggw"]
+[ext_resource type="PackedScene" uid="uid://boc3j050xtf7o" path="res://scenes/bubble.tscn" id="2_bis5e"]
 
 [node name="BubbleSpawner_Node2D" type="Node2D"]
+script = ExtResource("1_uiggw")
+bubbleScene = ExtResource("2_bis5e")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
