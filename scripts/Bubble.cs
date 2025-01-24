@@ -16,7 +16,7 @@ public partial class Bubble : RigidBody2D {
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		var viewportRect = GetViewportRect().Grow(((CircleShape2D)collisionShape2D.Shape).Radius);
-		if (!viewportRect.HasPoint(Position)) {
+		if (!viewportRect.HasPoint(GlobalPosition)) {
 			QueueFree();
 		}
 	}
