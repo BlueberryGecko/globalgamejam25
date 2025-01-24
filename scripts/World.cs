@@ -10,7 +10,6 @@ public partial class World : Node2D
 	}
 	public override void _Draw() {
 		base._Draw();
-		DrawRect(GetViewportRect(), Colors.DarkRed, true);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

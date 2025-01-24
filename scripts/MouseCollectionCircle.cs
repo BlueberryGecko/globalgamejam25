@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Globalgamejam25.scripts;
 using Microsoft.VisualBasic;
 
@@ -30,7 +31,7 @@ public partial class MouseCollectionCircle : Area2D {
 	}
 
 	private void RecaptureBubbles() {
-		foreach (var heldBubble in heldBubbles) {
+		foreach (var heldBubble in heldBubbles.Where(IsInstanceValid)) {
 			var bubbleRadius = heldBubble.GetRadius();
 			var posDelta = heldBubble.Position - Position;
 			var bubbleDir = posDelta.Normalized();
@@ -53,14 +54,14 @@ public partial class MouseCollectionCircle : Area2D {
 		}
 		else {
 			CollisionMask = 0;
-			heldBubbles.ForEach(b => b.ReleaseFromCircle());
+			heldBubbles.Where(IsInstanceValid).ToList().ForEach(b => b.ReleaseFromCircle());
 			heldBubbles.Clear();
 			Modulate = deactivatedModulate;
 		}
 	}
 
 	public void OnBodyEntered(Node2D body) {
-		if (body is Bubble b) {
+		if (body is Bubble b && IsInstanceValid(b)) {
 			b.CaptureInCircle(this);
 			heldBubbles.Add(b);
 		}
