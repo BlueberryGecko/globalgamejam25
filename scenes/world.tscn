@@ -10,4 +10,4 @@ script = ExtResource("1_qrg4k")
 [node name="BubbleSpawner_Node2D" parent="." instance=ExtResource("1_7h4kn")]
 position = Vector2(149, 68)
 
-[node name="Area2D" parent="." instance=ExtResource("3_d78bf")]
+[node name="MouseCollectionCircle" parent="." instance=ExtResource("3_d78bf")]

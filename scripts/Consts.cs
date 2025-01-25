@@ -8,4 +8,6 @@ public static class Consts {
         Bubbles = 3,
         Bullets = 4,
     }
+
+    public const float eps = 1e-6f;
 }

@@ -22,6 +22,6 @@ public partial class BubbleSpawner : Node2D {
 		GetTree().Root.GetNode("World").AddChild(bubble);
 		bubble.Position = GlobalPosition;
 		var randomDir = new Vector2(1, 0).Rotated(Util.getRandomFloat(Mathf.Tau));
-		bubble.LinearVelocity = randomDir * Util.getRandomFloat(randomBubbleSpeedMin, randomBubbleSpeedMax);
+		bubble.Velocity = randomDir * Util.getRandomFloat(randomBubbleSpeedMin, randomBubbleSpeedMax);
 	}
 }
