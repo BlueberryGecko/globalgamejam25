@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://gewxswewa7ga"]
+
+[ext_resource type="Texture2D" uid="uid://bf5us87gimnjb" path="res://sprites/Enemy2.png" id="1_5s6x0"]
+[ext_resource type="Script" path="res://scripts/RangedEnemy.cs" id="1_ndjqh"]
+[ext_resource type="PackedScene" uid="uid://dugh44uj0jm8p" path="res://scenes/dirt_thrower_bullet.tscn" id="2_vvn37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oq7xl"]
+
+[node name="dirtThrowerEnemy" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_ndjqh")
+distanceToPlayer = 200.0
+bulletScene = ExtResource("2_vvn37")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oq7xl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_5s6x0")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

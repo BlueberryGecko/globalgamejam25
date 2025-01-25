@@ -74,7 +74,7 @@ public partial class Player : Area2D {
         rotationSpeed -= rotationSpeed * rotationDeceleration * (float)delta;
     }
 
-    public void OnEnemyCollided(Enemy e) {
+    public void OnEnemyCollided(DamageEntity e) {
         health -= e.damage;
         this.BlinkWithTween();
         healthBar.Value = health;
