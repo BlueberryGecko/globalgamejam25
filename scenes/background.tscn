@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3rgpdinjkbpr"]
+
+[ext_resource type="Shader" uid="uid://cnimqwhwfkg85" path="res://shaders/wet.tres" id="1_6kiko"]
+[ext_resource type="Texture2D" uid="uid://bq1675g8ychx1" path="res://sprites/BathroomTile.png" id="1_vrw2w"]
+[ext_resource type="Script" path="res://scripts/BackgroundSprite.cs" id="2_qr5w0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpqrd"]
+shader = ExtResource("1_6kiko")
+
+[node name="Background" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bpqrd")
+scale = Vector2(4, 4)
+texture = ExtResource("1_vrw2w")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 100)
+script = ExtResource("2_qr5w0")
