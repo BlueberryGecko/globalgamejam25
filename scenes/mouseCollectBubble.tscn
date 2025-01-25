@@ -13,7 +13,6 @@ sprite = NodePath("Sprite2D")
 collisionShape2D = NodePath("CollisionShape2D")
 bubbleReadjustmentForce = 1000.0
 borderRepellantForce = 100.0
-dispersionForce = 10000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kkufl")
