@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dugh44uj0jm8p"]
+
+[ext_resource type="Script" path="res://scripts/Bullet.cs" id="1_8lrml"]
+[ext_resource type="Texture2D" uid="uid://c8njs4a47exv3" path="res://sprites/Enemy2Bullet.png" id="1_vkgp6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2erea"]
+size = Vector2(14, 7)
+
+[node name="DirtThrowerBullet" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_8lrml")
+speed = 250.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2erea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 3.14159
+texture = ExtResource("1_vkgp6")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

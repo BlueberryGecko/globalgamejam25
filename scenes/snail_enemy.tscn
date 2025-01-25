@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://n8kphc0l07mw"]
+
+[ext_resource type="Script" path="res://scripts/SnailEnemy.cs" id="1_r2eqb"]
+[ext_resource type="Texture2D" uid="uid://dw8rf8dg57371" path="res://sprites/Snail.png" id="2_a576r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5o8w"]
+size = Vector2(45, 16)
+
+[node name="SnailEnemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_r2eqb")
+maxSpeed = 400.0
+acceleration = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_a5o8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_a576r")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
