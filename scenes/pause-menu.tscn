@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://duw2ql82tjags"]
+
+[ext_resource type="Script" path="res://scripts/PauseMenu.cs" id="1_7m17e"]
+[ext_resource type="PackedScene" uid="uid://civo3trpn6rlc" path="res://scenes/options.tscn" id="2_44po0"]
+[ext_resource type="PackedScene" uid="uid://bfnygxu1a62jy" path="res://scenes/menu.tscn" id="3_eduks"]
+
+[node name="Pause-menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7m17e")
+optionsPackedScene = ExtResource("2_44po0")
+mainMenuPackedScene = ExtResource("3_eduks")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -50.5
+offset_right = 78.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="OnResumeButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="OnOptionsButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="OnMainMenuButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="OnQuitButtonPressed"]

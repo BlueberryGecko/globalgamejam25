@@ -15,6 +15,6 @@ public partial class Options : Control
 
 	private void OnBackButtonPressed()
 	{
-		GetTree().CurrentScene.QueueFree();
+		QueueFree();
 	}
 }
