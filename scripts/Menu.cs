@@ -3,8 +3,7 @@ using System;
 
 public partial class Menu : Control
 {
-	[Export] public PackedScene gamePackedScene;
-	[Export] public PackedScene optionsPackedScene;
+	[Export] public PackedScene OptionsScene;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,12 +17,12 @@ public partial class Menu : Control
 	
 	private void OnStartButtonPressed()
 	{
-		GetTree().ChangeSceneToPacked(gamePackedScene);
+		GetTree().ChangeSceneToFile("res://scenes/world.tscn");
 	}
 	
 	private void OnOptionsButtonPressed()
 	{
-		var optionsScene = optionsPackedScene.Instantiate();
+		var optionsScene = OptionsScene.Instantiate();
 		GetTree().CurrentScene.AddChild(optionsScene);
 	}
 	

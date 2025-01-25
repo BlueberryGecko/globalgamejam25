@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm2yq8gr060os"]
+[gd_scene load_steps=5 format=3 uid="uid://dm2yq8gr060os"]
 
-[ext_resource type="PackedScene" uid="uid://cfij667mgbb2h" path="res://scenes/bubble_spawner_node_2d.tscn" id="1_7h4kn"]
+[ext_resource type="PackedScene" path="res://scenes/bubble_spawner_node_2d.tscn" id="1_7h4kn"]
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_qrg4k"]
-[ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_d78bf"]
+[ext_resource type="PackedScene" uid="uid://duw2ql82tjags" path="res://scenes/pause-menu.tscn" id="2_xkw0b"]
+[ext_resource type="PackedScene" path="res://scenes/mouseCollectBubble.tscn" id="3_d78bf"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qrg4k")
@@ -14,3 +15,10 @@ position = Vector2(149, 68)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Pause-menu" parent="CanvasLayer" instance=ExtResource("2_xkw0b")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
