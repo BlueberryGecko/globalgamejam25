@@ -1,0 +1,149 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbiqny0ac7l30"]
+
+[ext_resource type="Theme" uid="uid://dc8opdnmnyhbp" path="res://theme/theme.tres" id="1_rl2sd"]
+[ext_resource type="Texture2D" uid="uid://c3tnbg7e6d4wi" path="res://sprites/soap-nine-segment-3d.svg" id="2_vyu6s"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rl2sd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -196.0
+offset_right = 200.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -18
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/VBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_vyu6s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER :("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 2
+texture = ExtResource("2_vyu6s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -29.0
+offset_right = 122.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/NinePatchRect2/HBoxContainer"]
+layout_mode = 2
+text = "SCORE:"
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/VBoxContainer/NinePatchRect2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "69420"
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(180, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_vyu6s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RETRY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(180, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_vyu6s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect5" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(180, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_vyu6s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1

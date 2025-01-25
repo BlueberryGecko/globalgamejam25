@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_af6lf"]
 [ext_resource type="Texture2D" uid="uid://cibmhn7mnvg8x" path="res://sprites/rect1.svg" id="2_2degf"]
-[ext_resource type="PackedScene" uid="uid://cfij667mgbb2h" path="res://scenes/bubble_spawner_node_2d.tscn" id="3_fprbf"]
+[ext_resource type="PackedScene" path="res://scenes/bubble_spawner_node_2d.tscn" id="3_fprbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaix"]
 size = Vector2(14, 28)
