@@ -5,12 +5,14 @@ public partial class PauseMenu : Control
 {
 	[Export] public PackedScene OptionsPackedScene;
 	
+	private VBoxContainer _vBoxContainer;
 	private AnimationPlayer _animationPlayer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GD.Print("PauseMenu Ready");
+		_vBoxContainer = (VBoxContainer)GetNode("VBoxContainer");
+		_vBoxContainer.Hide();
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		_animationPlayer.Play("RESET");
 	}
@@ -23,18 +25,16 @@ public partial class PauseMenu : Control
 
 	private void Pause()
 	{
-		GD.Print("Pause");
 		GetTree().Paused = true;
-		GD.Print("Blur");
+		_vBoxContainer.Show();
 		_animationPlayer.Play("blur");
 	}
 
 	private void Resume()
 	{
-		GD.Print("Resume");
 		GetTree().Paused = false;
-		GD.Print("Unblur");
 		_animationPlayer.PlayBackwards("blur");
+		_vBoxContainer.Hide();
 	}
 
 	private void Restart()
@@ -46,10 +46,8 @@ public partial class PauseMenu : Control
 	private void TestPauseAction()
 	{
 		if (Input.IsActionJustPressed("pause") && !GetTree().Paused) {
-			GD.Print("PAUSE just pressed > pause");
 			Pause();
 		} else if (Input.IsActionJustPressed("pause") && GetTree().Paused) {
-			GD.Print("PAUSE just pressed > resume");
 			Resume();
 		}
 		/* else if (Input.IsActionJustPressed("ui_cancel")) {

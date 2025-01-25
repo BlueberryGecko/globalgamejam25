@@ -3,11 +3,12 @@ using System;
 
 public partial class Options : Control
 {
+	[Export] public CheckBox FullscreenCheckBox;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var fullscreenCheckbox = GetNode<CheckBox>("VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/FullscreenCheckBox");
-		fullscreenCheckbox.ButtonPressed = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen;
+		FullscreenCheckBox.ButtonPressed = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,6 +23,6 @@ public partial class Options : Control
 
 	private void _OnFullscreenCheckboxChanged(bool fullscreen)
 	{
-		DisplayServer.WindowSetMode(fullscreen ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
+		DisplayServer.WindowSetMode(fullscreen ? DisplayServer.WindowMode.ExclusiveFullscreen : DisplayServer.WindowMode.Windowed);
 	}
 }

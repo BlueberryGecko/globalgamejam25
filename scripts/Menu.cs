@@ -17,7 +17,7 @@ public partial class Menu : Control
 	
 	private void OnStartButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/world.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/world_nils.tscn");
 	}
 	
 	private void OnOptionsButtonPressed()

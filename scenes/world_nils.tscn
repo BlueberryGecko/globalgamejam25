@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn6n54yx78w6g"]
+[gd_scene load_steps=10 format=3 uid="uid://dk7k37pf4fx4u"]
 
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_fpx7t"]
 [ext_resource type="PackedScene" uid="uid://dm2yq8gr060os" path="res://scenes/world.tscn" id="2_w05uq"]
 [ext_resource type="PackedScene" uid="uid://b3rgpdinjkbpr" path="res://scenes/background.tscn" id="2_y4qhi"]
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_m2vja"]
+[ext_resource type="PackedScene" uid="uid://duw2ql82tjags" path="res://scenes/pause-menu.tscn" id="4_1gnci"]
 [ext_resource type="PackedScene" uid="uid://cdqtv6oxm0e88" path="res://scenes/player.tscn" id="4_sxuwk"]
-[ext_resource type="PackedScene" uid="uid://d4jdu7gq4bvmq" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
-[ext_resource type="PackedScene" path="res://scenes/healthBar.tscn" id="6_pbme0"]
+[ext_resource type="PackedScene" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
+[ext_resource type="PackedScene" uid="uid://bmg88icl2b0m5" path="res://scenes/healthBar.tscn" id="6_pbme0"]
 [ext_resource type="AudioStream" uid="uid://d1dqunpvt1bdb" path="res://sound/bubblePop.wav" id="8_5owm2"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("player", "audioPlayer")]
@@ -20,6 +21,12 @@ audioPlayer = NodePath("AudioStreamPlayer2D")
 layer = 2
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("6_pbme0")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="PauseMenu" parent="CanvasLayer2" instance=ExtResource("4_1gnci")]
+process_mode = 3
 
 [node name="Background" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_y4qhi")]
 camera = NodePath("../Player/Camera2D")
