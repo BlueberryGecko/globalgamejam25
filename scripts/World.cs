@@ -9,6 +9,7 @@ using Globalgamejam25.scripts;
 public partial class World : Node2D
 {
 	[Export] PackedScene worldScene;
+	[Export] PackedScene soapParticleScene;
 	[Export] public Player player;
 	[Export] private PackedScene[] enemies;
 	[Export] public AudioStreamPlayer2D audioPlayer;
@@ -24,6 +25,9 @@ public partial class World : Node2D
 	[Export] private int maxPuddlesInTile = 5;
 	[Export] private float spawnMisfiringChance = 0.95f;
 	
+	[Export] private double soapParticleSpawnTimer = 1;
+	[Export] private double soapParticleSpawnTimerMax = 1;
+	
 	public override void _Ready()
 	{
 		QueueRedraw();
@@ -33,9 +37,23 @@ public partial class World : Node2D
 	public override void _Process(double delta)
 	{
 		QueueRedraw();
+		SpawnSoapParticles(delta);
 		SpawnPuddles();
 	}
-	
+	private void SpawnSoapParticles(double delta) {
+		soapParticleSpawnTimer -= delta;
+		if (soapParticleSpawnTimer > 0) return;
+
+		soapParticleSpawnTimer = soapParticleSpawnTimerMax;
+		
+		var viewport = player.GetViewportRect();
+		var spawnRect = viewport.Grow(viewport.Size.X / 2);
+		var soapSpawnPos = Util.getRandomPosition(spawnRect);
+		var soap = soapParticleScene.Instantiate<SoapParticle>();
+		soap.Position = soapSpawnPos;
+		AddChild(soap);
+	}
+
 	public void Restart() {
 		GetTree().ChangeSceneToPacked(worldScene);
 	}

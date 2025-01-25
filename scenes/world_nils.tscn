@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn6n54yx78w6g"]
+[gd_scene load_steps=13 format=3 uid="uid://dn6n54yx78w6g"]
 
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_fpx7t"]
 [ext_resource type="PackedScene" uid="uid://dm2yq8gr060os" path="res://scenes/world.tscn" id="2_w05uq"]
 [ext_resource type="PackedScene" uid="uid://b3rgpdinjkbpr" path="res://scenes/background.tscn" id="2_y4qhi"]
+[ext_resource type="PackedScene" uid="uid://wv2a4uvx4tj0" path="res://scripts/soapParticle.tscn" id="3_arwqw"]
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_m2vja"]
 [ext_resource type="PackedScene" uid="uid://y6kggrnqip5y" path="res://scenes/icePuddle.tscn" id="4_dj5wy"]
 [ext_resource type="PackedScene" uid="uid://cdqtv6oxm0e88" path="res://scenes/player.tscn" id="4_sxuwk"]
@@ -15,6 +16,7 @@
 [node name="World" type="Node2D" node_paths=PackedStringArray("player", "audioPlayer")]
 script = ExtResource("1_fpx7t")
 worldScene = ExtResource("2_w05uq")
+soapParticleScene = ExtResource("3_arwqw")
 player = NodePath("Player")
 enemies = Array[PackedScene]([ExtResource("5_yklap"), ExtResource("9_rkdkj"), ExtResource("5_io174")])
 audioPlayer = NodePath("AudioStreamPlayer2D")

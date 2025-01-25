@@ -20,12 +20,13 @@ public partial class Player : Area2D {
     private float rotationDeceleration = 1f / 1.1f;
     [Export]
     private BubbleSpawner bubbleSpawner;
+    [Export] private Sprite2D sprite;
 
     
     private List<Sprite2D> eyes = new();
     
     private List<float> superChargeSpawnTimerModifiers = new();
-    [Export] private float superChargeFactor = 0.05f;
+    [Export] private float superChargeFactor = 0.5f;
     [Export] private float superChargeTime = 2f;
 
     [Signal] public delegate void EnemyCollidedEventHandler(Enemy enemy);
@@ -100,6 +101,9 @@ public partial class Player : Area2D {
             }
         }
         bubbleSpawner.spawnTimerMultiplier *= (float)superChargeModifier;
+        eyes.ForEach(e => e.Modulate = new Color(1, 1, 1, (float)(superChargeModifier-1)));
+        double playerModulate = Mathf.Max(superChargeModifier, 1);
+        sprite.Modulate = new Color((float)playerModulate, (float)playerModulate, (float)playerModulate);
     }
 
     public void OnEnemyCollided(DamageEntity e) {
@@ -115,6 +119,7 @@ public partial class Player : Area2D {
     public void OnArea2DEntered(Area2D area) {
         if (area is SoapParticle s) {
             superChargeSpawnTimerModifiers.Add(superChargeTime);
+            s.QueueFree();
         }
     }
 }

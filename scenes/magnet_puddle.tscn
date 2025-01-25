@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc4e46646h2fd"]
+
+[ext_resource type="Texture2D" uid="uid://8mhvp8mim78t" path="res://sprites/magnetPuddle.png" id="1_4o0fu"]
+[ext_resource type="Script" path="res://scripts/MagnetPuddle.cs" id="1_jvb8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sy487"]
+radius = 24.0832
+
+[node name="MagnetPuddle" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_jvb8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4o0fu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sy487")
