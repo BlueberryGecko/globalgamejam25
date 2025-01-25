@@ -11,10 +11,9 @@ public partial class MouseCollectionCircle : Area2D {
 	[Export] private float bubbleReadjustmentForce = 10000;
 	[Export] private float borderRepellantForce = 1000;
 	[Export] private float borderRepellantMidwayDistanceCutoff = 0.5f;
-	[Export] private float dispersionForce = 100;
-	[Export] private float maxDispersionForceDistSqr = 10 * 10;
-	[Export] private float dispersionForceCutoffDistSqr = 40 * 40;
 	[Export] private Color deactivatedModulate = new(1, 1, 1, 0.5f);
+
+	private Vector2[] lastMousePositions = new Vector2[5];
 	
 	private const int bubbleMask = 1 << (int)Consts.CollisionLayers.Bubbles;
 	
@@ -32,43 +31,49 @@ public partial class MouseCollectionCircle : Area2D {
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-		((CircleShape2D)collisionShape2D.Shape).Radius = sprite.Texture.GetSize().X * sprite.Scale.X / 2; // TODO: can move this inside _Ready once we're sure of size.
+		((CircleShape2D)collisionShape2D.Shape).Radius = sprite.Texture.GetSize().X * sprite.GlobalScale.X / 2; // TODO: can move this inside _Ready once we're sure of size.
 
 		if (CollisionMask == bubbleMask) {
 			RecaptureBubbles(delta);
 		}
+		for (var i = lastMousePositions.Length - 1; i >= 1; i--)
+		{
+			lastMousePositions[i] = lastMousePositions[i - 1];
+		}
+		lastMousePositions[0] = Position;
 		Position = GetGlobalMousePosition();
+		
+		if (Input.IsActionJustPressed("click")) {
+			CollisionMask = bubbleMask;
+			Modulate = Colors.White;
+		}
+		if (Input.IsActionJustReleased("click")) {
+			CollisionMask = 0;
+			var positionsDeltas = new List<Vector2>{Position - lastMousePositions[0]};
+			for (var i = 0; i < lastMousePositions.Length - 1; i++)
+			{
+				positionsDeltas.Add(lastMousePositions[i] - lastMousePositions[i + 1]);
+			}
+			var positionDelta = new Vector2(positionsDeltas.Average(d => d.X), positionsDeltas.Average(d => d.Y));
+			var exitSpeed = positionDelta / (float)delta;
+			var exitSpeedStrength = exitSpeed.Length();
+			heldBubbles.ToList().ForEach(b =>
+			{
+				if (exitSpeedStrength > 10f)
+				{
+					b.SetAcceleration(Vector2.Zero);
+					b.Velocity = exitSpeed + b.randomForce * exitSpeedStrength * 0.1f;
+				}
+				b.ReleaseFromCircle();
+			});
+			potentiallyDisposedHeldBubbles.Clear();
+			Modulate = deactivatedModulate;
+		}
 	}
 
 	private void RecaptureBubbles(double delta) {
 		ClampBubbles(delta);
 		ApplyInwardForce(delta);
-		ApplyDispersionForce(delta);
-	}
-	
-	private void ApplyDispersionForce(double delta) {
-		foreach (var heldBubble in heldBubbles) {
-			int i = 0;
-			foreach (var b in heldBubbles) {
-				if (i > 20) {
-					break; // sampled 20 bubbles. No one cares past that.
-				}
-				if (b == heldBubble)
-					continue;
-
-
-				var d = b.Position - heldBubble.GlobalPosition;
-				var dNormalized = d.Normalized();
-				var dd = d.LengthSquared();
-				dd = Mathf.Max(dd, maxDispersionForceDistSqr);
-				if (dd >= maxDispersionForceDistSqr) {
-					dd = 0; // don't apply dispersion force past the max cutoff.
-				}
-				var ratio = dd / maxDispersionForceDistSqr;
-				heldBubble.ApplyForceThisFrame(ratio * dispersionForce * -dNormalized, (float)delta);
-				i++;
-			}
-		}
 	}
 
 	/// <summary>
@@ -84,7 +89,8 @@ public partial class MouseCollectionCircle : Area2D {
 				ratio = 0; // don't apply a force to bubbles that are past halfway distance towards the center.
 	 		}
 			var f = ratio * borderRepellantForce;
-			heldBubble.ApplyForceThisFrame( f * (Position - heldBubble.GlobalPosition).Normalized(), (float)delta);
+			var randomForce = heldBubble.randomForce * Mathf.Max(f, 10) * 0.75f;
+			heldBubble.ApplyForceThisFrame( f * (Position - heldBubble.GlobalPosition).Normalized() + randomForce);
 		}
 	}
 	
@@ -97,24 +103,8 @@ public partial class MouseCollectionCircle : Area2D {
 			if (posDelta.LengthSquared() > radiusDiff * radiusDiff) {
 				var oldHeldBubblePos = heldBubble.GlobalPosition;
 				heldBubble.GlobalPosition = Position + bubbleDir * (radiusDiff - 1);
-				heldBubble.ApplyForceThisFrame((heldBubble.GlobalPosition - oldHeldBubblePos) * bubbleReadjustmentForce, (float)delta);
+				heldBubble.ApplyForceThisFrame((heldBubble.GlobalPosition - oldHeldBubblePos) * bubbleReadjustmentForce);
 			}
-		}
-	}
-
-	public override void _Input(InputEvent ev) {
-		if (!(ev is InputEventMouseButton button)) {
-			return;
-		}
-		if (button.IsActionPressed("click")) {
-			CollisionMask = bubbleMask;
-			Modulate = Colors.White;
-		}
-		else {
-			CollisionMask = 0;
-			heldBubbles.ToList().ForEach(b => b.ReleaseFromCircle());
-			potentiallyDisposedHeldBubbles.Clear();
-			Modulate = deactivatedModulate;
 		}
 	}
 

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_107ex"]
 [ext_resource type="PackedScene" uid="uid://cdqtv6oxm0e88" path="res://scenes/player.tscn" id="4_v05qp"]
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 script = ExtResource("1_u3748")
 
 [node name="Background" parent="." instance=ExtResource("2_8dncy")]

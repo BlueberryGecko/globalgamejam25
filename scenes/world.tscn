@@ -11,3 +11,6 @@ script = ExtResource("1_qrg4k")
 position = Vector2(149, 68)
 
 [node name="MouseCollectionCircle" parent="." instance=ExtResource("3_d78bf")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
