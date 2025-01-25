@@ -25,10 +25,11 @@ public partial class World : Node2D
 	}
 
 	public void OnEnemySpawnTimerTimeout() {
-		var spawnRect = GetViewportRect().plus(player.Position).Grow(50); // spawn enemy slightly offscreen
+		var viewportRect = GetViewportRect();
+		var spawnRect = viewportRect.plus(player.Position - viewportRect.Size / 2).Grow(50); // spawn enemy slightly offscreen
 		
 		var newEColi = eColi.Instantiate<EColiEnemy>();
-		newEColi.Position = Util.samplePointOnRect(spawnRect);
 		AddChild(newEColi);
+		newEColi.GlobalPosition = Util.samplePointOnRect(spawnRect);
 	}
 }
