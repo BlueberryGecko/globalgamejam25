@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wv2a4uvx4tj0" path="res://scripts/soapParticle.tscn" id="3_arwqw"]
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_m2vja"]
 [ext_resource type="PackedScene" path="res://scenes/pause-menu.tscn" id="4_1gnci"]
-[ext_resource type="PackedScene" uid="uid://y6kggrnqip5y" path="res://scenes/icePuddle.tscn" id="4_dj5wy"]
+[ext_resource type="PackedScene" path="res://scenes/icePuddle.tscn" id="4_dj5wy"]
 [ext_resource type="PackedScene" uid="uid://cdqtv6oxm0e88" path="res://scenes/player.tscn" id="4_sxuwk"]
 [ext_resource type="PackedScene" uid="uid://c04b5wy2sq7vs" path="res://scenes/snail_enemy.tscn" id="5_io174"]
 [ext_resource type="PackedScene" uid="uid://d4jdu7gq4bvmq" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
