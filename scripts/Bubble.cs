@@ -10,6 +10,9 @@ public partial class Bubble : CharacterBody2D {
 	[Export] public float mass = 1;
 	[Export] public float frictionCoeff = 0.1f;
 	[Export] public AnimatedSprite2D sprite;
+	[Export] public int damage = 20;
+	[Export] public int health = 1;
+	[Export] public int frozenBubbleHealth = 4;
 	public BubbleModifier bubbleModifier = 0;
 	
 	[Export] public double freezeTime = 3;
@@ -56,19 +59,25 @@ public partial class Bubble : CharacterBody2D {
 	public void CaptureInCircle(MouseCollectionCircle mouseCollectionCircle) {
 		manualCollision = true;
 		collectionCircleDuringManualCollision = mouseCollectionCircle;
-		// TODO: set collision mask, probably
+		CollisionMask = 0;
+		CollisionLayer = 0;
 	}
 
 	public void ReleaseFromCircle() {
 		manualCollision = false;
+		CollisionMask = 1 << (int)Consts.CollisionLayers.Enemies;
+		CollisionLayer = 1 << (int)Consts.CollisionLayers.Bubbles;
 	}
 
 	public float GetRadius() => ((CircleShape2D)collisionShape2D.Shape).Radius * GlobalScale.X;
 	
 	public void Burst() {
-		isPoppping = true;
-		sprite.Play();
-		Consts.world.audioPlayer.Play();
+		health -= 1;
+		if (health <= 0) {
+			isPoppping = true;
+			sprite.Play();
+			Consts.world.audioPlayer.Play();
+		}
 	}
 
 	public void OnAnimationFinished() {

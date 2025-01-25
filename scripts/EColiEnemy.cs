@@ -8,9 +8,6 @@ public partial class EColiEnemy : Enemy
 	[Export] private int maxHealth = 40;
 	[Export] private int health = 40;
 	[Export] public float speed = 100;
-
-	[Export] public Sprite2D iceBlock;
-	private double frozenTime = 0;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -33,24 +30,6 @@ public partial class EColiEnemy : Enemy
 
 	public void OnAreaEntered(Area2D a) {
 		if (a is Player) OnBodyEntered(a);
-	}
-	
-	public void OnBodyEntered(Node2D body) {
-		if (body is Player player) {
-			player.EmitSignal(Player.SignalName.EnemyCollided, this);
-		} else if (body is Bubble b && !b.isPoppping) {
-			health -= 20;
-			this.BlinkWithTween();
-			if (health <= 0) {
-				Die();
-			}
-			b.Burst();
-
-			if ((b.bubbleModifier & BubbleModifier.Ice) != 0) {
-				frozenTime = b.freezeTime;
-				iceBlock.Visible = true;
-			}
-		}
 	}
 
 	public override void Die() {

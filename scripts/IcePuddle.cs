@@ -15,6 +15,8 @@ public partial class IcePuddle : Puddle
 	
 	public override void OnBubbleEntered(Bubble b) {
 		b.bubbleModifier |= BubbleModifier.Ice;
+		b.damage = 0;
+		b.health = b.frozenBubbleHealth;
 		b.sprite.SetAnimation("frozen (the movie by Disney)");
 		b.sprite.Stop();
 	}
