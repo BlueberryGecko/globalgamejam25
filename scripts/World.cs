@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Globalgamejam25;
 using Globalgamejam25.scripts;
@@ -9,7 +10,7 @@ public partial class World : Node2D
 {
 	[Export] PackedScene worldScene;
 	[Export] public Player player;
-	[Export] private PackedScene eColi;
+	[Export] private PackedScene[] enemies;
 	[Export] public AudioStreamPlayer2D audioPlayer;
 	[Export] public int spawnTileSize = 100;
 	[Export] public int spawnTileLimit = 3;
@@ -40,11 +41,18 @@ public partial class World : Node2D
 	}
 
 	public void OnEnemySpawnTimerTimeout() {
-		var spawnRect = GetViewportRect().plus(player.Position).Grow(50); // spawn enemy slightly offscreen
+		var viewportRect = GetViewportRect();
+		var spawnRect = viewportRect.plus(player.Position - viewportRect.Size / 2).Grow(50); // spawn enemy slightly offscreen
 		
-		var newEColi = eColi.Instantiate<EColiEnemy>();
-		newEColi.Position = Util.samplePointOnRect(spawnRect);
-		AddChild(newEColi);
+		var enemy = enemies[Random.Shared.Next(0, enemies.Length)].Instantiate<Enemy>();
+		
+		AddChild(enemy);
+		enemy.GlobalPosition = Util.samplePointOnRect(spawnRect);
+	}
+	
+	private enum EnemyType {
+		EColi,
+		DirtThrower,
 	}
 
 	public override void _Draw() {

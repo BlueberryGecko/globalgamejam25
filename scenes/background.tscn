@@ -6,13 +6,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bpqrd"]
 shader = ExtResource("1_6kiko")
+shader_parameter/NoiseOffset = null
 
-[node name="Background" type="ParallaxBackground"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(128, 128)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+[node name="Background" type="Sprite2D"]
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_bpqrd")
@@ -20,5 +16,5 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_vrw2w")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 100, 100)
+region_rect = Rect2(0, 0, 32, 32)
 script = ExtResource("2_qr5w0")

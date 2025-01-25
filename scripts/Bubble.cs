@@ -42,7 +42,8 @@ public partial class Bubble : CharacterBody2D {
 		var viewportRect = GetViewportRect();
 		var boundingBox = viewportRect
 			.Grow(((CircleShape2D)collisionShape2D.Shape).Radius)
-			.plus(Consts.world.player.Position - viewportRect.Size / 2);
+			.plus(Consts.world.player.Position - viewportRect.Size / 2)
+			.Grow(100);
 		if (!boundingBox.HasPoint(Position)) {
 			QueueFree();
 		}

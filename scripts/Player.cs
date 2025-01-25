@@ -102,7 +102,7 @@ public partial class Player : Area2D {
         bubbleSpawner.spawnTimerMultiplier *= (float)superChargeModifier;
     }
 
-    public void OnEnemyCollided(Enemy e) {
+    public void OnEnemyCollided(DamageEntity e) {
         health -= e.damage;
         this.BlinkWithTween();
         healthBar.Value = health;

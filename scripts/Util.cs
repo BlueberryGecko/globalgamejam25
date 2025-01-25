@@ -29,18 +29,18 @@ public static class Util {
 		var circumference = rect.Size.X * 2 + rect.Size.Y * 2;
 		var f = r.NextSingle() * circumference; // sample number in [0, circumference) and "project" it onto the rectangle counterclockwise
 		if (f < rect.Size.Y) {
-			return new Vector2(0, f);
+			return new Vector2(0, f) + rect.Position;
 		}
 		f -= rect.Size.Y;
 		if (f < rect.Size.X) {
-			return new Vector2(f, rect.Size.Y);
+			return new Vector2(f, rect.Size.Y) + rect.Position;
 		}
 		f -= rect.Size.X;
 		if (f < rect.Size.Y) {
-			return new Vector2(rect.Size.X, f); // projection direction is inverted here, but it's random anyway, so it doesn't matter...
+			return new Vector2(rect.Size.X, rect.Size.Y-f) + rect.Position;
 		}
 		f -= rect.Size.Y;
-		return new Vector2(f, 0); // same here
+		return new Vector2(rect.Size.X-f, 0) + rect.Position;
 	}
 	
 	/// <summary>

@@ -17,6 +17,7 @@ script = ExtResource("1_7xd1n")
 iceBlock = NodePath("IceBlock")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(3.8147e-06, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_n86r5")
