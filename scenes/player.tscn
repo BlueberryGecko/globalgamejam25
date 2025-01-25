@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuxgjvh2qltdq"]
+[gd_scene load_steps=5 format=3 uid="uid://cdqtv6oxm0e88"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_af6lf"]
 [ext_resource type="Texture2D" uid="uid://cibmhn7mnvg8x" path="res://sprites/rect1.svg" id="2_2degf"]
@@ -7,15 +7,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaix"]
 size = Vector2(14, 28)
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("bubbleSpawner")]
 script = ExtResource("1_af6lf")
+bubbleSpawner = NodePath("BubbleSpawner_Node2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_2degf")
 
 [node name="BubbleSpawner_Node2D" parent="." instance=ExtResource("3_fprbf")]
-process_mode = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7xaix")

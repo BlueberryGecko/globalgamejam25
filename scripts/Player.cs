@@ -17,6 +17,8 @@ public partial class Player : Area2D {
     private float rotationAcceleration = 100;
     [Export]
     private float rotationDeceleration = 1f / 1.1f;
+    [Export]
+    private BubbleSpawner bubbleSpawner;
 
     [Signal] public delegate void EnemyCollidedEventHandler(Enemy enemy);
 
@@ -62,6 +64,10 @@ public partial class Player : Area2D {
 
         velocity += move;
         velocity = velocity.LimitLength(maxSpeed);
+        var speedPercent = velocity.Length() / maxSpeed;
+        if (IsInstanceValid(bubbleSpawner))
+            bubbleSpawner.spawnTimerMultiplier = speedPercent;
+        
         Position += velocity * (float)delta;
 
         RotationDegrees += rotationSpeed * (float)delta;

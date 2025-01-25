@@ -31,7 +31,7 @@ public partial class MouseCollectionCircle : Area2D {
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-		((CircleShape2D)collisionShape2D.Shape).Radius = sprite.Texture.GetSize().X * sprite.Scale.X / 2; // TODO: can move this inside _Ready once we're sure of size.
+		((CircleShape2D)collisionShape2D.Shape).Radius = sprite.Texture.GetSize().X * sprite.GlobalScale.X / 2; // TODO: can move this inside _Ready once we're sure of size.
 
 		if (CollisionMask == bubbleMask) {
 			RecaptureBubbles(delta);

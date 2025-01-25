@@ -1,24 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4jdu7gq4bvmq"]
 
 [ext_resource type="Script" path="res://scenes/EColiEnemy.cs" id="1_7xd1n"]
-[ext_resource type="Texture2D" uid="uid://dmqonowjsqbgv" path="res://sprites/eColiEnemy.png" id="1_n86r5"]
+[ext_resource type="Texture2D" uid="uid://bqxpko71ckdhy" path="res://sprites/Enemy.png" id="1_n86r5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq20n"]
-size = Vector2(26.0012, 11.9901)
+size = Vector2(12, 12)
 
 [node name="EColiEnemy" type="Area2D"]
 rotation = 0.000617724
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_7xd1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.8147e-06, 0)
-scale = Vector2(0.0992647, 0.0992647)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_n86r5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.000617724, -1)
+position = Vector2(-2.05028e-08, 1.19222e-07)
 shape = SubResource("RectangleShape2D_bq20n")
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]

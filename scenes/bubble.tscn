@@ -29,6 +29,7 @@ animations = [{
 }]
 
 [node name="Bubble" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape2D", "sprite")]
+scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_mllrq")

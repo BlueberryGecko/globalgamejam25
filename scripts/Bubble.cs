@@ -37,7 +37,9 @@ public partial class Bubble : CharacterBody2D {
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		var viewportRect = GetViewportRect();
-		var boundingBox = viewportRect.Grow(((CircleShape2D)collisionShape2D.Shape).Radius).plus(Consts.world.player.Position - viewportRect.Size / 2);
+		var boundingBox = viewportRect
+			.Grow(((CircleShape2D)collisionShape2D.Shape).Radius)
+			.plus(Consts.world.player.Position - viewportRect.Size / 2);
 		if (!boundingBox.HasPoint(Position)) {
 			QueueFree();
 		}
@@ -57,7 +59,7 @@ public partial class Bubble : CharacterBody2D {
 		manualCollision = false;
 	}
 
-	public float GetRadius() => ((CircleShape2D)collisionShape2D.Shape).Radius;
+	public float GetRadius() => ((CircleShape2D)collisionShape2D.Shape).Radius * GlobalScale.X;
 	
 	public void Burst() {
 		isPoppping = true;
