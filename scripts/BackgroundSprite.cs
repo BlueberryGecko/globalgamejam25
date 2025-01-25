@@ -18,6 +18,9 @@ public partial class BackgroundSprite : Sprite2D
 	public override void _Process(double delta)
 	{
 		RegionRect = GetViewportRect().Grow(1 / Scale.X).plus(Vector2.One * tileSize);
+
+		if (!IsInstanceValid(camera))
+			return;
 		
 		var cameraCenterPos = camera.GlobalPosition - GetViewportRect().Size / 2;
 		var backgroundOffsetPos = (cameraCenterPos / tileSize).Floor();
