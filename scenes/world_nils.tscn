@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dm2yq8gr060os" path="res://scenes/world.tscn" id="2_w05uq"]
 [ext_resource type="PackedScene" uid="uid://b3rgpdinjkbpr" path="res://scenes/background.tscn" id="2_y4qhi"]
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_m2vja"]
-[ext_resource type="PackedScene" uid="uid://y6kggrnqip5y" path="res://scenes/icePuddle.tscn" id="4_dj5wy"]
+[ext_resource type="PackedScene" path="res://scenes/icePuddle.tscn" id="4_dj5wy"]
 [ext_resource type="PackedScene" uid="uid://cdqtv6oxm0e88" path="res://scenes/player.tscn" id="4_sxuwk"]
 [ext_resource type="PackedScene" uid="uid://c04b5wy2sq7vs" path="res://scenes/snail_enemy.tscn" id="5_io174"]
 [ext_resource type="PackedScene" uid="uid://d4jdu7gq4bvmq" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
-[ext_resource type="PackedScene" uid="uid://bhrsnbi5xflj" path="res://scenes/healthBar.tscn" id="6_pbme0"]
+[ext_resource type="PackedScene" path="res://scenes/healthBar.tscn" id="6_pbme0"]
 [ext_resource type="AudioStream" uid="uid://d1dqunpvt1bdb" path="res://sound/bubblePop.wav" id="8_5owm2"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
 
