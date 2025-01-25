@@ -4,6 +4,7 @@ using System;
 public partial class Bubble : CharacterBody2D {
 	[Export] private CollisionShape2D collisionShape2D;
 	public Vector2 acceleration  = Vector2.Zero;
+	public Vector2 randomForce = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
 	[Export] public float mass = 1;
 	[Export] public float frictionCoeff = 0.1f;
 	
@@ -14,9 +15,13 @@ public partial class Bubble : CharacterBody2D {
 	/// Apply a force lasting a certain time delta. Will directly modify linear acceleration.
 	/// </summary>
 	/// <param name="force"></param>
-	/// <param name="delta"></param>
-	public void ApplyForceThisFrame(Vector2 force, float delta) {
+	public void ApplyForceThisFrame(Vector2 force) {
 		acceleration += force / mass;
+	}
+	
+	public void SetAcceleration(Vector2 acceleration)
+	{
+		this.acceleration = acceleration;
 	}
 	
 	// Called when the node enters the scene tree for the first time.

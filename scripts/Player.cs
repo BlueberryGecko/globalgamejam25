@@ -30,8 +30,6 @@ public partial class Player : Node2D
 			move.X -= 1;
 		if (Input.IsActionPressed("move_right"))
 			move.X += 1;
-		
-		GD.Print(move.Angle());
 
 		if (lastMovement != Vector2.Zero)
 		{
