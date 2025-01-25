@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Globalgamejam25.scripts;
 
 public partial class World : Node2D
 {
@@ -7,7 +8,9 @@ public partial class World : Node2D
 	public override void _Ready()
 	{
 		QueueRedraw();
+		Consts.world = this;
 	}
+	
 	public override void _Draw() {
 		base._Draw();
 	}

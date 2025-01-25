@@ -10,4 +10,6 @@ public static class Consts {
     }
 
     public const float eps = 1e-6f;
+
+    public static World world;
 }
