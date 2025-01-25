@@ -1,18 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdqtv6oxm0e88"]
+[gd_scene load_steps=7 format=3 uid="uid://cdqtv6oxm0e88"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_af6lf"]
 [ext_resource type="Texture2D" uid="uid://cibmhn7mnvg8x" path="res://sprites/rect1.svg" id="2_2degf"]
 [ext_resource type="PackedScene" uid="uid://cfij667mgbb2h" path="res://scenes/bubble_spawner_node_2d.tscn" id="3_fprbf"]
 [ext_resource type="Texture2D" uid="uid://bi688isjwqwkd" path="res://sprites/laserEye.png" id="4_87yx5"]
+[ext_resource type="Texture2D" uid="uid://pxfa4yo1rvic" path="res://sprites/Stripes.png" id="4_kc27p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaix"]
 size = Vector2(14, 28)
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("bubbleSpawner", "sprite")]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("bubbleSpawner", "sprite", "stripeSprite")]
 collision_mask = 33
 script = ExtResource("1_af6lf")
 bubbleSpawner = NodePath("BubbleSpawner_Node2D")
 sprite = NodePath("Sprite2D")
+stripeSprite = NodePath("StripeSprite")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
@@ -34,6 +36,11 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(2, -8)
 scale = Vector2(0.0237069, 0.0237069)
 texture = ExtResource("4_87yx5")
+
+[node name="StripeSprite" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("4_kc27p")
 
 [connection signal="EnemyCollided" from="." to="." method="OnEnemyCollided"]
 [connection signal="area_entered" from="." to="." method="OnArea2DEntered"]

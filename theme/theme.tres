@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dc8opdnmnyhbp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m507i"]
+draw_center = false
+
+[sub_resource type="SystemFont" id="SystemFont_bayfs"]
+font_names = PackedStringArray("Courier New")
+font_weight = 650
+
+[resource]
+default_font = SubResource("SystemFont_bayfs")
+default_font_size = 20
+Button/colors/font_color = Color(0.937255, 0.333333, 0.533333, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_m507i")
+Label/colors/font_color = Color(1, 0.415686, 0.607843, 1)
+Label/colors/font_shadow_color = Color(0.937255, 0.333333, 0.533333, 1)
+Label/font_sizes/font_size = 25

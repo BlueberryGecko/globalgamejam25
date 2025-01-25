@@ -40,6 +40,7 @@ public partial class World : Node2D
 		SpawnSoapParticles(delta);
 		SpawnPuddles();
 	}
+	
 	private void SpawnSoapParticles(double delta) {
 		soapParticleSpawnTimer -= delta;
 		if (soapParticleSpawnTimer > 0) return;
