@@ -5,13 +5,20 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fqsw"]
 
-[node name="Area2D" type="Area2D"]
+[node name="MouseCollectionCircle" type="Area2D" node_paths=PackedStringArray("sprite", "collisionShape2D")]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("1_rjv5y")
+sprite = NodePath("Sprite2D")
+collisionShape2D = NodePath("CollisionShape2D")
+bubbleReadjustmentForce = 1000.0
+borderRepellantForce = 100.0
+dispersionForce = 10000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kkufl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2fqsw")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
