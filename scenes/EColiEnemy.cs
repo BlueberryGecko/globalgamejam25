@@ -8,6 +8,9 @@ public partial class EColiEnemy : Enemy
 	[Export] private int maxHealth = 40;
 	[Export] private int health = 40;
 	[Export] public float speed = 100;
+
+	[Export] public Sprite2D iceBlock;
+	private double frozenTime = 0;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -17,6 +20,13 @@ public partial class EColiEnemy : Enemy
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		frozenTime -= delta;
+		if (frozenTime > 0) {
+			return;
+		}
+		else {
+			iceBlock.Visible = false;
+		}
 		var dir = (Consts.world.player.Position - Position).Normalized();
 		Position += speed * (float)delta * dir;
 	}
@@ -35,6 +45,11 @@ public partial class EColiEnemy : Enemy
 				Die();
 			}
 			b.Burst();
+
+			if ((b.bubbleModifier & BubbleModifier.Ice) != 0) {
+				frozenTime = b.freezeTime;
+				iceBlock.Visible = true;
+			}
 		}
 	}
 

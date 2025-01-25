@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Globalgamejam25.scripts;
 using Godot;
 
@@ -20,6 +21,13 @@ public partial class Player : Area2D {
     [Export]
     private BubbleSpawner bubbleSpawner;
 
+    
+    private List<Sprite2D> eyes = new();
+    
+    private List<float> superChargeSpawnTimerModifiers = new();
+    [Export] private float superChargeFactor = 0.05f;
+    [Export] private float superChargeTime = 2f;
+
     [Signal] public delegate void EnemyCollidedEventHandler(Enemy enemy);
 
     [Export] public ProgressBar healthBar;
@@ -29,6 +37,8 @@ public partial class Player : Area2D {
     public override void _Ready() {
         healthBar.MaxValue = maxHealth;
         healthBar.Value = health;
+        eyes.Add(GetNode<Sprite2D>("eye1"));
+        eyes.Add(GetNode<Sprite2D>("eye2"));
     }
 
     public override void _Process(double delta) {
@@ -72,6 +82,24 @@ public partial class Player : Area2D {
 
         RotationDegrees += rotationSpeed * (float)delta;
         rotationSpeed -= rotationSpeed * rotationDeceleration * (float)delta;
+
+        UpdateSupercharge(delta);
+    }
+    
+    private void UpdateSupercharge(double delta) {
+        var baseSpawnModifier = bubbleSpawner.spawnTimerMultiplier;
+        double superChargeModifier = 1;
+        for (int i = 0; i < superChargeSpawnTimerModifiers.Count; i++) {
+            superChargeSpawnTimerModifiers[i] -= (float)delta;
+            double remainingSuperChargeRatio = Mathf.Min(superChargeSpawnTimerModifiers[i] / delta, 1);
+            superChargeModifier += superChargeFactor * remainingSuperChargeRatio;
+            
+            if (superChargeSpawnTimerModifiers[i] <= 0) {
+                superChargeSpawnTimerModifiers.RemoveAt(i);
+                i--;
+            }
+        }
+        bubbleSpawner.spawnTimerMultiplier *= (float)superChargeModifier;
     }
 
     public void OnEnemyCollided(Enemy e) {
@@ -82,5 +110,11 @@ public partial class Player : Area2D {
             Consts.world.Restart();
         }
         e.Die();
+    }
+
+    public void OnArea2DEntered(Area2D area) {
+        if (area is SoapParticle s) {
+            superChargeSpawnTimerModifiers.Add(superChargeTime);
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace Globalgamejam25;
@@ -8,6 +9,16 @@ public static class Util {
     
 	public static float getRandomFloat(float min, float max) => r.NextSingle() * (max - min) + min;
 	public static float getRandomFloat(float max) => r.NextSingle() * max;
+	public static Vector2 getRandomPosition(Rect2 rect) {
+		var x = r.NextSingle() * rect.Size.X;
+		var y = r.NextSingle() * rect.Size.Y;
+		return rect.Position + new Vector2(x, y);
+	}
+	public static Vector2 getRandomPosition(float x, float y) {
+		var r1 = r.NextSingle() * x;
+		var r2 = r.NextSingle() * y;
+		return new Vector2(r1, r2);
+	}
 
 	public static Rect2 plus(this Rect2 rect, Vector2 v) => new(rect.Position + v, rect.Size);
 
@@ -41,5 +52,28 @@ public static class Util {
 		var t = n.CreateTween().TweenProperty(n, nameof(n.Modulate).ToLower(), Colors.White, blinkDuration).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
 		return t;
 	}
+
+	public static Rect2 GetViewBorderRect(this Player p, float grow = 0) {
+		var viewportRect = p.GetViewportRect();
+		var boundingBox = viewportRect.Grow(grow) .plus(p.Position - viewportRect.Size / 2);
+		return boundingBox;
+	}
+
+	public static IEnumerable<int> OneToNInclusive(int start, int end) {
+		for (int i = start; i <= end; i++) {
+			yield return i;
+		}
+	}
 	
+	public static IEnumerable<int> OneToN(int start, int end) {
+		for (int i = start; i < end; i++) {
+			yield return i;
+		}
+	}
+	
+	public static IEnumerable<int> NToOne(int start, int end) {
+		for (int i = start; i > end; i--) {
+			yield return i;
+		}
+	}
 }

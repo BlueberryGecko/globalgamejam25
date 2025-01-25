@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdqtv6oxm0e88"]
+[gd_scene load_steps=6 format=3 uid="uid://cdqtv6oxm0e88"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_af6lf"]
 [ext_resource type="Texture2D" uid="uid://cibmhn7mnvg8x" path="res://sprites/rect1.svg" id="2_2degf"]
 [ext_resource type="PackedScene" uid="uid://cfij667mgbb2h" path="res://scenes/bubble_spawner_node_2d.tscn" id="3_fprbf"]
+[ext_resource type="Texture2D" uid="uid://bi688isjwqwkd" path="res://sprites/laserEye.png" id="4_87yx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaix"]
 size = Vector2(14, 28)
@@ -19,5 +20,17 @@ texture = ExtResource("2_2degf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7xaix")
+
+[node name="eye1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-2, -8)
+scale = Vector2(0.0237069, 0.0237069)
+texture = ExtResource("4_87yx5")
+
+[node name="eye2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(2, -8)
+scale = Vector2(0.0237069, 0.0237069)
+texture = ExtResource("4_87yx5")
 
 [connection signal="EnemyCollided" from="." to="." method="OnEnemyCollided"]

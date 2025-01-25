@@ -10,6 +10,9 @@ public partial class Bubble : CharacterBody2D {
 	[Export] public float mass = 1;
 	[Export] public float frictionCoeff = 0.1f;
 	[Export] public AnimatedSprite2D sprite;
+	public BubbleModifier bubbleModifier = 0;
+	
+	[Export] public double freezeTime = 3;
 	
 	private bool manualCollision = false;
 	private MouseCollectionCircle collectionCircleDuringManualCollision;
@@ -72,4 +75,14 @@ public partial class Bubble : CharacterBody2D {
 			QueueFree();
 		}
 	}
+}
+
+[Flags]
+public enum BubbleModifier {
+	Ice = 1,
+	Magnet = 2,
+	Electric = 4,
+	Bounce = 8,
+	Pierce = 16,
+	Explode = 32
 }
