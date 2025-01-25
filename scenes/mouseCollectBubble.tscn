@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm7mqurvdtj8g"]
+
+[ext_resource type="Texture2D" uid="uid://caswkpbrmem7o" path="res://sprites/mouseCollectBubble.png" id="1_kkufl"]
+[ext_resource type="Script" path="res://scripts/MouseCollectionCircle.cs" id="1_rjv5y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2fqsw"]
+
+[node name="MouseCollectionCircle" type="Area2D" node_paths=PackedStringArray("sprite", "collisionShape2D")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_rjv5y")
+sprite = NodePath("Sprite2D")
+collisionShape2D = NodePath("CollisionShape2D")
+bubbleReadjustmentForce = 1000.0
+borderRepellantForce = 100.0
+dispersionForce = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kkufl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2fqsw")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
