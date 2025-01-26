@@ -34,12 +34,12 @@ public abstract partial class Enemy : DamageEntity {
 			} else if ((b.bubbleModifier & BubbleModifier.Magnet) != 0) {
                 isMagnetized = true;
                 if (magnetComponent == null) {
-                    var mc = magnetComponentScene.Instantiate<MagnetComponent>();
-                    mc.AreaEntered += PullArea;
-                    mc.BodyEntered += PullBody;
-                    mc.AreaExited += ReleaseArea;
-                    mc.BodyExited += ReleaseBody;
-                    AddChild(mc);
+                    magnetComponent = magnetComponentScene.Instantiate<MagnetComponent>();
+                    magnetComponent.AreaEntered += PullArea;
+                    magnetComponent.BodyEntered += PullBody;
+                    magnetComponent.AreaExited += ReleaseArea;
+                    magnetComponent.BodyExited += ReleaseBody;
+                    AddChild(magnetComponent);
                 }
             }
             health -= b.damage;
