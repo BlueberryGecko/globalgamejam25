@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/SnailEnemy.cs" id="1_r2eqb"]
 [ext_resource type="Texture2D" uid="uid://dw8rf8dg57371" path="res://sprites/Snail.png" id="2_a576r"]
-[ext_resource type="PackedScene" uid="uid://cnxdu2u45n5hu" path="res://scenes/magnet_component.tscn" id="2_rneqm"]
+[ext_resource type="PackedScene" uid="uid://rlwweu40v4mw" path="res://scenes/magnet_component.tscn" id="2_rneqm"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="3_qvvwk"]
 [ext_resource type="AudioStream" uid="uid://dbruy7i5arxll" path="res://sound/enemyFrozen.wav" id="4_qc8m2"]
 

@@ -17,8 +17,8 @@ public abstract partial class Enemy : DamageEntity {
     public bool isMagnetized = false;
     private MagnetComponent magnetComponent;
     
-	[Export] public float magneticForce = 5000;
-    [Export] public float forceMaxDistance = 10;
+	[Export] public float magneticForce = 50000;
+    [Export] public float forceMaxDistance = 5;
     protected HashSet<Enemy> magnetizationPulls = new();
     
     public override void _Ready() {
@@ -36,12 +36,12 @@ public abstract partial class Enemy : DamageEntity {
 			if ((b.bubbleModifier & BubbleModifier.Magnet) != 0) {
                 isMagnetized = true;
                 if (magnetComponent == null) {
-                    var mc = magnetComponentScene.Instantiate<MagnetComponent>();
-                    mc.AreaEntered += PullArea;
-                    mc.BodyEntered += PullBody;
-                    mc.AreaExited += ReleaseArea;
-                    mc.BodyExited += ReleaseBody;
-                    AddChild(mc);
+                    magnetComponent = magnetComponentScene.Instantiate<MagnetComponent>();
+                    magnetComponent.AreaEntered += PullArea;
+                    magnetComponent.BodyEntered += PullBody;
+                    magnetComponent.AreaExited += ReleaseArea;
+                    magnetComponent.BodyExited += ReleaseBody;
+                    AddChild(magnetComponent);
                 }
             }
             if (!Consts.world.player.cushion) {

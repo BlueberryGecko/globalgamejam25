@@ -33,7 +33,7 @@ public partial class SnailEnemy : Enemy
 		velocity += direction * acceleration * accelerationMultiplier * (float)delta;
 		velocity = velocity.LimitLength(maxSpeed);
 		
-		var magneticAcceleration = MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position);
+		var magneticAcceleration = MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position, this);
 		velocity += magneticAcceleration; // do this after since magnetic accel can be faster than maxSpeed.
 		
 		Position += velocity * (float)delta;

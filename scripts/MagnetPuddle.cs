@@ -21,10 +21,13 @@ public partial class MagnetPuddle : Puddle {
 		b.sprite.Stop();
 	}
 
-	public static Vector2 GetMagneticPull(HashSet<Enemy> pulls, double delta, Vector2 atPosition) {
+	public static Vector2 GetMagneticPull(HashSet<Enemy> pulls, double delta, Vector2 atPosition, Enemy me = null) {
 		var totalAccel = Vector2.Zero;
 		foreach (var e in pulls) {
-			totalAccel += e.magneticForce / (0.5f*Mathf.Max((atPosition - e.Position).LengthSquared(), e.forceMaxDistance * e.forceMaxDistance)) *
+			if (e == me) {
+				continue;
+			}
+			totalAccel += e.magneticForce / (10.0f + (atPosition - e.Position).Length()) *
 			              (e.Position - atPosition).Normalized();
 		}
 		return totalAccel * (float)delta;

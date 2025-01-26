@@ -10,7 +10,7 @@ public partial class EColiEnemy : Enemy
 	[Export] public float speed = 100;
 	
     private Vector2 magneticVelocity = Vector2.Zero; // track this separately so it can accumulate over multiple frames
-    [Export] public float magneticFriction = 0.99f; // small friction term so magnetic influence doesn't last forever.
+    [Export] public float magneticFriction = 0.9f; // small friction term so magnetic influence doesn't last forever.
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -28,8 +28,8 @@ public partial class EColiEnemy : Enemy
 			iceBlock.Visible = false;
 		}
 		
-        magneticVelocity *= magneticFriction;
-        magneticVelocity += MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position);
+        magneticVelocity *= (float)(magneticFriction * delta);
+        magneticVelocity += MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position, this);
 		  
 		var dir = (Consts.world.player.Position - Position).Normalized();
 		Position += speed * (float)delta * dir + magneticVelocity * (float)delta;
