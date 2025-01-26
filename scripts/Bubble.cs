@@ -8,6 +8,7 @@ using Globalgamejam25.scripts;
 public partial class Bubble : CharacterBody2D {
 	[Export] private CollisionShape2D collisionShape2D;
 	[Export] private AudioStreamPlayer2D audioPlayer;
+	[Export] public PackedScene explosionScene;
 	public Vector2 acceleration  = Vector2.Zero;
 	public Vector2 randomForce = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
 	[Export] public float mass = 1;

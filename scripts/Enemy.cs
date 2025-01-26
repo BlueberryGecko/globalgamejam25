@@ -44,15 +44,23 @@ public abstract partial class Enemy : DamageEntity {
                     AddChild(magnetComponent);
                 }
             }
-            if (!Consts.world.player.cushion) {
-                health -= b.damage;
+            if ((b.bubbleModifier & BubbleModifier.Explode) != 0) {
+                var explosion = b.explosionScene.Instantiate<Explosion>();
+                explosion.Position = b.Position;
+                Consts.world.AddChild(explosion);
             }
-            this.BlinkWithTween();
-            if (health <= 0) {
-                Die();
-                Consts.world.player.score += score;
-            }
+            damage(b.damage);
             b.Burst();
+        }
+    }
+
+    public void damage(int d) {
+        if (Consts.world.player.cushion) return;
+        health -= d;
+        this.BlinkWithTween();
+        if (health <= 0) {
+            Die();
+            Consts.world.player.score += score;
         }
     }
 

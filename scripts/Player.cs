@@ -151,14 +151,18 @@ public partial class Player : Area2D {
 
     public void OnEnemyCollided(DamageEntity e) {
         if (godmode) return;
-        health -= e.damage;
+        damage(e.damage);
+        e.Die();
+    }
+
+    public void damage(int d) {
+        health -= d;
         this.BlinkWithTween();
         damageAudioPlayer.Play();
         healthBar.Value = health;
         if (health < 0) {
             gameOver.Initiate();
         }
-        e.Die();
     }
 
     public void OnArea2DEntered(Area2D area) {
