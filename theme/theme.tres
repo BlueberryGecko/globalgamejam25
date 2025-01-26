@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://dc8opdnmnyhbp"]
 
-[ext_resource type="StyleBox" path="res://theme/button_style_box.tres" id="1_ctaql"]
-[ext_resource type="StyleBox" path="res://theme/button_style_box_hover.tres" id="1_fce6r"]
-[ext_resource type="StyleBox" path="res://theme/button_style_box_focus.tres" id="1_lc70r"]
-[ext_resource type="StyleBox" path="res://theme/button_style_box_pressed.tres" id="4_xi2m1"]
+[ext_resource type="StyleBox" uid="uid://daypvmiyl3i1q" path="res://theme/button_style_box.tres" id="1_ctaql"]
+[ext_resource type="StyleBox" uid="uid://dsk7w5bt3ucnt" path="res://theme/button_style_box_hover.tres" id="1_fce6r"]
+[ext_resource type="StyleBox" uid="uid://cehnpk4tydosu" path="res://theme/button_style_box_focus.tres" id="1_lc70r"]
+[ext_resource type="StyleBox" uid="uid://b0uvfy0lqw62h" path="res://theme/button_style_box_pressed.tres" id="4_xi2m1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey2o4"]
 bg_color = Color(0.501843, 0.167213, 0.304877, 0.721569)

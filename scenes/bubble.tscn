@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://boc3j050xtf7o"]
+[gd_scene load_steps=18 format=3 uid="uid://boc3j050xtf7o"]
 
 [ext_resource type="Texture2D" uid="uid://bvg6xda6u73le" path="res://sprites/bubble.png" id="1_ctffr"]
 [ext_resource type="Script" path="res://scripts/Bubble.cs" id="1_mllrq"]
 [ext_resource type="Script" path="res://scripts/BubbleModifierSprite.cs" id="2_4wr22"]
 [ext_resource type="PackedScene" uid="uid://57ghe4i677m5" path="res://scenes/explosion.tscn" id="2_8t8u2"]
 [ext_resource type="AudioStream" uid="uid://d1dqunpvt1bdb" path="res://sound/bubblePop.wav" id="3_w62hd"]
+[ext_resource type="AudioStream" uid="uid://dx1g0701x138a" path="res://sound/explosion.wav" id="6_84qkg"]
 
 [sub_resource type="Resource" id="Resource_sto8j"]
 script = ExtResource("2_4wr22")
@@ -84,7 +85,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Bubble" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape2D", "audioPlayer", "sprite")]
+[node name="Bubble" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape2D", "audioPlayer", "explosionPlayer", "sprite")]
 z_index = 8
 scale = Vector2(0.5, 0.5)
 collision_layer = 8
@@ -92,6 +93,7 @@ collision_mask = 2
 script = ExtResource("1_mllrq")
 collisionShape2D = NodePath("CollisionShape2D")
 audioPlayer = NodePath("AudioStreamPlayer2D")
+explosionPlayer = NodePath("Explosion_AudioStreamPlayer2D")
 explosionScene = ExtResource("2_8t8u2")
 sprite = NodePath("Sprite2D")
 bubbleModifierSprites = Array[Object]([SubResource("Resource_sto8j"), SubResource("Resource_yskb2"), SubResource("Resource_1qqfo")])
@@ -126,5 +128,8 @@ texture_filter = 1
 texture = ExtResource("1_ctffr")
 region_enabled = true
 region_rect = Rect2(0, 56, 28, 28)
+
+[node name="Explosion_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_84qkg")
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="OnAnimationFinished"]

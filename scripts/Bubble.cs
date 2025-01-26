@@ -8,6 +8,7 @@ using Globalgamejam25.scripts;
 public partial class Bubble : CharacterBody2D {
 	[Export] private CollisionShape2D collisionShape2D;
 	[Export] private AudioStreamPlayer2D audioPlayer;
+	[Export] private AudioStreamPlayer2D explosionPlayer;
 	[Export] public PackedScene explosionScene;
 	public Vector2 acceleration  = Vector2.Zero;
 	public Vector2 randomForce = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
@@ -15,6 +16,8 @@ public partial class Bubble : CharacterBody2D {
 	[Export] public float frictionCoeff = 0.1f;
 	[Export] public AnimatedSprite2D sprite;
 	[Export] private BubbleModifierSprite[] bubbleModifierSprites;
+	[Export] public double despawnTimer = 30;
+	
 	public int damage {
 		get {
 			if (bubbleModifier.HasFlag(BubbleModifier.Ice) || bubbleModifier.HasFlag(BubbleModifier.Magnet)) {
@@ -76,6 +79,11 @@ public partial class Bubble : CharacterBody2D {
 		// Velocity *= (1 - frictionCoeff * (float)delta);
 		acceleration = Vector2.Zero;
 		MoveAndSlide();
+
+		despawnTimer -= delta;
+		if (despawnTimer <= 0) {
+			QueueFree();
+		}
 	}
 	
 	public void CaptureInCircle(MouseCollectionCircle mouseCollectionCircle) {
@@ -128,6 +136,7 @@ public partial class Bubble : CharacterBody2D {
 		var explosion = explosionScene.Instantiate<Explosion>();
 		explosion.Position = Position;
 		explosion.bubble = this;
+		explosionPlayer.Play();
 		Consts.world.AddChild(explosion);
 	}
 	

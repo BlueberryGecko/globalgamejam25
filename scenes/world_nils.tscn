@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 [ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_3b1c8"]
+[sub_resource type="Resource" id="Resource_krd3h"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -30,7 +30,7 @@ spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_2mb5w"]
+[sub_resource type="Resource" id="Resource_xoxdb"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -39,7 +39,7 @@ spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_lbeon"]
+[sub_resource type="Resource" id="Resource_48060"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -48,7 +48,7 @@ spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_4dk1l"]
+[sub_resource type="Resource" id="Resource_dt3xs"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -57,7 +57,7 @@ spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.1
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_nlpxy"]
+[sub_resource type="Resource" id="Resource_byv4a"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -66,7 +66,7 @@ spawnSpeedChampionChance = 0.2
 spawnToughChampionChance = 0.1
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_ohd2v"]
+[sub_resource type="Resource" id="Resource_us7xw"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -75,7 +75,7 @@ spawnSpeedChampionChance = 0.2
 spawnToughChampionChance = 0.1
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_jabjo"]
+[sub_resource type="Resource" id="Resource_xjaty"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -84,7 +84,7 @@ spawnSpeedChampionChance = 0.3
 spawnToughChampionChance = 0.2
 spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_j1vuv"]
+[sub_resource type="Resource" id="Resource_ekk1e"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -93,7 +93,7 @@ spawnSpeedChampionChance = 0.3
 spawnToughChampionChance = 0.2
 spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_dvijr"]
+[sub_resource type="Resource" id="Resource_kd6pe"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -102,7 +102,7 @@ spawnSpeedChampionChance = 0.5
 spawnToughChampionChance = 0.2
 spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_qge0d"]
+[sub_resource type="Resource" id="Resource_d5s5n"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -259,9 +259,9 @@ spawnTypeImmuneChampionChance = 0.1
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
-spawnSpeedChampionChance = 0.0
-spawnToughChampionChance = 0.0
-spawnTypeImmuneChampionChance = 0.0
+spawnSpeedChampionChance = 0.1
+spawnToughChampionChance = 0.2
+spawnTypeImmuneChampionChance = 0.1
 
 [sub_resource type="Resource" id="Resource_ox45i"]
 script = ExtResource("12_x6u3w")
@@ -432,7 +432,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_3b1c8"), SubResource("Resource_2mb5w"), SubResource("Resource_lbeon"), SubResource("Resource_4dk1l"), SubResource("Resource_nlpxy"), SubResource("Resource_ohd2v"), SubResource("Resource_jabjo"), SubResource("Resource_j1vuv"), SubResource("Resource_dvijr"), SubResource("Resource_qge0d")]
+waves = [SubResource("Resource_krd3h"), SubResource("Resource_xoxdb"), SubResource("Resource_48060"), SubResource("Resource_dt3xs"), SubResource("Resource_byv4a"), SubResource("Resource_us7xw"), SubResource("Resource_xjaty"), SubResource("Resource_ekk1e"), SubResource("Resource_kd6pe"), SubResource("Resource_d5s5n")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")

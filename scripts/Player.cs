@@ -129,35 +129,37 @@ public partial class Player : Area2D {
 
         velocity += move;
         velocity = velocity.LimitLength(dash ? maxDashSpeed : maxSpeed);
+        var supercharge = UpdateSupercharge(delta);
         var speedPercent = velocity.Length() / maxSpeed;
         if (IsInstanceValid(bubbleSpawner))
             bubbleSpawner.spawnTimerMultiplier = speedPercent;
+            bubbleSpawner.spawnTimerMultiplier *= supercharge;
+            
+        velocity *= 1 + (supercharge-1) / 2.0f;
         
         Position += velocity * (float)delta;
 
         RotationDegrees += rotationSpeed * (float)delta;
         rotationSpeed -= rotationSpeed * rotationDeceleration * (float)delta;
 
-        UpdateSupercharge(delta);
     }
     
-    private void UpdateSupercharge(double delta) {
-        var baseSpawnModifier = bubbleSpawner.spawnTimerMultiplier;
-        double superChargeModifier = 1;
+    private float UpdateSupercharge(double delta) {
+        float supercharge = 1;
         for (int i = 0; i < superChargeSpawnTimerModifiers.Count; i++) {
             superChargeSpawnTimerModifiers[i] -= (float)delta;
             double remainingSuperChargeRatio = Mathf.Min(superChargeSpawnTimerModifiers[i] / delta, 1);
-            superChargeModifier += superChargeFactor * remainingSuperChargeRatio;
+            supercharge += superChargeFactor * (float)remainingSuperChargeRatio;
             
             if (superChargeSpawnTimerModifiers[i] <= 0) {
                 superChargeSpawnTimerModifiers.RemoveAt(i);
                 i--;
             }
         }
-        bubbleSpawner.spawnTimerMultiplier *= (float)superChargeModifier;
-        eyes.ForEach(e => e.Modulate = new Color(1, 1, 1, (float)(superChargeModifier-1)));
-        double playerModulate = Mathf.Max(superChargeModifier, 1);
+        eyes.ForEach(e => e.Modulate = new Color(1, 1, 1, (float)(supercharge-1)));
+        double playerModulate = Mathf.Max(supercharge, 1);
         sprite.Modulate = new Color((float)playerModulate, (float)playerModulate, (float)playerModulate);
+        return supercharge;
     }
 
     public void OnEnemyCollided(DamageEntity e) {
@@ -182,6 +184,10 @@ public partial class Player : Area2D {
             superChargeSpawnTimerModifiers.Add(superChargeTime);
             s.QueueFree();
             eatSoapPieceAudioPlayer.Play();
+            if (health < maxHealth) 
+            {
+                health += 2;
+            }
             Score += 5;
         }
     }
