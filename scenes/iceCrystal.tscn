@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://3wved672dd4x"]
+
+[ext_resource type="Texture2D" uid="uid://crvd36dwl7ym5" path="res://sprites/iceCrystal.png" id="1_a35h4"]
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 9
+texture = ExtResource("1_a35h4")

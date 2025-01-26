@@ -12,6 +12,7 @@ public partial class MouseCollectionCircle : Area2D {
 	[Export] private float borderRepellantForce = 1000;
 	[Export] private float borderRepellantMidwayDistanceCutoff = 0.5f;
 	[Export] private Color deactivatedModulate = new(1, 1, 1, 0.5f);
+	[Export] private AudioStreamPlayer2D audioPlayer;
 
 	private Vector2[] lastMousePositions = new Vector2[5];
 	
@@ -57,6 +58,8 @@ public partial class MouseCollectionCircle : Area2D {
 			var positionDelta = new Vector2(positionsDeltas.Average(d => d.X), positionsDeltas.Average(d => d.Y));
 			var exitSpeed = positionDelta / (float)delta;
 			var exitSpeedStrength = exitSpeed.Length();
+			if (exitSpeedStrength > 10 && heldBubbles.Any())
+				audioPlayer.Play();
 			heldBubbles.ToList().ForEach(b =>
 			{
 				if (exitSpeedStrength > 10f)

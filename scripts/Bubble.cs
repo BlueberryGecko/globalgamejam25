@@ -5,11 +5,18 @@ using Globalgamejam25.scripts;
 
 public partial class Bubble : CharacterBody2D {
 	[Export] private CollisionShape2D collisionShape2D;
+	[Export] private AudioStreamPlayer2D audioPlayer;
 	public Vector2 acceleration  = Vector2.Zero;
 	public Vector2 randomForce = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
 	[Export] public float mass = 1;
 	[Export] public float frictionCoeff = 0.1f;
 	[Export] public AnimatedSprite2D sprite;
+	[Export] public int damage = 20;
+	[Export] public int health = 1;
+	[Export] public int frozenBubbleHealth = 4;
+	public BubbleModifier bubbleModifier = 0;
+	
+	[Export] public double freezeTime = 3;
 	
 	private bool manualCollision = false;
 	private MouseCollectionCircle collectionCircleDuringManualCollision;
@@ -53,19 +60,25 @@ public partial class Bubble : CharacterBody2D {
 	public void CaptureInCircle(MouseCollectionCircle mouseCollectionCircle) {
 		manualCollision = true;
 		collectionCircleDuringManualCollision = mouseCollectionCircle;
-		// TODO: set collision mask, probably
+		CollisionMask = 0;
+		CollisionLayer = 0;
 	}
 
 	public void ReleaseFromCircle() {
 		manualCollision = false;
+		CollisionMask = 1 << (int)Consts.CollisionLayers.Enemies;
+		CollisionLayer = 1 << (int)Consts.CollisionLayers.Bubbles;
 	}
 
 	public float GetRadius() => ((CircleShape2D)collisionShape2D.Shape).Radius * GlobalScale.X;
 	
 	public void Burst() {
-		isPoppping = true;
-		sprite.Play();
-		Consts.world.audioPlayer.Play();
+		health -= 1;
+		if (health <= 0) {
+			isPoppping = true;
+			sprite.Play();
+			audioPlayer.Play();
+		}
 	}
 
 	public void OnAnimationFinished() {
@@ -73,4 +86,14 @@ public partial class Bubble : CharacterBody2D {
 			QueueFree();
 		}
 	}
+}
+
+[Flags]
+public enum BubbleModifier {
+	Ice = 1,
+	Magnet = 2,
+	Electric = 4,
+	Bounce = 8,
+	Pierce = 16,
+	Explode = 32
 }

@@ -15,12 +15,22 @@ public partial class RangedEnemy : Enemy
     private PackedScene bulletScene;
     [Export]
     private float randomTargetOffsetMax = 10;
+    [Export]
+    private AudioStreamPlayer2D audioPlayer;
     private Vector2 randomTargetOffset = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
     
     private float timer;
     
     public override void _Process(double delta)
     {
+		frozenTime -= delta;
+		if (frozenTime > 0) {
+			return;
+		}
+		else {
+			iceBlock.Visible = false;
+		}
+        
         timer += (float)delta;
         var spawnCount = Mathf.Floor(timer / shootInterval);
         for (var i = 0; i < spawnCount; i++)
@@ -45,5 +55,7 @@ public partial class RangedEnemy : Enemy
         Consts.world.AddChild(bullet);
         bullet.GlobalPosition = Position;
         bullet.direction = (Consts.world.player.Position - Position).Normalized();
+        if (IsInstanceValid(audioPlayer))
+            audioPlayer.Play();
     }
 }
