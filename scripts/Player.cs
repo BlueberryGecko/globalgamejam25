@@ -5,7 +5,7 @@ using Godot;
 namespace Globalgamejam25;
 
 public partial class Player : Area2D {
-    private Vector2 velocity;
+    public Vector2 velocity;
     private Vector2 lastMovement;
     private float rotationSpeed;
     [Export]
@@ -49,6 +49,8 @@ public partial class Player : Area2D {
     [Export] public ProgressBar healthBar;
     [Export] public int maxHealth = 100;
     [Export] public int health = 100;
+    
+    public int score = 0;
 
     public override void _Ready() {
         healthBar.MaxValue = maxHealth;
@@ -155,6 +157,7 @@ public partial class Player : Area2D {
             superChargeSpawnTimerModifiers.Add(superChargeTime);
             s.QueueFree();
             eatSoapPieceAudioPlayer.Play();
+            score += 5;
         }
     }
 }

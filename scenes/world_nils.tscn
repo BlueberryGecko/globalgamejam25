@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dn6n54yx78w6g"]
+[gd_scene load_steps=45 format=3 uid="uid://dn6n54yx78w6g"]
 
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_fpx7t"]
 [ext_resource type="PackedScene" uid="uid://dm2yq8gr060os" path="res://scenes/world.tscn" id="2_w05uq"]
@@ -12,13 +12,175 @@
 [ext_resource type="PackedScene" uid="uid://d4jdu7gq4bvmq" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
 [ext_resource type="PackedScene" uid="uid://bmg88icl2b0m5" path="res://scenes/healthBar.tscn" id="6_pbme0"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
+[ext_resource type="PackedScene" uid="uid://dl3b1ilgeu4g4" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
+[ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player")]
+[sub_resource type="Resource" id="Resource_ork63"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 1.0
+
+[sub_resource type="Resource" id="Resource_le7d1"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.75
+
+[sub_resource type="Resource" id="Resource_niimt"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.5
+
+[sub_resource type="Resource" id="Resource_nyv0s"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.5
+
+[sub_resource type="Resource" id="Resource_72jav"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.4
+
+[sub_resource type="Resource" id="Resource_flt5y"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.3
+
+[sub_resource type="Resource" id="Resource_lxq21"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.3
+
+[sub_resource type="Resource" id="Resource_eyvjm"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.2
+
+[sub_resource type="Resource" id="Resource_cf2qb"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.2
+
+[sub_resource type="Resource" id="Resource_tq13x"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.1
+
+[sub_resource type="Resource" id="Resource_g6x13"]
+script = ExtResource("12_x6u3w")
+isActive = false
+spawnInterval = 0.0
+
+[sub_resource type="Resource" id="Resource_k7qhj"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 1.0
+
+[sub_resource type="Resource" id="Resource_sjaug"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.75
+
+[sub_resource type="Resource" id="Resource_q1erd"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.6
+
+[sub_resource type="Resource" id="Resource_ccuab"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.5
+
+[sub_resource type="Resource" id="Resource_f3cym"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.5
+
+[sub_resource type="Resource" id="Resource_3fv1w"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.5
+
+[sub_resource type="Resource" id="Resource_lk8ha"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.4
+
+[sub_resource type="Resource" id="Resource_0ej75"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.4
+
+[sub_resource type="Resource" id="Resource_fcfm4"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.3
+
+[sub_resource type="Resource" id="Resource_si4fr"]
+script = ExtResource("12_x6u3w")
+isActive = false
+spawnInterval = 0.0
+
+[sub_resource type="Resource" id="Resource_0eaii"]
+script = ExtResource("12_x6u3w")
+isActive = false
+spawnInterval = 0.0
+
+[sub_resource type="Resource" id="Resource_j42b5"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 2.0
+
+[sub_resource type="Resource" id="Resource_uv6wd"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 1.5
+
+[sub_resource type="Resource" id="Resource_d78ro"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 1.25
+
+[sub_resource type="Resource" id="Resource_tgs8q"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 1.0
+
+[sub_resource type="Resource" id="Resource_palrg"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.9
+
+[sub_resource type="Resource" id="Resource_vv8je"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.75
+
+[sub_resource type="Resource" id="Resource_w13fe"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.6
+
+[sub_resource type="Resource" id="Resource_1pfkw"]
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.5
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners")]
 script = ExtResource("1_fpx7t")
 worldScene = ExtResource("2_w05uq")
 soapParticleScene = ExtResource("3_arwqw")
 player = NodePath("Player")
-enemies = Array[PackedScene]([ExtResource("5_yklap"), ExtResource("9_rkdkj"), ExtResource("5_io174")])
+enemySpawners = [NodePath("EColiSpawner")]
 puddleScenes = Array[PackedScene]([ExtResource("4_dj5wy")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -44,10 +206,22 @@ healthBar = NodePath("../CanvasLayer/HealthBar/ProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 30.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="OnEnemySpawnTimerTimeout"]
+[node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
+enemy = ExtResource("5_yklap")
+waves = [SubResource("Resource_ork63"), SubResource("Resource_le7d1"), SubResource("Resource_niimt"), SubResource("Resource_nyv0s"), SubResource("Resource_72jav"), SubResource("Resource_flt5y"), SubResource("Resource_lxq21"), SubResource("Resource_eyvjm"), SubResource("Resource_cf2qb"), SubResource("Resource_tq13x")]
+
+[node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
+enemy = ExtResource("9_rkdkj")
+waves = [SubResource("Resource_g6x13"), SubResource("Resource_k7qhj"), SubResource("Resource_sjaug"), SubResource("Resource_q1erd"), SubResource("Resource_ccuab"), SubResource("Resource_f3cym"), SubResource("Resource_3fv1w"), SubResource("Resource_lk8ha"), SubResource("Resource_0ej75"), SubResource("Resource_fcfm4")]
+
+[node name="SnailSpawner" parent="." instance=ExtResource("10_okt3o")]
+enemy = ExtResource("5_io174")
+waves = [SubResource("Resource_si4fr"), SubResource("Resource_0eaii"), SubResource("Resource_j42b5"), SubResource("Resource_uv6wd"), SubResource("Resource_d78ro"), SubResource("Resource_tgs8q"), SubResource("Resource_palrg"), SubResource("Resource_vv8je"), SubResource("Resource_w13fe"), SubResource("Resource_1pfkw")]
+
+[connection signal="timeout" from="WaveTimer" to="." method="OnWaveTimerTimeout"]
 
 [editable path="CanvasLayer/HealthBar"]

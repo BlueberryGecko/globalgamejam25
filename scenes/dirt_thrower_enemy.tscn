@@ -17,6 +17,7 @@ script = ExtResource("1_ndjqh")
 distanceToPlayer = 200.0
 bulletScene = ExtResource("2_vvn37")
 audioPlayer = NodePath("ShootAudio")
+score = 20
 iceBlock = NodePath("IceBlock")
 freezeAudioPlayer = NodePath("FreezeAudio")
 
