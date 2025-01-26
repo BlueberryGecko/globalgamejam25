@@ -4,8 +4,9 @@
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_qrg4k"]
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_d78bf"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("enemySpawners")]
 script = ExtResource("1_qrg4k")
+enemySpawners = []
 
 [node name="BubbleSpawner_Node2D" parent="." instance=ExtResource("1_7h4kn")]
 position = Vector2(149, 68)
