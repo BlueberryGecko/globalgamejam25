@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PauseMenu : Control
+public partial class GameOver : Control
 {
 	[Export] public PackedScene OptionsPackedScene;
 	// [Export] public CanvasLayer HealthBarLayer;
@@ -19,7 +19,11 @@ public partial class PauseMenu : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		TestPauseAction();
+	}
+
+	public void Initiate()
+	{
+		Pause();
 	}
 
 	private void Pause()
@@ -37,31 +41,14 @@ public partial class PauseMenu : Control
 		Hide();
 		// HealthBarLayer.Show();
 	}
-
+	
 	private void Restart()
 	{
 		Resume();
 		GetTree().ReloadCurrentScene();
 	}
 
-	private void TestPauseAction()
-	{
-		if (Input.IsActionJustPressed("pause") && !GetTree().Paused) {
-			Pause();
-		} else if (Input.IsActionJustPressed("pause") && GetTree().Paused) {
-			Resume();
-		}
-		/* else if (Input.IsActionJustPressed("ui_cancel")) {
-			Resume();
-		}*/
-	}
-
-	private void _OnResumeButtonPressed()
-	{
-		Resume();
-	}
-
-	private void _OnRestartButtonPressed()
+	private void _OnRetryButtonPressed()
 	{
 		Restart();
 	}

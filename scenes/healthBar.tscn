@@ -1,17 +1,89 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmg88icl2b0m5"]
+[gd_scene load_steps=5 format=3 uid="uid://bmg88icl2b0m5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbqe7"]
-bg_color = Color(0.51, 0.51, 0.51, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+[ext_resource type="Texture2D" uid="uid://c3tnbg7e6d4wi" path="res://sprites/soap-nine-segment-3d.svg" id="1_21dr2"]
+[ext_resource type="Theme" uid="uid://dc8opdnmnyhbp" path="res://theme/theme.tres" id="1_hi360"]
 
-[node name="HealthBar" type="Node"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0620i"]
+bg_color = Color(0.57, 0.2565, 0.397575, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_right = 242.0
-offset_bottom = 58.0
-theme_override_styles/background = SubResource("StyleBoxFlat_rbqe7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_rbqe7")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv4dc"]
+bg_color = Color(1, 0.552941, 0.709804, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -51.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme = ExtResource("1_hi360")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_21dr2")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_0620i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nv4dc")
+value = 90.0
 show_percentage = false
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.5
+offset_right = 20.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1

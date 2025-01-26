@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/EColiEnemy.cs" id="1_7xd1n"]
 [ext_resource type="Texture2D" uid="uid://bqxpko71ckdhy" path="res://sprites/Enemy.png" id="1_n86r5"]
-[ext_resource type="PackedScene" path="res://scenes/iceCrystal.tscn" id="3_5lea7"]
+[ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="3_5lea7"]
 [ext_resource type="AudioStream" uid="uid://dbruy7i5arxll" path="res://sound/enemyFrozen.wav" id="4_iy5xg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq20n"]

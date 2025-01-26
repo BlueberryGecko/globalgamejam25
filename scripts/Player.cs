@@ -28,6 +28,8 @@ public partial class Player : Area2D {
     private float rotationDeceleration = 1f / 1.1f;
     [Export]
     private BubbleSpawner bubbleSpawner;
+    [Export]
+	private GameOver gameOver;
     [Export] private Sprite2D sprite;
     [Export] private AudioStreamPlayer2D damageAudioPlayer;
     [Export] private AudioStreamPlayer2D dashAudioPlayer;
@@ -147,7 +149,7 @@ public partial class Player : Area2D {
         damageAudioPlayer.Play();
         healthBar.Value = health;
         if (health < 0) {
-            Consts.world.Restart();
+            gameOver.Initiate();
         }
         e.Die();
     }
