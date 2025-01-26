@@ -1,9 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://boc3j050xtf7o"]
+[gd_scene load_steps=16 format=3 uid="uid://boc3j050xtf7o"]
 
 [ext_resource type="Texture2D" uid="uid://bvg6xda6u73le" path="res://sprites/bubble.png" id="1_ctffr"]
 [ext_resource type="Script" path="res://scripts/Bubble.cs" id="1_mllrq"]
+[ext_resource type="Script" path="res://scripts/BubbleModifierSprite.cs" id="2_4wr22"]
 [ext_resource type="PackedScene" uid="uid://c5rpnwosjd783" path="res://scenes/explosion.tscn" id="2_8t8u2"]
 [ext_resource type="AudioStream" uid="uid://d1dqunpvt1bdb" path="res://sound/bubblePop.wav" id="3_w62hd"]
+
+[sub_resource type="Resource" id="Resource_sto8j"]
+script = ExtResource("2_4wr22")
+sprite = NodePath("IceEffect")
+modifier = 1
+
+[sub_resource type="Resource" id="Resource_yskb2"]
+script = ExtResource("2_4wr22")
+sprite = NodePath("MagnetEffect")
+modifier = 2
+
+[sub_resource type="Resource" id="Resource_1qqfo"]
+script = ExtResource("2_4wr22")
+sprite = NodePath("ExplosionEffect")
+modifier = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_flc1f"]
 radius = 12.0
@@ -78,15 +94,37 @@ collisionShape2D = NodePath("CollisionShape2D")
 audioPlayer = NodePath("AudioStreamPlayer2D")
 explosionScene = ExtResource("2_8t8u2")
 sprite = NodePath("Sprite2D")
+bubbleModifierSprites = Array[Object]([SubResource("Resource_sto8j"), SubResource("Resource_yskb2"), SubResource("Resource_1qqfo")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_flc1f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_w62hd")
+
+[node name="ExplosionEffect" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_ctffr")
+region_enabled = true
+region_rect = Rect2(0, 84, 28, 28)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_dt1gy")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_w62hd")
+[node name="IceEffect" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_ctffr")
+region_enabled = true
+region_rect = Rect2(0, 28, 28, 28)
+
+[node name="MagnetEffect" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_ctffr")
+region_enabled = true
+region_rect = Rect2(0, 56, 28, 28)
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="OnAnimationFinished"]

@@ -14,6 +14,7 @@ public partial class Bubble : CharacterBody2D {
 	[Export] public float mass = 1;
 	[Export] public float frictionCoeff = 0.1f;
 	[Export] public AnimatedSprite2D sprite;
+	[Export] private BubbleModifierSprite[] bubbleModifierSprites;
 	[Export] public int damage = 20;
 	[Export] public int health = 1;
 	[Export] public int frozenBubbleHealth = 4;
@@ -48,6 +49,12 @@ public partial class Bubble : CharacterBody2D {
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
+		foreach (var bubbleModifierSprite in bubbleModifierSprites)
+		{
+			
+			GetNode<Sprite2D>(bubbleModifierSprite.sprite).Visible = bubbleModifier.HasFlag(bubbleModifierSprite.modifier);
+		}
+		
 		var viewportRect = GetViewportRect();
 		var boundingBox = viewportRect
 			.Grow(((CircleShape2D)collisionShape2D.Shape).Radius)
@@ -97,8 +104,8 @@ public partial class Bubble : CharacterBody2D {
 public enum BubbleModifier {
 	Ice = 1,
 	Magnet = 2,
-	Electric = 4,
+	Explode = 4,
 	Bounce = 8,
 	Pierce = 16,
-	Explode = 32
+	Electric = 32
 }
