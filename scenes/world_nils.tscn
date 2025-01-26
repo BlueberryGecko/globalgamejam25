@@ -21,61 +21,61 @@
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 [ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_sfyoq"]
+[sub_resource type="Resource" id="Resource_av0oy"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_8jlrn"]
+[sub_resource type="Resource" id="Resource_wgubp"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_as038"]
+[sub_resource type="Resource" id="Resource_d6pwr"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_fveri"]
+[sub_resource type="Resource" id="Resource_27d71"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.9
 
-[sub_resource type="Resource" id="Resource_l5ls3"]
+[sub_resource type="Resource" id="Resource_xiv12"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.8
 
-[sub_resource type="Resource" id="Resource_nremr"]
+[sub_resource type="Resource" id="Resource_m1oxr"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.7
 
-[sub_resource type="Resource" id="Resource_i5cv0"]
+[sub_resource type="Resource" id="Resource_w37g4"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.6
 
-[sub_resource type="Resource" id="Resource_6fg2d"]
+[sub_resource type="Resource" id="Resource_x4gjl"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_sgy26"]
+[sub_resource type="Resource" id="Resource_4oaie"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
 
-[sub_resource type="Resource" id="Resource_r8tvk"]
+[sub_resource type="Resource" id="Resource_75nuv"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -181,7 +181,7 @@ script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners", "waveLabel")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners", "waveLabel", "waveTimeLabel", "waveTimer")]
 script = ExtResource("1_fpx7t")
 worldScene = ExtResource("2_w05uq")
 soapParticleScene = ExtResource("3_arwqw")
@@ -189,6 +189,8 @@ player = NodePath("Player")
 enemySpawners = [NodePath("EColiSpawner")]
 puddleScenes = Array[PackedScene]([ExtResource("4_dj5wy"), ExtResource("5_t4vp4"), ExtResource("6_vx4qt")])
 waveLabel = NodePath("CanvasLayer/Wave/NinePatchRect/WaveLabel")
+waveTimeLabel = NodePath("CanvasLayer/Wave/NinePatchRect/WaveTimeLabel")
+waveTimer = NodePath("WaveTimer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -229,6 +231,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.963822, 0.765088, 0.816196, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -249,10 +252,10 @@ texture_filter = 1
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.125
+anchor_left = -0.017341
 anchor_top = 0.166667
-anchor_right = 0.875
-anchor_bottom = 1.0
+anchor_right = 0.936416
+anchor_bottom = 1.4
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_ac2o4")
@@ -264,12 +267,34 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WaveLabel" type="Label" parent="CanvasLayer/Wave/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.5
+offset_top = 10.0
+offset_right = 52.5
+offset_bottom = 39.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_colors/font_color = Color(0.963822, 0.765088, 0.816196, 1)
 text = "WAVE: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveTimeLabel" type="Label" parent="CanvasLayer/Wave/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.5
+offset_top = -39.0
+offset_right = 52.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.963822, 0.765088, 0.816196, 1)
+text = "NEXT: 10s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -316,7 +341,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_sfyoq"), SubResource("Resource_8jlrn"), SubResource("Resource_as038"), SubResource("Resource_fveri"), SubResource("Resource_l5ls3"), SubResource("Resource_nremr"), SubResource("Resource_i5cv0"), SubResource("Resource_6fg2d"), SubResource("Resource_sgy26"), SubResource("Resource_r8tvk")]
+waves = [SubResource("Resource_av0oy"), SubResource("Resource_wgubp"), SubResource("Resource_d6pwr"), SubResource("Resource_27d71"), SubResource("Resource_xiv12"), SubResource("Resource_m1oxr"), SubResource("Resource_w37g4"), SubResource("Resource_x4gjl"), SubResource("Resource_4oaie"), SubResource("Resource_75nuv")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")

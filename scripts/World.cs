@@ -29,12 +29,14 @@ public partial class World : Node2D
 	[Export] private int waveCount = 10;
 		
 	[Export] private Label waveLabel;
+	[Export] private Label waveTimeLabel;
+	[Export] private Timer waveTimer;
 
 	public int CurrentWaveIndex {
 		get => currentWaveIndex;
 		set {
 			currentWaveIndex = value;
-			waveLabel.Text = $"WAVE: {currentWaveIndex + 1}";
+			waveLabel.Text = $"WAVE: {(currentWaveIndex + 1).ToString(),2}";
 		}
 	}
 	private int currentWaveIndex;
@@ -50,6 +52,7 @@ public partial class World : Node2D
 		QueueRedraw();
 		SpawnSoapParticles(delta);
 		SpawnPuddles();
+		UpdateWaveTimeLabel();
 	}
 	
 	private void SpawnSoapParticles(double delta) {
@@ -64,6 +67,11 @@ public partial class World : Node2D
 		var soap = soapParticleScene.Instantiate<SoapParticle>();
 		soap.Position = soapSpawnPos;
 		AddChild(soap);
+	}
+
+	private void UpdateWaveTimeLabel()
+	{
+		waveTimeLabel.Text = $"Next: {Math.Round(waveTimer.TimeLeft).ToString().PadLeft(2, '0')}s";
 	}
 
 	public void Restart() {
