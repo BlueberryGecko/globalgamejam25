@@ -47,7 +47,7 @@ public partial class RangedEnemy : Enemy
         var velocity = Mathf.Min(speed * (float)delta, distance) * dir;
         magneticVelocity *= (float)(magneticFriction * delta);
         magneticVelocity += MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position, this);
-        Position += velocity + magneticVelocity * (float)delta;
+        Position += velocity + magneticVelocity * (float)delta * championSpeedMultiplier;
     }
 
     private void Shoot()

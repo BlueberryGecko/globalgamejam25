@@ -4,13 +4,16 @@ using Godot;
 namespace Globalgamejam25.scripts;
 
 public abstract partial class Enemy : DamageEntity {
-    [Export] private int maxHealth = 40;
-    [Export] private int health = 40;
+    [Export] public int maxHealth = 40;
+    [Export] public int health = 40;
     [Export] private int score = 10;
 
 	[Export] public Sprite2D iceBlock;
+    [Export] public CollisionShape2D collisionShape2D;
+    [Export] public Sprite2D sprite;
     [Export] public AudioStreamPlayer2D freezeAudioPlayer;
     [Export] public PackedScene magnetComponentScene;
+    
 	protected double frozenTime = 0;
 
     public bool isMagnetized = false;
@@ -20,6 +23,10 @@ public abstract partial class Enemy : DamageEntity {
 	[Export] public float magneticForce = 50000;
     [Export] public float forceMaxDistance = 5;
     protected HashSet<Enemy> magnetizationPulls = new();
+
+    [Export] public float championSpeedMultiplier = 1;
+    [Export] public float championToughnessMultiplier = 1;
+    [Export] public BubbleModifier championDamageImmunity;
     
     public override void _Ready() {
         health = maxHealth;
@@ -29,6 +36,30 @@ public abstract partial class Enemy : DamageEntity {
         frozenTime -= delta;
         isFrozen = frozenTime > 0;
         iceBlock.Visible = isFrozen;
+    }
+
+    public void Scale(float scale) {
+        iceBlock.Scale *= scale;
+        collisionShape2D.Scale *= scale;
+        sprite.Scale *= scale;
+    }
+
+    public void ColorAsSpeedy() {
+        sprite.SelfModulate = new Color(1, 2, 3);
+    }
+
+    public void SetDamageImmunityShader(BubbleModifier immunity) {
+        var shader = (ShaderMaterial)sprite.Material;
+        shader.SetShaderParameter("enabled", true);
+        if (immunity.HasFlag(BubbleModifier.Ice)) {
+            shader.SetShaderParameter("modulateColor", new Color(0, 1, 1));
+        }
+        if (immunity.HasFlag(BubbleModifier.Explode)) {
+            shader.SetShaderParameter("modulateColor", new Color(1, 0, 0));
+        }
+        if (immunity.HasFlag(BubbleModifier.Magnet)) {
+            shader.SetShaderParameter("modulateColor", new Color(1, 0, 1));
+        }
     }
     
     public override void OnBodyEntered(Node2D body) {
@@ -54,8 +85,12 @@ public abstract partial class Enemy : DamageEntity {
         }
     }
 
-    public void Damage(int d) {
+    public void Damage(int d, Bubble damagingBubble = null) {
         if (Consts.world.player.cushion) return;
+
+        if ((damagingBubble?.bubbleModifier & championDamageImmunity) > 0) {
+            return;
+        }
         
         if (isFrozen)
             d *= 2;

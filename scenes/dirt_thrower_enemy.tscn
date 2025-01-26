@@ -1,16 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6vey6hm1sjux"]
+[gd_scene load_steps=11 format=3 uid="uid://b6vey6hm1sjux"]
 
 [ext_resource type="Texture2D" uid="uid://bf5us87gimnjb" path="res://sprites/Enemy2.png" id="1_5s6x0"]
 [ext_resource type="Script" path="res://scripts/RangedEnemy.cs" id="1_ndjqh"]
-[ext_resource type="PackedScene" path="res://scenes/dirt_thrower_bullet.tscn" id="2_vvn37"]
+[ext_resource type="PackedScene" uid="uid://cmu5ssietyyvs" path="res://scenes/dirt_thrower_bullet.tscn" id="2_vvn37"]
 [ext_resource type="PackedScene" uid="uid://rlwweu40v4mw" path="res://scenes/magnet_component.tscn" id="3_7q8sy"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="4_2lac0"]
+[ext_resource type="Shader" path="res://scenes/DamageImmunity.gdshader" id="4_4rhx2"]
 [ext_resource type="AudioStream" uid="uid://bguwqwbw8d0ve" path="res://sound/shootDirt.wav" id="5_rsyrm"]
 [ext_resource type="AudioStream" uid="uid://dbruy7i5arxll" path="res://sound/enemyFrozen.wav" id="6_jeg3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq7xl"]
 
-[node name="dirtThrowerEnemy" type="Area2D" node_paths=PackedStringArray("audioPlayer", "iceBlock", "freezeAudioPlayer")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2cxk"]
+resource_local_to_scene = true
+shader = ExtResource("4_4rhx2")
+shader_parameter/modulateColor = Vector3(0, 1, 1)
+shader_parameter/enabled = false
+
+[node name="dirtThrowerEnemy" type="Area2D" node_paths=PackedStringArray("audioPlayer", "iceBlock", "collisionShape2D", "sprite", "freezeAudioPlayer")]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_ndjqh")
@@ -19,6 +26,8 @@ bulletScene = ExtResource("2_vvn37")
 audioPlayer = NodePath("ShootAudio")
 score = 20
 iceBlock = NodePath("IceBlock")
+collisionShape2D = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
 freezeAudioPlayer = NodePath("FreezeAudio")
 magnetComponentScene = ExtResource("3_7q8sy")
 
@@ -27,6 +36,7 @@ shape = SubResource("RectangleShape2D_oq7xl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_r2cxk")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_5s6x0")
 

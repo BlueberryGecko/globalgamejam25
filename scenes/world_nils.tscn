@@ -16,169 +16,259 @@
 [ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="8_as6a7"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
 [ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_s557l"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
+[ext_resource type="PackedScene" uid="uid://cbcke0qtx6xid" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 [ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_puohv"]
+[sub_resource type="Resource" id="Resource_sdmoe"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_f8pa6"]
+[sub_resource type="Resource" id="Resource_fphqi"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.75
+spawnSpeedChampionChance = 0.1
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_nt8dl"]
+[sub_resource type="Resource" id="Resource_db1bg"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
+spawnSpeedChampionChance = 0.1
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_mb500"]
+[sub_resource type="Resource" id="Resource_h222p"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
+spawnSpeedChampionChance = 0.1
+spawnToughChampionChance = 0.1
+spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_usn2s"]
+[sub_resource type="Resource" id="Resource_apqwu"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
+spawnSpeedChampionChance = 0.2
+spawnToughChampionChance = 0.1
+spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_31sv5"]
+[sub_resource type="Resource" id="Resource_8pxxd"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
+spawnSpeedChampionChance = 0.2
+spawnToughChampionChance = 0.1
+spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_iuae5"]
+[sub_resource type="Resource" id="Resource_cmukf"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
+spawnSpeedChampionChance = 0.3
+spawnToughChampionChance = 0.2
+spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_ncy83"]
+[sub_resource type="Resource" id="Resource_1bx52"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
+spawnSpeedChampionChance = 0.3
+spawnToughChampionChance = 0.2
+spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_w02m0"]
+[sub_resource type="Resource" id="Resource_t2i5l"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
+spawnSpeedChampionChance = 0.5
+spawnToughChampionChance = 0.2
+spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_oyqmt"]
+[sub_resource type="Resource" id="Resource_b2pgh"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.1
+spawnSpeedChampionChance = 0.5
+spawnToughChampionChance = 0.3
+spawnTypeImmuneChampionChance = 0.2
 
 [sub_resource type="Resource" id="Resource_g6x13"]
 script = ExtResource("12_x6u3w")
 isActive = false
 spawnInterval = 0.0
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_k7qhj"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_sjaug"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.75
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_q1erd"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.6
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_ccuab"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_f3cym"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_3fv1w"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_lk8ha"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_0ej75"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_fcfm4"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_si4fr"]
 script = ExtResource("12_x6u3w")
 isActive = false
 spawnInterval = 0.0
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_0eaii"]
 script = ExtResource("12_x6u3w")
 isActive = false
 spawnInterval = 0.0
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_j42b5"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 2.0
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_uv6wd"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.5
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_d78ro"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.25
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_tgs8q"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_palrg"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.9
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_vv8je"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.75
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_w13fe"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.6
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [sub_resource type="Resource" id="Resource_1pfkw"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
+spawnSpeedChampionChance = 0.0
+spawnToughChampionChance = 0.0
+spawnTypeImmuneChampionChance = 0.0
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners")]
 script = ExtResource("1_fpx7t")
@@ -233,7 +323,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_puohv"), SubResource("Resource_f8pa6"), SubResource("Resource_nt8dl"), SubResource("Resource_mb500"), SubResource("Resource_usn2s"), SubResource("Resource_31sv5"), SubResource("Resource_iuae5"), SubResource("Resource_ncy83"), SubResource("Resource_w02m0"), SubResource("Resource_oyqmt")]
+waves = [SubResource("Resource_sdmoe"), SubResource("Resource_fphqi"), SubResource("Resource_db1bg"), SubResource("Resource_h222p"), SubResource("Resource_apqwu"), SubResource("Resource_8pxxd"), SubResource("Resource_cmukf"), SubResource("Resource_1bx52"), SubResource("Resource_t2i5l"), SubResource("Resource_b2pgh")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")

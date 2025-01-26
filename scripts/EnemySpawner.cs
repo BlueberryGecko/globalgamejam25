@@ -18,18 +18,19 @@ public partial class EnemySpawner : Node2D
 	public override void _Process(double delta)
 	{
 		var waveIndex = Mathf.Min(Consts.world.currentWaveIndex, waves.Length - 1);
+		var waveSettings = waves[waveIndex];
 		
-		if (!waves[waveIndex].isActive)
+		if (!waveSettings.isActive)
 			return;
 		
 		spawnTimer += (float)delta;
-		var spawnCount = Mathf.Floor(spawnTimer / waves[waveIndex].spawnInterval);
+		var spawnCount = Mathf.Floor(spawnTimer / waveSettings.spawnInterval);
 		for (var i = 0; i < spawnCount; i++)
-			SpawnEnemy();
-		spawnTimer %= waves[waveIndex].spawnInterval;
+			SpawnEnemy(waveSettings);
+		spawnTimer %= waveSettings.spawnInterval;
 	}
 
-	private void SpawnEnemy()
+	private void SpawnEnemy(WaveSettings waveSettings)
 	{
 		var validSides = new List<Vector2>{Vector2.Up, Vector2.Down, Vector2.Left, Vector2.Right};
 		validSides = validSides.Where(s =>
@@ -55,5 +56,32 @@ public partial class EnemySpawner : Node2D
 		var spawnedEnemy = enemy.Instantiate<Enemy>();
 		Consts.world.AddChild(spawnedEnemy);
 		spawnedEnemy.GlobalPosition = randomPos;
+
+		if (Random.Shared.NextSingle() < waveSettings.spawnTypeImmuneChampionChance) {
+			switch (Random.Shared.Next(2)) {
+				case 0:
+					spawnedEnemy.championDamageImmunity = BubbleModifier.Ice;
+					spawnedEnemy.SetDamageImmunityShader(BubbleModifier.Ice);
+					break;
+				case 1:
+					spawnedEnemy.championDamageImmunity = BubbleModifier.Magnet;
+					spawnedEnemy.SetDamageImmunityShader(BubbleModifier.Magnet);
+					break;
+				case 2:
+					spawnedEnemy.championDamageImmunity = BubbleModifier.Explode;
+					spawnedEnemy.SetDamageImmunityShader(BubbleModifier.Explode);
+					break;
+			}
+		}
+		if (Random.Shared.NextSingle() < waveSettings.spawnToughChampionChance) {
+			spawnedEnemy.maxHealth *= 3;
+			spawnedEnemy.health *= 3;
+			spawnedEnemy.Scale(1.5f);
+		}
+		if (Random.Shared.NextSingle() < waveSettings.spawnSpeedChampionChance) {
+			spawnedEnemy.championSpeedMultiplier = 1.7f;
+			spawnedEnemy.Scale(1.1f);
+			spawnedEnemy.ColorAsSpeedy();
+		}
 	}
 }

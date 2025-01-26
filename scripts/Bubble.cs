@@ -120,7 +120,7 @@ public partial class Bubble : CharacterBody2D {
 		ApplyModifier(enemy);
 		if (bubbleModifier.HasFlag(BubbleModifier.Explode)) 
 			ExplodeBubble();
-		enemy.Damage(damage);
+		enemy.Damage(damage, this);
 		Burst();
 	}
 
@@ -133,6 +133,9 @@ public partial class Bubble : CharacterBody2D {
 	}
 	
 	public void ApplyModifier(Enemy enemy) {
+		if ((enemy.championDamageImmunity & bubbleModifier) > 0) {
+			return;
+		}
 		if ((bubbleModifier & BubbleModifier.Ice) != 0) {
 			enemy.Freeze(this);
 		}

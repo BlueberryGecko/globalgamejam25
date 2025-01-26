@@ -10,4 +10,8 @@ public partial class WaveSettings : Resource
     
     [Export]
     public float spawnInterval;
+
+    [Export] public float spawnSpeedChampionChance;
+    [Export] public float spawnToughChampionChance;
+    [Export] public float spawnTypeImmuneChampionChance;
 }
