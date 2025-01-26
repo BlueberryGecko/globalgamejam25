@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://y6kggrnqip5y"]
 
-[ext_resource type="Texture2D" uid="uid://bf3xssj444817" path="res://sprites/icePuddle.png" id="1_esaol"]
 [ext_resource type="Script" path="res://scripts/IcePuddle.cs" id="1_gca3d"]
+[ext_resource type="Texture2D" uid="uid://bdq8j708854kj" path="res://sprites/SnowPuddle.png" id="2_xcnt4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jxtjq"]
 radius = 32.5576
@@ -12,8 +12,10 @@ collision_mask = 8
 script = ExtResource("1_gca3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 1)
-texture = ExtResource("1_esaol")
+scale = Vector2(2, 2)
+texture = ExtResource("2_xcnt4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jxtjq")

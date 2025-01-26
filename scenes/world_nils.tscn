@@ -15,64 +15,64 @@
 [ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="8_as6a7"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
 [ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_s557l"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
+[ext_resource type="PackedScene" uid="uid://dl3b1ilgeu4g4" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 
-[sub_resource type="Resource" id="Resource_01smb"]
+[sub_resource type="Resource" id="Resource_x024j"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_bsdtm"]
+[sub_resource type="Resource" id="Resource_t7m34"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.75
 
-[sub_resource type="Resource" id="Resource_tfl1g"]
+[sub_resource type="Resource" id="Resource_bjgb7"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_slhvs"]
+[sub_resource type="Resource" id="Resource_hdxc6"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_uxisx"]
+[sub_resource type="Resource" id="Resource_2yxw3"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
 
-[sub_resource type="Resource" id="Resource_kncnl"]
+[sub_resource type="Resource" id="Resource_oglsi"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
 
-[sub_resource type="Resource" id="Resource_a5asm"]
+[sub_resource type="Resource" id="Resource_m421x"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
 
-[sub_resource type="Resource" id="Resource_4av35"]
+[sub_resource type="Resource" id="Resource_hjk1d"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
 
-[sub_resource type="Resource" id="Resource_51vu0"]
+[sub_resource type="Resource" id="Resource_7sdw8"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
 
-[sub_resource type="Resource" id="Resource_mi0nu"]
+[sub_resource type="Resource" id="Resource_6e4iy"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -223,7 +223,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_01smb"), SubResource("Resource_bsdtm"), SubResource("Resource_tfl1g"), SubResource("Resource_slhvs"), SubResource("Resource_uxisx"), SubResource("Resource_kncnl"), SubResource("Resource_a5asm"), SubResource("Resource_4av35"), SubResource("Resource_51vu0"), SubResource("Resource_mi0nu")]
+waves = [SubResource("Resource_x024j"), SubResource("Resource_t7m34"), SubResource("Resource_bjgb7"), SubResource("Resource_hdxc6"), SubResource("Resource_2yxw3"), SubResource("Resource_oglsi"), SubResource("Resource_m421x"), SubResource("Resource_hjk1d"), SubResource("Resource_7sdw8"), SubResource("Resource_6e4iy")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")
