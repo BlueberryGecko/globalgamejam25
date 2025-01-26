@@ -21,61 +21,61 @@
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 [ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_8h5q6"]
+[sub_resource type="Resource" id="Resource_22a41"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_s28tb"]
+[sub_resource type="Resource" id="Resource_rih4o"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_so4cf"]
+[sub_resource type="Resource" id="Resource_21hcw"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_avrma"]
+[sub_resource type="Resource" id="Resource_aries"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.9
 
-[sub_resource type="Resource" id="Resource_he7h2"]
+[sub_resource type="Resource" id="Resource_lkp5p"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.8
 
-[sub_resource type="Resource" id="Resource_27ubm"]
+[sub_resource type="Resource" id="Resource_d5v57"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.7
 
-[sub_resource type="Resource" id="Resource_246ow"]
+[sub_resource type="Resource" id="Resource_gjrl5"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.6
 
-[sub_resource type="Resource" id="Resource_6u5cn"]
+[sub_resource type="Resource" id="Resource_ilm3d"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_jc8fl"]
+[sub_resource type="Resource" id="Resource_obi0v"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
 
-[sub_resource type="Resource" id="Resource_4cs3b"]
+[sub_resource type="Resource" id="Resource_ouphy"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -181,17 +181,19 @@ script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners", "waveLabel")]
 script = ExtResource("1_fpx7t")
 worldScene = ExtResource("2_w05uq")
 soapParticleScene = ExtResource("3_arwqw")
 player = NodePath("Player")
 enemySpawners = [NodePath("EColiSpawner")]
 puddleScenes = Array[PackedScene]([ExtResource("4_dj5wy"), ExtResource("5_t4vp4"), ExtResource("6_vx4qt")])
+waveLabel = NodePath("CanvasLayer/Wave/NinePatchRect/WaveLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.803922)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -231,7 +233,48 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Wave" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.803922)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -173.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme = ExtResource("5_mrkex")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Wave"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.166667
+anchor_right = 0.875
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ac2o4")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer/Wave/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WAVE: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("6_pbme0")]
+modulate = Color(1, 1, 1, 0.803922)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -252,12 +295,11 @@ camera = NodePath("../Player/Camera2D")
 
 [node name="MouseCollectionCircle" parent="." instance=ExtResource("3_m2vja")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "scoreLabel", "healthBar", "camera") instance=ExtResource("4_sxuwk")]
+[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "scoreLabel", "healthBar") instance=ExtResource("4_sxuwk")]
 position = Vector2(231, 169)
 gameOver = NodePath("../CanvasLayer3/GameOver")
 scoreLabel = NodePath("../CanvasLayer/Score/NinePatchRect/ScoreLabel")
 healthBar = NodePath("../CanvasLayer/HealthBar/NinePatchRect/MarginContainer/ProgressBar")
-camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 drag_horizontal_enabled = true
@@ -274,7 +316,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_8h5q6"), SubResource("Resource_s28tb"), SubResource("Resource_so4cf"), SubResource("Resource_avrma"), SubResource("Resource_he7h2"), SubResource("Resource_27ubm"), SubResource("Resource_246ow"), SubResource("Resource_6u5cn"), SubResource("Resource_jc8fl"), SubResource("Resource_4cs3b")]
+waves = [SubResource("Resource_22a41"), SubResource("Resource_rih4o"), SubResource("Resource_21hcw"), SubResource("Resource_aries"), SubResource("Resource_lkp5p"), SubResource("Resource_d5v57"), SubResource("Resource_gjrl5"), SubResource("Resource_ilm3d"), SubResource("Resource_obi0v"), SubResource("Resource_ouphy")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")

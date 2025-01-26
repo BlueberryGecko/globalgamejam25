@@ -27,8 +27,17 @@ public partial class World : Node2D
 	[Export] private double soapParticleSpawnTimer = 1;
 	[Export] private double soapParticleSpawnTimerMax = 1;
 	[Export] private int waveCount = 10;
+		
+	[Export] private Label waveLabel;
 
-	public int currentWaveIndex;
+	public int CurrentWaveIndex {
+		get => currentWaveIndex;
+		set {
+			currentWaveIndex = value;
+			waveLabel.Text = $"WAVE: {currentWaveIndex + 1}";
+		}
+	}
+	private int currentWaveIndex;
 	
 	public override void _Ready()
 	{
@@ -62,8 +71,8 @@ public partial class World : Node2D
 	}
 
 	public void OnWaveTimerTimeout() {
-		if (currentWaveIndex < waveCount - 1)
-			currentWaveIndex++;
+		if (CurrentWaveIndex < waveCount - 1)
+			CurrentWaveIndex++;
 	}
 
 	public override void _Draw() {

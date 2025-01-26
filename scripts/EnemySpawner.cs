@@ -17,7 +17,7 @@ public partial class EnemySpawner : Node2D
 	
 	public override void _Process(double delta)
 	{
-		var waveIndex = Mathf.Min(Consts.world.currentWaveIndex, waves.Length - 1);
+		var waveIndex = Mathf.Min(Consts.world.CurrentWaveIndex, waves.Length - 1);
 		
 		if (!waves[waveIndex].isActive)
 			return;

@@ -1,12 +1,19 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dc8opdnmnyhbp"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dc8opdnmnyhbp"]
 
-[ext_resource type="StyleBox" path="res://theme/button_style_box.tres" id="1_ctaql"]
-[ext_resource type="StyleBox" path="res://theme/button_style_box_hover.tres" id="1_fce6r"]
-[ext_resource type="StyleBox" path="res://theme/button_style_box_focus.tres" id="1_lc70r"]
-[ext_resource type="StyleBox" path="res://theme/button_style_box_pressed.tres" id="4_xi2m1"]
+[ext_resource type="StyleBox" uid="uid://daypvmiyl3i1q" path="res://theme/button_style_box.tres" id="1_ctaql"]
+[ext_resource type="StyleBox" uid="uid://dsk7w5bt3ucnt" path="res://theme/button_style_box_hover.tres" id="1_fce6r"]
+[ext_resource type="StyleBox" uid="uid://cehnpk4tydosu" path="res://theme/button_style_box_focus.tres" id="1_lc70r"]
+[ext_resource type="StyleBox" uid="uid://b0uvfy0lqw62h" path="res://theme/button_style_box_pressed.tres" id="4_xi2m1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey2o4"]
-bg_color = Color(0.74333, 0.28939, 0.472152, 1)
+bg_color = Color(0.501843, 0.167213, 0.304877, 0.721569)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih74c"]
+bg_color = Color(1, 0.81, 0.873333, 0.764706)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -29,4 +36,4 @@ Label/colors/font_color = Color(1, 0.415686, 0.607843, 1)
 Label/colors/font_shadow_color = Color(0.937255, 0.333333, 0.533333, 1)
 Label/font_sizes/font_size = 25
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ey2o4")
-ProgressBar/styles/fill = ExtResource("1_fce6r")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ih74c")
