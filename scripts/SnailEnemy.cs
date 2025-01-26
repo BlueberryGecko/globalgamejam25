@@ -14,13 +14,9 @@ public partial class SnailEnemy : Enemy
 	
 	public override void _Process(double delta)
 	{
-		frozenTime -= delta;
-		if (frozenTime > 0) {
+		base._Process(delta);
+		if (isFrozen)
 			return;
-		}
-		else {
-			iceBlock.Visible = false;
-		}
 		
 		var targetPosition = Consts.world.player.Position;
 		

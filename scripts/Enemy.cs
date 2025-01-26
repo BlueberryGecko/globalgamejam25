@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Godot;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Globalgamejam25.scripts;
 
@@ -15,6 +14,7 @@ public abstract partial class Enemy : DamageEntity {
 	protected double frozenTime = 0;
 
     public bool isMagnetized = false;
+    public bool isFrozen = false;
     private MagnetComponent magnetComponent;
     
 	[Export] public float magneticForce = 50000;
@@ -25,12 +25,17 @@ public abstract partial class Enemy : DamageEntity {
         health = maxHealth;
     }
     
+    public override void _Process(double delta) {
+        frozenTime -= delta;
+        isFrozen = frozenTime > 0;
+        iceBlock.Visible = isFrozen;
+    }
+    
     public override void OnBodyEntered(Node2D body) {
         base.OnBodyEntered(body);
         if (body is Bubble b && !b.isPoppping) {
 			if ((b.bubbleModifier & BubbleModifier.Ice) != 0) {
 				frozenTime = b.freezeTime;
-				iceBlock.Visible = true;
                 freezeAudioPlayer?.Play();
 			}
 			if ((b.bubbleModifier & BubbleModifier.Magnet) != 0) {

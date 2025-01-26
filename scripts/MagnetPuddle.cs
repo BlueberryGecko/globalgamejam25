@@ -17,7 +17,6 @@ public partial class MagnetPuddle : Puddle {
 	public override void OnBubbleEntered(Bubble b) {
 		b.bubbleModifier |= BubbleModifier.Magnet;
 		b.damage = 0;
-		b.sprite.SetAnimation("magnetic");
 		b.sprite.Stop();
 	}
 

@@ -20,13 +20,9 @@ public partial class EColiEnemy : Enemy
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		frozenTime -= delta;
-		if (frozenTime > 0) {
+		base._Process(delta);
+		if (isFrozen)
 			return;
-		}
-		else {
-			iceBlock.Visible = false;
-		}
 		
         magneticVelocity *= (float)(magneticFriction * delta);
         magneticVelocity += MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position, this);

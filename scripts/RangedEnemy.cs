@@ -25,13 +25,9 @@ public partial class RangedEnemy : Enemy
     
     public override void _Process(double delta)
     {
-		frozenTime -= delta;
-		if (frozenTime > 0) {
-			return;
-		}
-		else {
-			iceBlock.Visible = false;
-		}
+        base._Process(delta);
+        if (isFrozen)
+            return;
         
         timer += (float)delta;
         var spawnCount = Mathf.Floor(timer / shootInterval);
