@@ -67,7 +67,7 @@ public partial class World : Node2D
 	}
 
 	public override void _Draw() {
-		var spawnBorder = player.GetViewBorderRect(100);
+		var spawnBorder = player.GetViewBorderRect().Grow(100);
 		var borderTiles = WalkBorder(spawnBorder);
 		foreach (var borderTile in borderTiles) {
 			var pos = new Vector2(borderTile.Item1, borderTile.Item2) * spawnTileSize;
@@ -78,7 +78,7 @@ public partial class World : Node2D
 
 	public void SpawnPuddles() {
 		var r = new Random();
-		var spawnBorder = player.GetViewBorderRect();
+		var spawnBorder = player.GetViewBorderRect().Grow(100);
 		var borderTiles = WalkBorder(spawnBorder);
 		foreach (var borderTile in borderTiles) {
 			/* We do some unnecessary work here: It would be enough to just continue if the key already exists, and to spawn the puddles all at once if not.
