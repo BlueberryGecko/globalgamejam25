@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Globalgamejam25;
 using Globalgamejam25.scripts;
 
@@ -20,6 +22,8 @@ public partial class Bubble : CharacterBody2D {
 	private bool manualCollision = false;
 	private MouseCollectionCircle collectionCircleDuringManualCollision;
 	public bool isPoppping = false;
+
+	public HashSet<Enemy> magnetizationPulls = new();
 
 	/// <summary>
 	/// Apply a force lasting a certain time delta. Will directly modify linear acceleration.
@@ -50,7 +54,7 @@ public partial class Bubble : CharacterBody2D {
 		if (!boundingBox.HasPoint(Position)) {
 			QueueFree();
 		}
-		Velocity += acceleration * (float)delta;
+		Velocity += acceleration * (float)delta + MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position) / mass * (float)delta;
 		// Velocity *= (1 - frictionCoeff * (float)delta);
 		acceleration = Vector2.Zero;
 		MoveAndSlide();

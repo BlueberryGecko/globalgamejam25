@@ -44,7 +44,7 @@ public partial class RangedEnemy : Enemy
             return;
         
         var dir = difference.Normalized();
-        Position += Mathf.Min(speed * (float)delta, distance) * dir;
+        Position += Mathf.Min(speed * (float)delta, distance) * dir + MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position);
     }
 
     private void Shoot()

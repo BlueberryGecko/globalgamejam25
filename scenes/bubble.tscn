@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://boc3j050xtf7o"]
+[gd_scene load_steps=11 format=3 uid="uid://boc3j050xtf7o"]
 
 [ext_resource type="Texture2D" uid="uid://bvg6xda6u73le" path="res://sprites/bubble.png" id="1_ctffr"]
 [ext_resource type="Script" path="res://scripts/Bubble.cs" id="1_mllrq"]
@@ -22,6 +22,14 @@ region = Rect2(0, 28, 28, 28)
 atlas = ExtResource("1_ctffr")
 region = Rect2(28, 28, 28, 28)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gjf2"]
+atlas = ExtResource("1_ctffr")
+region = Rect2(0, 56, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umbn6"]
+atlas = ExtResource("1_ctffr")
+region = Rect2(28, 56, 28, 28)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt1gy"]
 animations = [{
 "frames": [{
@@ -44,6 +52,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"frozen (the movie by Disney)",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gjf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umbn6")
+}],
+"loop": false,
+"name": &"magnetic",
 "speed": 5.0
 }]
 

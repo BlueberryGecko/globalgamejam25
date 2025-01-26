@@ -33,7 +33,7 @@ public partial class SnailEnemy : Enemy
 		velocity += direction * acceleration * accelerationMultiplier * (float)delta;
 		velocity = velocity.LimitLength(maxSpeed);
 		
-		Position += velocity * (float)delta;
+		Position += velocity * (float)delta + MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position);
 		Rotation = direction.Angle();
 	}
 }

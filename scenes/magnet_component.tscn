@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnxdu2u45n5hu"]
+
+[ext_resource type="Script" path="res://scenes/MagnetComponent.cs" id="1_1ev1k"]
+[ext_resource type="Shader" path="res://scenes/magnet_component.gdshader" id="1_75awb"]
+[ext_resource type="Texture2D" uid="uid://n3s8mudogc5" path="res://sprites/magnetSphere.png" id="1_eiwr5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hfbni"]
+shader = ExtResource("1_75awb")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8r4b0"]
+radius = 33.0151
+
+[node name="MagnetComponent" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_1ev1k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hfbni")
+texture = ExtResource("1_eiwr5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8r4b0")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

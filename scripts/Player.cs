@@ -31,6 +31,7 @@ public partial class Player : Area2D {
     [Export] private Sprite2D sprite;
 
     private List<Sprite2D> eyes = new();
+    private bool godmode = false;
     
     private List<float> superChargeSpawnTimerModifiers = new();
     [Export] private float superChargeFactor = 0.5f;
@@ -82,6 +83,8 @@ public partial class Player : Area2D {
             move.X -= 1;
         if (Input.IsActionPressed("move_right"))
             move.X += 1;
+        if (Input.IsActionJustPressed("godmode"))
+            godmode = !godmode;
 
         if (lastMovement != Vector2.Zero) {
             var difference = move.Angle() - lastMovement.Angle();
@@ -136,6 +139,7 @@ public partial class Player : Area2D {
     }
 
     public void OnEnemyCollided(DamageEntity e) {
+        if (godmode) return;
         health -= e.damage;
         this.BlinkWithTween();
         healthBar.Value = health;

@@ -25,7 +25,8 @@ public partial class EColiEnemy : Enemy
 			iceBlock.Visible = false;
 		}
 		var dir = (Consts.world.player.Position - Position).Normalized();
-		Position += speed * (float)delta * dir;
+		  
+		Position += speed * (float)delta * dir + MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position);
 	}
 
 	public void OnAreaEntered(Area2D a) {

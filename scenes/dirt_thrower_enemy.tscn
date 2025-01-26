@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6vey6hm1sjux"]
+[gd_scene load_steps=7 format=3 uid="uid://b6vey6hm1sjux"]
 
 [ext_resource type="Texture2D" uid="uid://bf5us87gimnjb" path="res://sprites/Enemy2.png" id="1_5s6x0"]
 [ext_resource type="Script" path="res://scripts/RangedEnemy.cs" id="1_ndjqh"]
 [ext_resource type="PackedScene" path="res://scenes/dirt_thrower_bullet.tscn" id="2_vvn37"]
+[ext_resource type="PackedScene" uid="uid://cnxdu2u45n5hu" path="res://scenes/magnet_component.tscn" id="3_7q8sy"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="4_2lac0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq7xl"]
@@ -15,6 +16,7 @@ script = ExtResource("1_ndjqh")
 distanceToPlayer = 200.0
 bulletScene = ExtResource("2_vvn37")
 iceBlock = NodePath("IceBlock")
+magnetComponentScene = ExtResource("3_7q8sy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oq7xl")

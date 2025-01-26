@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4jdu7gq4bvmq"]
+[gd_scene load_steps=6 format=3 uid="uid://d4jdu7gq4bvmq"]
 
 [ext_resource type="Script" path="res://scripts/EColiEnemy.cs" id="1_7xd1n"]
 [ext_resource type="Texture2D" uid="uid://bqxpko71ckdhy" path="res://sprites/Enemy.png" id="1_n86r5"]
+[ext_resource type="PackedScene" uid="uid://cnxdu2u45n5hu" path="res://scenes/magnet_component.tscn" id="2_tfhe3"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="3_5lea7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq20n"]
@@ -15,6 +16,7 @@ collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_7xd1n")
 iceBlock = NodePath("IceBlock")
+magnetComponentScene = ExtResource("2_tfhe3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
