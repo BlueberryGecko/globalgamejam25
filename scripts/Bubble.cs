@@ -22,7 +22,7 @@ public partial class Bubble : CharacterBody2D {
 			} else if (bubbleModifier.HasFlag(BubbleModifier.Explode)) {
 				return 40;
 			}
-			return 10;
+			return 20;
 		}
 	}
 	
