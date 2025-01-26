@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqxpko71ckdhy" path="res://sprites/Enemy.png" id="1_n86r5"]
 [ext_resource type="PackedScene" uid="uid://cnxdu2u45n5hu" path="res://scenes/magnet_component.tscn" id="2_tfhe3"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="3_5lea7"]
+[ext_resource type="AudioStream" uid="uid://dbruy7i5arxll" path="res://sound/enemyFrozen.wav" id="4_iy5xg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq20n"]
 size = Vector2(12, 12)
@@ -31,6 +32,9 @@ shape = SubResource("RectangleShape2D_bq20n")
 [node name="IceBlock" parent="." instance=ExtResource("3_5lea7")]
 visible = false
 scale = Vector2(0.2, 0.2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_iy5xg")
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

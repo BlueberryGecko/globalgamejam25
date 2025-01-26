@@ -1,21 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6vey6hm1sjux"]
+[gd_scene load_steps=8 format=3 uid="uid://b6vey6hm1sjux"]
 
 [ext_resource type="Texture2D" uid="uid://bf5us87gimnjb" path="res://sprites/Enemy2.png" id="1_5s6x0"]
 [ext_resource type="Script" path="res://scripts/RangedEnemy.cs" id="1_ndjqh"]
 [ext_resource type="PackedScene" path="res://scenes/dirt_thrower_bullet.tscn" id="2_vvn37"]
 [ext_resource type="PackedScene" uid="uid://cnxdu2u45n5hu" path="res://scenes/magnet_component.tscn" id="3_7q8sy"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="4_2lac0"]
+[ext_resource type="AudioStream" uid="uid://bguwqwbw8d0ve" path="res://sound/shootDirt.wav" id="5_rsyrm"]
+[ext_resource type="AudioStream" uid="uid://dbruy7i5arxll" path="res://sound/enemyFrozen.wav" id="6_jeg3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq7xl"]
 
-[node name="dirtThrowerEnemy" type="Area2D" node_paths=PackedStringArray("iceBlock")]
+[node name="dirtThrowerEnemy" type="Area2D" node_paths=PackedStringArray("audioPlayer", "iceBlock", "freezeAudioPlayer")]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_ndjqh")
 distanceToPlayer = 200.0
 bulletScene = ExtResource("2_vvn37")
+audioPlayer = NodePath("ShootAudio")
+score = 20
 iceBlock = NodePath("IceBlock")
+freezeAudioPlayer = NodePath("FreezeAudio")
 magnetComponentScene = ExtResource("3_7q8sy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,6 +31,12 @@ texture_filter = 1
 texture = ExtResource("1_5s6x0")
 
 [node name="IceBlock" parent="." instance=ExtResource("4_2lac0")]
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rsyrm")
+
+[node name="FreezeAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_jeg3k")
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

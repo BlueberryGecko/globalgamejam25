@@ -11,8 +11,7 @@ public partial class World : Node2D
 	[Export] PackedScene worldScene;
 	[Export] PackedScene soapParticleScene;
 	[Export] public Player player;
-	[Export] private PackedScene[] enemies;
-	[Export] public AudioStreamPlayer2D audioPlayer;
+	[Export] private EnemySpawner[] enemySpawners;
 	[Export] public int spawnTileSize = 100;
 	[Export] public int spawnTileLimit = 3;
 	
@@ -27,6 +26,9 @@ public partial class World : Node2D
 	
 	[Export] private double soapParticleSpawnTimer = 1;
 	[Export] private double soapParticleSpawnTimerMax = 1;
+	[Export] private int waveCount = 10;
+
+	public int currentWaveIndex;
 	
 	public override void _Ready()
 	{
@@ -47,7 +49,7 @@ public partial class World : Node2D
 
 		soapParticleSpawnTimer = soapParticleSpawnTimerMax;
 		
-		var viewport = player.GetViewportRect();
+		var viewport = player.GetViewBorderRect();
 		var spawnRect = viewport.Grow(viewport.Size.X / 2);
 		var soapSpawnPos = Util.getRandomPosition(spawnRect);
 		var soap = soapParticleScene.Instantiate<SoapParticle>();
@@ -59,19 +61,9 @@ public partial class World : Node2D
 		GetTree().ChangeSceneToPacked(worldScene);
 	}
 
-	public void OnEnemySpawnTimerTimeout() {
-		var viewportRect = GetViewportRect();
-		var spawnRect = viewportRect.plus(player.Position - viewportRect.Size / 2).Grow(50); // spawn enemy slightly offscreen
-		
-		var enemy = enemies[Random.Shared.Next(0, enemies.Length)].Instantiate<Enemy>();
-		
-		AddChild(enemy);
-		enemy.GlobalPosition = Util.samplePointOnRect(spawnRect);
-	}
-	
-	private enum EnemyType {
-		EColi,
-		DirtThrower,
+	public void OnWaveTimerTimeout() {
+		if (currentWaveIndex < waveCount - 1)
+			currentWaveIndex++;
 	}
 
 	public override void _Draw() {

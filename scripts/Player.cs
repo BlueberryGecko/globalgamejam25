@@ -5,7 +5,7 @@ using Godot;
 namespace Globalgamejam25;
 
 public partial class Player : Area2D {
-    private Vector2 velocity;
+    public Vector2 velocity;
     private Vector2 lastMovement;
     private float rotationSpeed;
     [Export]
@@ -28,7 +28,12 @@ public partial class Player : Area2D {
     private float rotationDeceleration = 1f / 1.1f;
     [Export]
     private BubbleSpawner bubbleSpawner;
+    [Export]
+	private GameOver gameOver;
     [Export] private Sprite2D sprite;
+    [Export] private AudioStreamPlayer2D damageAudioPlayer;
+    [Export] private AudioStreamPlayer2D dashAudioPlayer;
+    [Export] private AudioStreamPlayer2D eatSoapPieceAudioPlayer;
 
     private List<Sprite2D> eyes = new();
     private bool godmode = false;
@@ -47,6 +52,8 @@ public partial class Player : Area2D {
     [Export] public ProgressBar healthBar;
     [Export] public int maxHealth = 100;
     [Export] public int health = 100;
+    
+    public int score = 0;
 
     public override void _Ready() {
         healthBar.MaxValue = maxHealth;
@@ -66,6 +73,7 @@ public partial class Player : Area2D {
         {
             dashTimer = 0;
             dashDurationTimer = 0;
+            dashAudioPlayer.Play();
         }
         
         var dash = dashDurationTimer < dashDuration;
@@ -142,9 +150,10 @@ public partial class Player : Area2D {
         if (godmode) return;
         health -= e.damage;
         this.BlinkWithTween();
+        damageAudioPlayer.Play();
         healthBar.Value = health;
         if (health < 0) {
-            Consts.world.Restart();
+            gameOver.Initiate();
         }
         e.Die();
     }
@@ -153,6 +162,8 @@ public partial class Player : Area2D {
         if (area is SoapParticle s) {
             superChargeSpawnTimerModifiers.Add(superChargeTime);
             s.QueueFree();
+            eatSoapPieceAudioPlayer.Play();
+            score += 5;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Globalgamejam25.scripts;
 using Godot;
 
 namespace Globalgamejam25;
@@ -25,6 +26,7 @@ public static class Util {
 	/// <summary>
 	/// Sample a point on a rectangular border
 	/// </summary>
+	[Obsolete]
 	public static Vector2 samplePointOnRect(Rect2 rect) {
 		var circumference = rect.Size.X * 2 + rect.Size.Y * 2;
 		var f = r.NextSingle() * circumference; // sample number in [0, circumference) and "project" it onto the rectangle counterclockwise
@@ -51,6 +53,10 @@ public static class Util {
 		n.Modulate = new Color(2f, 2f, 2f);
 		var t = n.CreateTween().TweenProperty(n, nameof(n.Modulate).ToLower(), Colors.White, blinkDuration).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
 		return t;
+	}
+	
+	public static Rect2 GetViewBorderRect( float grow = 0) {
+		return Consts.world.player.GetViewBorderRect(grow);
 	}
 
 	public static Rect2 GetViewBorderRect(this Player p, float grow = 0) {

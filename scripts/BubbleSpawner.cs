@@ -7,6 +7,7 @@ public partial class BubbleSpawner : Node2D {
 	[Export] private float randomBubbleSpeedMax = 10;
 	[Export] private float randomBubbleSpeedMin = 5;
 	[Export] private float spawnInterval = 0.1f;
+	[Export] private AudioStreamPlayer2D audioPlayer;
 	public float spawnTimerMultiplier = 1;
 	private float spawnTimer = 0;
 	
@@ -22,7 +23,10 @@ public partial class BubbleSpawner : Node2D {
 		spawnTimer += (float)delta * spawnTimerMultiplier;
 		var spawnCount = Mathf.Floor(spawnTimer / spawnInterval);
 		for (var i = 0; i < spawnCount; i++)
+		{
 			SpawnBubble();
+			audioPlayer.Play();
+		}
 		spawnTimer %= spawnInterval;
 	}
 

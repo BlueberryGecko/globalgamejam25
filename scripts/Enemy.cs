@@ -6,8 +6,10 @@ namespace Globalgamejam25.scripts;
 public abstract partial class Enemy : DamageEntity {
     [Export] private int maxHealth = 40;
     [Export] private int health = 40;
+    [Export] private int score = 10;
 
 	[Export] public Sprite2D iceBlock;
+    [Export] public AudioStreamPlayer2D freezeAudioPlayer;
     [Export] public PackedScene magnetComponentScene;
 	protected double frozenTime = 0;
 
@@ -28,6 +30,7 @@ public abstract partial class Enemy : DamageEntity {
 			if ((b.bubbleModifier & BubbleModifier.Ice) != 0) {
 				frozenTime = b.freezeTime;
 				iceBlock.Visible = true;
+                freezeAudioPlayer.Play();
 			} else if ((b.bubbleModifier & BubbleModifier.Magnet) != 0) {
                 isMagnetized = true;
                 if (magnetComponent == null) {
@@ -43,6 +46,7 @@ public abstract partial class Enemy : DamageEntity {
             this.BlinkWithTween();
             if (health <= 0) {
                 Die();
+                Consts.world.player.score += score;
             }
             b.Burst();
         }

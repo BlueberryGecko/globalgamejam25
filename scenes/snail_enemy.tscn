@@ -4,17 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://dw8rf8dg57371" path="res://sprites/Snail.png" id="2_a576r"]
 [ext_resource type="PackedScene" uid="uid://cnxdu2u45n5hu" path="res://scenes/magnet_component.tscn" id="2_rneqm"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="3_qvvwk"]
+[ext_resource type="AudioStream" uid="uid://dbruy7i5arxll" path="res://sound/enemyFrozen.wav" id="4_qc8m2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5o8w"]
 size = Vector2(45, 16)
 
-[node name="SnailEnemy" type="Area2D" node_paths=PackedStringArray("iceBlock")]
+[node name="SnailEnemy" type="Area2D" node_paths=PackedStringArray("iceBlock", "freezeAudioPlayer")]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_r2eqb")
 maxSpeed = 400.0
 acceleration = 1000.0
+score = 30
 iceBlock = NodePath("IceBlock")
+freezeAudioPlayer = NodePath("AudioStreamPlayer2D")
 magnetComponentScene = ExtResource("2_rneqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,6 +30,9 @@ texture = ExtResource("2_a576r")
 
 [node name="IceBlock" parent="." instance=ExtResource("3_qvvwk")]
 scale = Vector2(0.6, 0.6)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qc8m2")
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
