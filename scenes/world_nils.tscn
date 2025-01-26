@@ -17,12 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://b2womaugqxv2e" path="res://scenes/explosive_puddle.tscn" id="6_vx4qt"]
 [ext_resource type="PackedScene" uid="uid://bbiqny0ac7l30" path="res://scenes/game_over.tscn" id="8_as6a7"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
-[ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_s557l"]
 [ext_resource type="PackedScene" uid="uid://cbcke0qtx6xid" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 [ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_sfyoq"]
+[sub_resource type="Resource" id="Resource_fhptd"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -31,25 +30,25 @@ spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_8jlrn"]
+[sub_resource type="Resource" id="Resource_i4jct"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1
+spawnInterval = 0.0
 spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_db1bg"]
+[sub_resource type="Resource" id="Resource_1rpvq"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1
+spawnInterval = 0.0
 spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_mb500"]
+[sub_resource type="Resource" id="Resource_q826j"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -58,7 +57,7 @@ spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.1
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_usn2s"]
+[sub_resource type="Resource" id="Resource_cti7h"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -67,7 +66,7 @@ spawnSpeedChampionChance = 0.2
 spawnToughChampionChance = 0.1
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_31sv5"]
+[sub_resource type="Resource" id="Resource_ke840"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -76,7 +75,7 @@ spawnSpeedChampionChance = 0.2
 spawnToughChampionChance = 0.1
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_iuae5"]
+[sub_resource type="Resource" id="Resource_2v781"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -85,7 +84,7 @@ spawnSpeedChampionChance = 0.3
 spawnToughChampionChance = 0.2
 spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_ncy83"]
+[sub_resource type="Resource" id="Resource_48qqs"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -94,7 +93,7 @@ spawnSpeedChampionChance = 0.3
 spawnToughChampionChance = 0.2
 spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_w02m0"]
+[sub_resource type="Resource" id="Resource_bfr0f"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -103,7 +102,7 @@ spawnSpeedChampionChance = 0.5
 spawnToughChampionChance = 0.2
 spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_oyqmt"]
+[sub_resource type="Resource" id="Resource_p23it"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -139,7 +138,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_q1erd"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1
+spawnInterval = 0.0
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -264,7 +263,7 @@ spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_ox45i"]
+[sub_resource type="Resource" id="Resource_1pfkw"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
@@ -386,11 +385,12 @@ camera = NodePath("../Player/Camera2D")
 
 [node name="MouseCollectionCircle" parent="." instance=ExtResource("3_m2vja")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "scoreLabel", "healthBar") instance=ExtResource("4_sxuwk")]
+[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "scoreLabel", "healthBar", "camera") instance=ExtResource("4_sxuwk")]
 position = Vector2(231, 169)
 gameOver = NodePath("../CanvasLayer3/GameOver")
 scoreLabel = NodePath("../CanvasLayer/Score/NinePatchRect/ScoreLabel")
 healthBar = NodePath("../CanvasLayer/HealthBar/NinePatchRect/MarginContainer/ProgressBar")
+camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 drag_horizontal_enabled = true
@@ -402,12 +402,12 @@ drag_bottom_margin = 0.0
 script = ExtResource("14_71mw7")
 
 [node name="WaveTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_sfyoq"), SubResource("Resource_8jlrn"), SubResource("Resource_as038"), SubResource("Resource_fveri"), SubResource("Resource_l5ls3"), SubResource("Resource_nremr"), SubResource("Resource_i5cv0"), SubResource("Resource_6fg2d"), SubResource("Resource_sgy26"), SubResource("Resource_r8tvk")]
+waves = [SubResource("Resource_fhptd"), SubResource("Resource_i4jct"), SubResource("Resource_1rpvq"), SubResource("Resource_q826j"), SubResource("Resource_cti7h"), SubResource("Resource_ke840"), SubResource("Resource_2v781"), SubResource("Resource_48qqs"), SubResource("Resource_bfr0f"), SubResource("Resource_p23it")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")
@@ -415,7 +415,7 @@ waves = [SubResource("Resource_g6x13"), SubResource("Resource_k7qhj"), SubResour
 
 [node name="SnailSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_io174")
-waves = [SubResource("Resource_si4fr"), SubResource("Resource_0eaii"), SubResource("Resource_j42b5"), SubResource("Resource_uv6wd"), SubResource("Resource_d78ro"), SubResource("Resource_tgs8q"), SubResource("Resource_palrg"), SubResource("Resource_vv8je"), SubResource("Resource_w13fe"), SubResource("Resource_ox45i")]
+waves = [SubResource("Resource_si4fr"), SubResource("Resource_0eaii"), SubResource("Resource_j42b5"), SubResource("Resource_uv6wd"), SubResource("Resource_d78ro"), SubResource("Resource_tgs8q"), SubResource("Resource_palrg"), SubResource("Resource_vv8je"), SubResource("Resource_w13fe"), SubResource("Resource_1pfkw")]
 
 [connection signal="timeout" from="WaveTimer" to="." method="OnWaveTimerTimeout"]
 
