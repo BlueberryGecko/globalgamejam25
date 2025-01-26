@@ -1,12 +1,13 @@
 using Godot;
 using System;
+using Globalgamejam25.scripts;
 
 public partial class GameOver : Control
 {
-	[Export] public PackedScene OptionsPackedScene;
-	// [Export] public CanvasLayer HealthBarLayer;
+	[Export] public Label ScoreLabel;
 	
 	private AnimationPlayer _animationPlayer;
+	private Options _options;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -19,6 +20,7 @@ public partial class GameOver : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Visible) TestUiCancel();
 	}
 
 	public void Initiate()
@@ -30,7 +32,7 @@ public partial class GameOver : Control
 	{
 		GetTree().Paused = true;
 		Show();
-		// HealthBarLayer.Hide();
+		ScoreLabel.Text = Consts.world.player.Score.ToString();
 		_animationPlayer.Play("blur");
 	}
 
@@ -39,7 +41,6 @@ public partial class GameOver : Control
 		GetTree().Paused = false;
 		_animationPlayer.PlayBackwards("blur");
 		Hide();
-		// HealthBarLayer.Show();
 	}
 	
 	private void Restart()
@@ -48,21 +49,27 @@ public partial class GameOver : Control
 		GetTree().ReloadCurrentScene();
 	}
 
+	private void BackToMainMenu()
+	{
+		Resume();
+		GetTree().ChangeSceneToFile("res://scenes/menu.tscn");
+	}
+
+	private void TestUiCancel()
+	{
+		if (IsInstanceValid(_options)) return;
+		if (!Input.IsActionJustPressed("ui_cancel")) return;
+		BackToMainMenu();
+	}
+
 	private void _OnRetryButtonPressed()
 	{
 		Restart();
 	}
 
-	private void _OnOptionsButtonPressed()
-	{
-		var optionsScene = OptionsPackedScene.Instantiate();
-		GetParent().AddChild(optionsScene);
-	}
-
 	private void _OnMainMenuButtonPressed()
 	{
-		Resume();
-		GetTree().ChangeSceneToFile("res://scenes/menu.tscn");
+		BackToMainMenu();
 	}
 	
 	private void _OnQuitButtonPressed()

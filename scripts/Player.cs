@@ -37,6 +37,18 @@ public partial class Player : Area2D {
 
     private List<Sprite2D> eyes = new();
     private bool godmode = false;
+
+	[Export] public Label scoreLabel;
+
+	private int score = 0;
+	public int Score {
+		get => score;
+		set {
+			score = value;
+			scoreLabel.Text = score.ToString();
+		}
+	}
+
     public bool cushion = false;
     
     private List<float> superChargeSpawnTimerModifiers = new();
@@ -54,8 +66,6 @@ public partial class Player : Area2D {
     [Export] public int maxHealth = 100;
     [Export] public int health = 100;
     [Export] public Camera2d camera;
-    
-    public int score = 0;
 
     public override void _Ready() {
         healthBar.MaxValue = maxHealth;
@@ -172,7 +182,7 @@ public partial class Player : Area2D {
             superChargeSpawnTimerModifiers.Add(superChargeTime);
             s.QueueFree();
             eatSoapPieceAudioPlayer.Play();
-            score += 5;
+            Score += 5;
         }
     }
 }

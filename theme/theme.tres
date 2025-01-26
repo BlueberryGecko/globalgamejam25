@@ -1,7 +1,16 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dc8opdnmnyhbp"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dc8opdnmnyhbp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m507i"]
-draw_center = false
+[ext_resource type="StyleBox" path="res://theme/button_style_box.tres" id="1_ctaql"]
+[ext_resource type="StyleBox" path="res://theme/button_style_box_hover.tres" id="1_fce6r"]
+[ext_resource type="StyleBox" path="res://theme/button_style_box_focus.tres" id="1_lc70r"]
+[ext_resource type="StyleBox" path="res://theme/button_style_box_pressed.tres" id="4_xi2m1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey2o4"]
+bg_color = Color(0.74333, 0.28939, 0.472152, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="SystemFont" id="SystemFont_bayfs"]
 font_names = PackedStringArray("Courier New")
@@ -11,7 +20,13 @@ font_weight = 650
 default_font = SubResource("SystemFont_bayfs")
 default_font_size = 20
 Button/colors/font_color = Color(0.937255, 0.333333, 0.533333, 1)
-Button/styles/focus = SubResource("StyleBoxFlat_m507i")
+Button/styles/focus = ExtResource("1_lc70r")
+Button/styles/hover = ExtResource("1_fce6r")
+Button/styles/hover_pressed = ExtResource("4_xi2m1")
+Button/styles/normal = ExtResource("1_ctaql")
+Button/styles/pressed = ExtResource("4_xi2m1")
 Label/colors/font_color = Color(1, 0.415686, 0.607843, 1)
 Label/colors/font_shadow_color = Color(0.937255, 0.333333, 0.533333, 1)
 Label/font_sizes/font_size = 25
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ey2o4")
+ProgressBar/styles/fill = ExtResource("1_fce6r")

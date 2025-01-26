@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfnygxu1a62jy"]
+[gd_scene load_steps=7 format=3 uid="uid://bfnygxu1a62jy"]
 
 [ext_resource type="Script" path="res://scripts/Menu.cs" id="1_7l655"]
 [ext_resource type="Theme" uid="uid://dc8opdnmnyhbp" path="res://theme/theme.tres" id="2_wiuln"]
 [ext_resource type="PackedScene" uid="uid://b3rgpdinjkbpr" path="res://scenes/background.tscn" id="3_68hll"]
 [ext_resource type="Texture2D" uid="uid://c3tnbg7e6d4wi" path="res://sprites/soap-nine-segment-3d.svg" id="3_cxl07"]
 [ext_resource type="PackedScene" uid="uid://civo3trpn6rlc" path="res://scenes/options.tscn" id="3_o7hxd"]
+[ext_resource type="PackedScene" uid="uid://jf4l5apd4of6" path="res://scenes/background_blur.tscn" id="4_81vxr"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_wiuln")
 script = ExtResource("1_7l655")
 OptionsScene = ExtResource("3_o7hxd")
 
@@ -25,7 +27,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.89, 0.2403, 0.478523, 0.419608)
+color = Color(0.890196, 0.239216, 0.478431, 0.419608)
+
+[node name="BackgroundBlur" parent="." instance=ExtResource("4_81vxr")]
+use_parent_material = false
+layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -40,7 +46,6 @@ offset_right = 90.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_wiuln")
 theme_override_constants/separation = 10
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
@@ -53,13 +58,19 @@ patch_margin_right = 30
 patch_margin_bottom = 30
 
 [node name="StartButton" type="Button" parent="VBoxContainer/NinePatchRect"]
+custom_minimum_size = Vector2(156, 36)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -18.0
+offset_right = 78.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-flat = true
 
 [node name="Label" type="Label" parent="VBoxContainer/NinePatchRect"]
 layout_mode = 1
@@ -82,13 +93,19 @@ patch_margin_right = 30
 patch_margin_bottom = 30
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer/NinePatchRect2"]
+custom_minimum_size = Vector2(156, 36)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -18.0
+offset_right = 78.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-flat = true
 
 [node name="Label" type="Label" parent="VBoxContainer/NinePatchRect2"]
 layout_mode = 1
@@ -111,13 +128,19 @@ patch_margin_right = 30
 patch_margin_bottom = 30
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/NinePatchRect3"]
+custom_minimum_size = Vector2(156, 36)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -18.0
+offset_right = 78.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-flat = true
 
 [node name="Label" type="Label" parent="VBoxContainer/NinePatchRect3"]
 layout_mode = 1

@@ -55,7 +55,7 @@ public abstract partial class Enemy : DamageEntity {
     }
 
     public void Damage(int d) {
-        if (Consts.world.player.cushion) return;
+        if (Consts.world.player.cushion || health <= 0) return;
         
         if (isFrozen)
             d *= 2;
@@ -64,7 +64,7 @@ public abstract partial class Enemy : DamageEntity {
         this.BlinkWithTween();
         if (health <= 0) {
             Die();
-            Consts.world.player.score += score;
+            Consts.world.player.Score += score;
         }
     }
 
