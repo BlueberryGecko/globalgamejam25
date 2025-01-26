@@ -17,7 +17,7 @@ public partial class Explosion : Area2D {
 	}
 
 	public void OnAreaEntered(Area2D a) {
-		if (a is Enemy e) {
+		if (a is Enemy e && !e.championDamageImmunity.HasFlag(BubbleModifier.Explode)) {
 			e.Damage(damage);
 			bubble.ApplyModifier(e);
 		}

@@ -28,7 +28,7 @@ public partial class EColiEnemy : Enemy
         magneticVelocity += MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position, this);
 		  
 		var dir = (Consts.world.player.Position - Position).Normalized();
-		Position += speed * (float)delta * dir + magneticVelocity * (float)delta;
+		Position += championSpeedMultiplier * speed * (float)delta * dir + magneticVelocity * (float)delta;
 	}
 
 	public void OnAreaEntered(Area2D a) {
