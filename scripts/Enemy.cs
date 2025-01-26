@@ -27,7 +27,7 @@ public abstract partial class Enemy : DamageEntity {
             this.BlinkWithTween();
             if (health <= 0) {
                 Die();
-                Consts.world.player.score += score;
+                Consts.world.player.Score += score;
             }
             b.Burst();
         }

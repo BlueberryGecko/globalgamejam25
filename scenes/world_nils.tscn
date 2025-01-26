@@ -1,77 +1,78 @@
-[gd_scene load_steps=47 format=3 uid="uid://dn6n54yx78w6g"]
+[gd_scene load_steps=48 format=3 uid="uid://dn6n54yx78w6g"]
 
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_fpx7t"]
 [ext_resource type="PackedScene" uid="uid://dm2yq8gr060os" path="res://scenes/world.tscn" id="2_w05uq"]
 [ext_resource type="PackedScene" uid="uid://b3rgpdinjkbpr" path="res://scenes/background.tscn" id="2_y4qhi"]
 [ext_resource type="PackedScene" uid="uid://wv2a4uvx4tj0" path="res://scripts/soapParticle.tscn" id="3_arwqw"]
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_m2vja"]
-[ext_resource type="PackedScene" path="res://scenes/pause-menu.tscn" id="4_1gnci"]
+[ext_resource type="PackedScene" uid="uid://duw2ql82tjags" path="res://scenes/pause-menu.tscn" id="4_1gnci"]
 [ext_resource type="PackedScene" uid="uid://y6kggrnqip5y" path="res://scenes/icePuddle.tscn" id="4_dj5wy"]
 [ext_resource type="PackedScene" uid="uid://cdqtv6oxm0e88" path="res://scenes/player.tscn" id="4_sxuwk"]
 [ext_resource type="PackedScene" uid="uid://c04b5wy2sq7vs" path="res://scenes/snail_enemy.tscn" id="5_io174"]
+[ext_resource type="Theme" uid="uid://dc8opdnmnyhbp" path="res://theme/theme.tres" id="5_mrkex"]
 [ext_resource type="PackedScene" uid="uid://d4jdu7gq4bvmq" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
+[ext_resource type="Texture2D" uid="uid://c3tnbg7e6d4wi" path="res://sprites/soap-nine-segment-3d.svg" id="6_ac2o4"]
 [ext_resource type="PackedScene" uid="uid://bmg88icl2b0m5" path="res://scenes/healthBar.tscn" id="6_pbme0"]
-[ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="8_as6a7"]
+[ext_resource type="PackedScene" uid="uid://bbiqny0ac7l30" path="res://scenes/game_over.tscn" id="8_as6a7"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
-[ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_s557l"]
 [ext_resource type="PackedScene" uid="uid://dl3b1ilgeu4g4" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 
-[sub_resource type="Resource" id="Resource_owlx3"]
+[sub_resource type="Resource" id="Resource_3lc6e"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_lm1vo"]
+[sub_resource type="Resource" id="Resource_rjsex"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.75
 
-[sub_resource type="Resource" id="Resource_0ulrk"]
+[sub_resource type="Resource" id="Resource_slrfb"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_sd6jh"]
+[sub_resource type="Resource" id="Resource_80df5"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_icu8p"]
+[sub_resource type="Resource" id="Resource_tq3hk"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
 
-[sub_resource type="Resource" id="Resource_weoxq"]
+[sub_resource type="Resource" id="Resource_5v5wr"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
 
-[sub_resource type="Resource" id="Resource_b58pj"]
+[sub_resource type="Resource" id="Resource_xtlke"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
 
-[sub_resource type="Resource" id="Resource_np6em"]
+[sub_resource type="Resource" id="Resource_pnki0"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
 
-[sub_resource type="Resource" id="Resource_wpll6"]
+[sub_resource type="Resource" id="Resource_r8j4c"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
 
-[sub_resource type="Resource" id="Resource_icbs8"]
+[sub_resource type="Resource" id="Resource_7kd6q"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -187,6 +188,46 @@ puddleScenes = Array[PackedScene]([ExtResource("4_dj5wy")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Score" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme = ExtResource("5_mrkex")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Score"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.166667
+anchor_right = 0.875
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ac2o4")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Score/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("6_pbme0")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -202,17 +243,17 @@ layer = 2
 
 [node name="GameOver" parent="CanvasLayer3" instance=ExtResource("8_as6a7")]
 process_mode = 3
-OptionsPackedScene = ExtResource("9_s557l")
 
 [node name="Background" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_y4qhi")]
 camera = NodePath("../Player/Camera2D")
 
 [node name="MouseCollectionCircle" parent="." instance=ExtResource("3_m2vja")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "healthBar") instance=ExtResource("4_sxuwk")]
+[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "healthBar", "scoreLabel") instance=ExtResource("4_sxuwk")]
 position = Vector2(231, 169)
 gameOver = NodePath("../CanvasLayer3/GameOver")
 healthBar = NodePath("../CanvasLayer/HealthBar/NinePatchRect/MarginContainer/ProgressBar")
+scoreLabel = NodePath("../CanvasLayer/Score/NinePatchRect/ScoreLabel")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -222,7 +263,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_owlx3"), SubResource("Resource_lm1vo"), SubResource("Resource_0ulrk"), SubResource("Resource_sd6jh"), SubResource("Resource_icu8p"), SubResource("Resource_weoxq"), SubResource("Resource_b58pj"), SubResource("Resource_np6em"), SubResource("Resource_wpll6"), SubResource("Resource_icbs8")]
+waves = [SubResource("Resource_3lc6e"), SubResource("Resource_rjsex"), SubResource("Resource_slrfb"), SubResource("Resource_80df5"), SubResource("Resource_tq3hk"), SubResource("Resource_5v5wr"), SubResource("Resource_xtlke"), SubResource("Resource_pnki0"), SubResource("Resource_r8j4c"), SubResource("Resource_7kd6q")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")

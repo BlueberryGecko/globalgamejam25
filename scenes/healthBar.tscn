@@ -1,21 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmg88icl2b0m5"]
+[gd_scene load_steps=3 format=3 uid="uid://bmg88icl2b0m5"]
 
 [ext_resource type="Texture2D" uid="uid://c3tnbg7e6d4wi" path="res://sprites/soap-nine-segment-3d.svg" id="1_21dr2"]
 [ext_resource type="Theme" uid="uid://dc8opdnmnyhbp" path="res://theme/theme.tres" id="1_hi360"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0620i"]
-bg_color = Color(0.57, 0.2565, 0.397575, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv4dc"]
-bg_color = Color(1, 0.552941, 0.709804, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="HealthBar" type="Control"]
 layout_mode = 3
@@ -66,8 +52,6 @@ theme_override_constants/margin_bottom = 12
 [node name="ProgressBar" type="ProgressBar" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_0620i")
-theme_override_styles/fill = SubResource("StyleBoxFlat_nv4dc")
 value = 90.0
 show_percentage = false
 
