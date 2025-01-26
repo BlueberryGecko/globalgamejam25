@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dn6n54yx78w6g"]
+[gd_scene load_steps=50 format=3 uid="uid://dn6n54yx78w6g"]
 
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_fpx7t"]
 [ext_resource type="PackedScene" uid="uid://dm2yq8gr060os" path="res://scenes/world.tscn" id="2_w05uq"]
@@ -18,62 +18,63 @@
 [ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_s557l"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
+[ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_bj1sc"]
+[sub_resource type="Resource" id="Resource_qleyo"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_ck7g4"]
+[sub_resource type="Resource" id="Resource_gop22"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.75
 
-[sub_resource type="Resource" id="Resource_rfsgi"]
+[sub_resource type="Resource" id="Resource_xjl4a"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_v5stg"]
+[sub_resource type="Resource" id="Resource_dsltu"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_f3s8g"]
+[sub_resource type="Resource" id="Resource_s5cth"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
 
-[sub_resource type="Resource" id="Resource_cbf0p"]
+[sub_resource type="Resource" id="Resource_xvtmp"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
 
-[sub_resource type="Resource" id="Resource_8oxn1"]
+[sub_resource type="Resource" id="Resource_xf581"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
 
-[sub_resource type="Resource" id="Resource_eqwru"]
+[sub_resource type="Resource" id="Resource_174g5"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
 
-[sub_resource type="Resource" id="Resource_cq2d1"]
+[sub_resource type="Resource" id="Resource_8dn80"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.2
 
-[sub_resource type="Resource" id="Resource_mvsha"]
+[sub_resource type="Resource" id="Resource_cpb0w"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -211,12 +212,20 @@ camera = NodePath("../Player/Camera2D")
 
 [node name="MouseCollectionCircle" parent="." instance=ExtResource("3_m2vja")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "healthBar") instance=ExtResource("4_sxuwk")]
+[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "healthBar", "camera") instance=ExtResource("4_sxuwk")]
 position = Vector2(231, 169)
 gameOver = NodePath("../CanvasLayer3/GameOver")
 healthBar = NodePath("../CanvasLayer/HealthBar/NinePatchRect/MarginContainer/ProgressBar")
+camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+script = ExtResource("14_71mw7")
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -224,7 +233,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_bj1sc"), SubResource("Resource_ck7g4"), SubResource("Resource_rfsgi"), SubResource("Resource_v5stg"), SubResource("Resource_f3s8g"), SubResource("Resource_cbf0p"), SubResource("Resource_8oxn1"), SubResource("Resource_eqwru"), SubResource("Resource_cq2d1"), SubResource("Resource_mvsha")]
+waves = [SubResource("Resource_qleyo"), SubResource("Resource_gop22"), SubResource("Resource_xjl4a"), SubResource("Resource_dsltu"), SubResource("Resource_s5cth"), SubResource("Resource_xvtmp"), SubResource("Resource_xf581"), SubResource("Resource_174g5"), SubResource("Resource_8dn80"), SubResource("Resource_cpb0w")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")

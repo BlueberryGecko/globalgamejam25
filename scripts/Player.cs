@@ -53,6 +53,7 @@ public partial class Player : Area2D {
     [Export] public ProgressBar healthBar;
     [Export] public int maxHealth = 100;
     [Export] public int health = 100;
+    [Export] public Camera2d camera;
     
     public int score = 0;
 
@@ -150,12 +151,12 @@ public partial class Player : Area2D {
     }
 
     public void OnEnemyCollided(DamageEntity e) {
-        if (godmode) return;
         damage(e.damage);
         e.Die();
     }
 
     public void damage(int d) {
+        if (godmode) return;
         health -= d;
         this.BlinkWithTween();
         damageAudioPlayer.Play();
@@ -163,6 +164,7 @@ public partial class Player : Area2D {
         if (health < 0) {
             gameOver.Initiate();
         }
+        camera.AddShakeDamage(d);
     }
 
     public void OnArea2DEntered(Area2D area) {
