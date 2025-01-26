@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dljonu25kvadv"]
+[gd_scene load_steps=4 format=3 uid="uid://b2womaugqxv2e"]
 
 [ext_resource type="Script" path="res://scripts/ExplosivePuddle.cs" id="1_1ab5y"]
 [ext_resource type="Texture2D" uid="uid://d1m1tldxgojpa" path="res://sprites/ExplosionPuddle.png" id="1_4bow4"]
@@ -13,9 +13,11 @@ script = ExtResource("1_1ab5y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(2, 2)
 texture = ExtResource("1_4bow4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_0uvi3")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
