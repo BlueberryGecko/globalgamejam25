@@ -76,13 +76,13 @@ public partial class World : Node2D
 	}
 
 	public override void _Draw() {
-		var spawnBorder = player.GetViewBorderRect().Grow(100);
-		var borderTiles = WalkBorder(spawnBorder);
-		foreach (var borderTile in borderTiles) {
-			var pos = new Vector2(borderTile.Item1, borderTile.Item2) * spawnTileSize;
-			var rect = new Rect2(pos, spawnTileSize, spawnTileSize);
-			DrawRect(rect, Colors.Red);
-		}
+		// var spawnBorder = player.GetViewBorderRect().Grow(100);
+		// var borderTiles = WalkBorder(spawnBorder);
+		// foreach (var borderTile in borderTiles) {
+		// 	var pos = new Vector2(borderTile.Item1, borderTile.Item2) * spawnTileSize;
+		// 	var rect = new Rect2(pos, spawnTileSize, spawnTileSize);
+		// 	DrawRect(rect, Colors.Red);
+		// }
 	}
 
 	public void SpawnPuddles() {

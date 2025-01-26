@@ -182,6 +182,10 @@ public partial class Player : Area2D {
             superChargeSpawnTimerModifiers.Add(superChargeTime);
             s.QueueFree();
             eatSoapPieceAudioPlayer.Play();
+            if (health < maxHealth) 
+            {
+                health += 1;
+            }
             Score += 5;
         }
     }
