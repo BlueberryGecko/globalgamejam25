@@ -7,6 +7,7 @@ public abstract partial class Enemy : DamageEntity {
     [Export] private int health = 40;
 
 	[Export] public Sprite2D iceBlock;
+    [Export] public AudioStreamPlayer2D freezeAudioPlayer;
 	protected double frozenTime = 0;
     
     public override void _Ready() {
@@ -19,6 +20,7 @@ public abstract partial class Enemy : DamageEntity {
 			if ((b.bubbleModifier & BubbleModifier.Ice) != 0) {
 				frozenTime = b.freezeTime;
 				iceBlock.Visible = true;
+                freezeAudioPlayer.Play();
 			}
             health -= b.damage;
             this.BlinkWithTween();

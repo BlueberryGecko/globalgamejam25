@@ -29,6 +29,9 @@ public partial class Player : Area2D {
     [Export]
     private BubbleSpawner bubbleSpawner;
     [Export] private Sprite2D sprite;
+    [Export] private AudioStreamPlayer2D damageAudioPlayer;
+    [Export] private AudioStreamPlayer2D dashAudioPlayer;
+    [Export] private AudioStreamPlayer2D eatSoapPieceAudioPlayer;
 
     private List<Sprite2D> eyes = new();
     
@@ -65,6 +68,7 @@ public partial class Player : Area2D {
         {
             dashTimer = 0;
             dashDurationTimer = 0;
+            dashAudioPlayer.Play();
         }
         
         var dash = dashDurationTimer < dashDuration;
@@ -138,6 +142,7 @@ public partial class Player : Area2D {
     public void OnEnemyCollided(DamageEntity e) {
         health -= e.damage;
         this.BlinkWithTween();
+        damageAudioPlayer.Play();
         healthBar.Value = health;
         if (health < 0) {
             Consts.world.Restart();
@@ -149,6 +154,7 @@ public partial class Player : Area2D {
         if (area is SoapParticle s) {
             superChargeSpawnTimerModifiers.Add(superChargeTime);
             s.QueueFree();
+            eatSoapPieceAudioPlayer.Play();
         }
     }
 }

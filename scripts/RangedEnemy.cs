@@ -15,6 +15,8 @@ public partial class RangedEnemy : Enemy
     private PackedScene bulletScene;
     [Export]
     private float randomTargetOffsetMax = 10;
+    [Export]
+    private AudioStreamPlayer2D audioPlayer;
     private Vector2 randomTargetOffset = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
     
     private float timer;
@@ -53,5 +55,7 @@ public partial class RangedEnemy : Enemy
         Consts.world.AddChild(bullet);
         bullet.GlobalPosition = Position;
         bullet.direction = (Consts.world.player.Position - Position).Normalized();
+        if (IsInstanceValid(audioPlayer))
+            audioPlayer.Play();
     }
 }

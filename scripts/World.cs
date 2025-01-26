@@ -12,7 +12,6 @@ public partial class World : Node2D
 	[Export] PackedScene soapParticleScene;
 	[Export] public Player player;
 	[Export] private PackedScene[] enemies;
-	[Export] public AudioStreamPlayer2D audioPlayer;
 	[Export] public int spawnTileSize = 100;
 	[Export] public int spawnTileLimit = 3;
 	
