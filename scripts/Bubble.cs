@@ -22,7 +22,7 @@ public partial class Bubble : CharacterBody2D {
 			} else if (bubbleModifier.HasFlag(BubbleModifier.Explode)) {
 				return 40;
 			}
-			return 10;
+			return 20;
 		}
 	}
 	
@@ -61,7 +61,6 @@ public partial class Bubble : CharacterBody2D {
 	public override void _Process(double delta) {
 		foreach (var bubbleModifierSprite in bubbleModifierSprites)
 		{
-			
 			GetNode<Sprite2D>(bubbleModifierSprite.sprite).Visible = bubbleModifier.HasFlag(bubbleModifierSprite.modifier);
 		}
 		
@@ -69,7 +68,7 @@ public partial class Bubble : CharacterBody2D {
 		var boundingBox = viewportRect
 			.Grow(((CircleShape2D)collisionShape2D.Shape).Radius)
 			.plus(Consts.world.player.Position - viewportRect.Size / 2)
-			.Grow(100);
+			.Grow(500);
 		if (!boundingBox.HasPoint(Position)) {
 			QueueFree();
 		}

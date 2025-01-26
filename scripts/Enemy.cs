@@ -86,7 +86,7 @@ public abstract partial class Enemy : DamageEntity {
     }
 
     public void Damage(int d, Bubble damagingBubble = null) {
-        if (Consts.world.player.cushion) return;
+        if (Consts.world.player.cushion || health <= 0) return;
 
         if ((damagingBubble?.bubbleModifier & championDamageImmunity) > 0) {
             return;
@@ -99,7 +99,7 @@ public abstract partial class Enemy : DamageEntity {
         this.BlinkWithTween();
         if (health <= 0) {
             Die();
-            Consts.world.player.score += score;
+            Consts.world.player.Score += score;
         }
     }
 

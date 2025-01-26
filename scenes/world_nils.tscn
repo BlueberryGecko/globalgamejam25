@@ -1,26 +1,28 @@
-[gd_scene load_steps=50 format=3 uid="uid://dn6n54yx78w6g"]
+[gd_scene load_steps=51 format=3 uid="uid://dn6n54yx78w6g"]
 
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_fpx7t"]
 [ext_resource type="PackedScene" uid="uid://dm2yq8gr060os" path="res://scenes/world.tscn" id="2_w05uq"]
 [ext_resource type="PackedScene" uid="uid://b3rgpdinjkbpr" path="res://scenes/background.tscn" id="2_y4qhi"]
 [ext_resource type="PackedScene" uid="uid://wv2a4uvx4tj0" path="res://scripts/soapParticle.tscn" id="3_arwqw"]
 [ext_resource type="PackedScene" uid="uid://dm7mqurvdtj8g" path="res://scenes/mouseCollectBubble.tscn" id="3_m2vja"]
-[ext_resource type="PackedScene" path="res://scenes/pause-menu.tscn" id="4_1gnci"]
+[ext_resource type="PackedScene" uid="uid://duw2ql82tjags" path="res://scenes/pause-menu.tscn" id="4_1gnci"]
 [ext_resource type="PackedScene" uid="uid://y6kggrnqip5y" path="res://scenes/icePuddle.tscn" id="4_dj5wy"]
 [ext_resource type="PackedScene" uid="uid://cdqtv6oxm0e88" path="res://scenes/player.tscn" id="4_sxuwk"]
 [ext_resource type="PackedScene" uid="uid://c04b5wy2sq7vs" path="res://scenes/snail_enemy.tscn" id="5_io174"]
+[ext_resource type="Theme" uid="uid://dc8opdnmnyhbp" path="res://theme/theme.tres" id="5_mrkex"]
 [ext_resource type="PackedScene" uid="uid://dc4e46646h2fd" path="res://scenes/magnet_puddle.tscn" id="5_t4vp4"]
 [ext_resource type="PackedScene" uid="uid://d4jdu7gq4bvmq" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
+[ext_resource type="Texture2D" uid="uid://c3tnbg7e6d4wi" path="res://sprites/soap-nine-segment-3d.svg" id="6_ac2o4"]
 [ext_resource type="PackedScene" uid="uid://bmg88icl2b0m5" path="res://scenes/healthBar.tscn" id="6_pbme0"]
-[ext_resource type="PackedScene" uid="uid://dljonu25kvadv" path="res://scenes/explosive_puddle.tscn" id="6_vx4qt"]
-[ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="8_as6a7"]
+[ext_resource type="PackedScene" uid="uid://b2womaugqxv2e" path="res://scenes/explosive_puddle.tscn" id="6_vx4qt"]
+[ext_resource type="PackedScene" uid="uid://bbiqny0ac7l30" path="res://scenes/game_over.tscn" id="8_as6a7"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
 [ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_s557l"]
 [ext_resource type="PackedScene" uid="uid://cbcke0qtx6xid" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 [ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_sdmoe"]
+[sub_resource type="Resource" id="Resource_sfyoq"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
@@ -29,11 +31,11 @@ spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_fphqi"]
+[sub_resource type="Resource" id="Resource_8jlrn"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.75
+spawnInterval = 1
 spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -42,70 +44,70 @@ spawnTypeImmuneChampionChance = 0.0
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 1
 spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_h222p"]
+[sub_resource type="Resource" id="Resource_mb500"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 0.9
 spawnSpeedChampionChance = 0.1
 spawnToughChampionChance = 0.1
 spawnTypeImmuneChampionChance = 0.1
 
-[sub_resource type="Resource" id="Resource_apqwu"]
+[sub_resource type="Resource" id="Resource_usn2s"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.8
+spawnSpeedChampionChance = 0.2
+spawnToughChampionChance = 0.1
+spawnTypeImmuneChampionChance = 0.1
+
+[sub_resource type="Resource" id="Resource_31sv5"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.7
+spawnSpeedChampionChance = 0.2
+spawnToughChampionChance = 0.1
+spawnTypeImmuneChampionChance = 0.1
+
+[sub_resource type="Resource" id="Resource_iuae5"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.6
+spawnSpeedChampionChance = 0.3
+spawnToughChampionChance = 0.2
+spawnTypeImmuneChampionChance = 0.2
+
+[sub_resource type="Resource" id="Resource_ncy83"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.5
+spawnSpeedChampionChance = 0.3
+spawnToughChampionChance = 0.2
+spawnTypeImmuneChampionChance = 0.2
+
+[sub_resource type="Resource" id="Resource_w02m0"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
-spawnSpeedChampionChance = 0.2
-spawnToughChampionChance = 0.1
-spawnTypeImmuneChampionChance = 0.1
-
-[sub_resource type="Resource" id="Resource_8pxxd"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.3
-spawnSpeedChampionChance = 0.2
-spawnToughChampionChance = 0.1
-spawnTypeImmuneChampionChance = 0.1
-
-[sub_resource type="Resource" id="Resource_cmukf"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.3
-spawnSpeedChampionChance = 0.3
-spawnToughChampionChance = 0.2
-spawnTypeImmuneChampionChance = 0.2
-
-[sub_resource type="Resource" id="Resource_1bx52"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.2
-spawnSpeedChampionChance = 0.3
-spawnToughChampionChance = 0.2
-spawnTypeImmuneChampionChance = 0.2
-
-[sub_resource type="Resource" id="Resource_t2i5l"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.2
 spawnSpeedChampionChance = 0.5
 spawnToughChampionChance = 0.2
 spawnTypeImmuneChampionChance = 0.2
 
-[sub_resource type="Resource" id="Resource_b2pgh"]
+[sub_resource type="Resource" id="Resource_oyqmt"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.1
+spawnInterval = 0.3
 spawnSpeedChampionChance = 0.5
 spawnToughChampionChance = 0.3
 spawnTypeImmuneChampionChance = 0.2
@@ -121,7 +123,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_k7qhj"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.0
+spawnInterval = 1.5
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -129,7 +131,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_sjaug"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.75
+spawnInterval = 1.25
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -137,7 +139,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_q1erd"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.6
+spawnInterval = 1
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -145,7 +147,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_ccuab"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 0.8
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -153,7 +155,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_f3cym"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 0.7
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -161,7 +163,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_3fv1w"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 0.6
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -169,7 +171,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_lk8ha"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.4
+spawnInterval = 0.5
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -209,7 +211,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_j42b5"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 2.0
+spawnInterval = 4.0
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -217,7 +219,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_uv6wd"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.5
+spawnInterval = 3.0
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -225,7 +227,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_d78ro"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.25
+spawnInterval = 2.5
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -233,7 +235,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_tgs8q"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.0
+spawnInterval = 2.0
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -241,7 +243,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_palrg"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.9
+spawnInterval = 1.5
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -249,7 +251,7 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_vv8je"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.75
+spawnInterval = 1.25
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
@@ -257,12 +259,12 @@ spawnTypeImmuneChampionChance = 0.0
 [sub_resource type="Resource" id="Resource_w13fe"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.6
+spawnInterval = 1.0
 spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[sub_resource type="Resource" id="Resource_1pfkw"]
+[sub_resource type="Resource" id="Resource_ox45i"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
@@ -270,17 +272,100 @@ spawnSpeedChampionChance = 0.0
 spawnToughChampionChance = 0.0
 spawnTypeImmuneChampionChance = 0.0
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("player", "enemySpawners", "waveLabel")]
 script = ExtResource("1_fpx7t")
 worldScene = ExtResource("2_w05uq")
 soapParticleScene = ExtResource("3_arwqw")
 player = NodePath("Player")
 enemySpawners = [NodePath("EColiSpawner")]
 puddleScenes = Array[PackedScene]([ExtResource("4_dj5wy"), ExtResource("5_t4vp4"), ExtResource("6_vx4qt")])
+waveLabel = NodePath("CanvasLayer/Wave/NinePatchRect/WaveLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Score" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.803922)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme = ExtResource("5_mrkex")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Score"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.166667
+anchor_right = 0.875
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ac2o4")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Score/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wave" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.803922)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -173.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme = ExtResource("5_mrkex")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Wave"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.166667
+anchor_right = 0.875
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ac2o4")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer/Wave/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WAVE: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("6_pbme0")]
+modulate = Color(1, 1, 1, 0.803922)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -295,18 +380,17 @@ layer = 2
 
 [node name="GameOver" parent="CanvasLayer3" instance=ExtResource("8_as6a7")]
 process_mode = 3
-OptionsPackedScene = ExtResource("9_s557l")
 
 [node name="Background" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_y4qhi")]
 camera = NodePath("../Player/Camera2D")
 
 [node name="MouseCollectionCircle" parent="." instance=ExtResource("3_m2vja")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "healthBar", "camera") instance=ExtResource("4_sxuwk")]
+[node name="Player" parent="." node_paths=PackedStringArray("gameOver", "scoreLabel", "healthBar") instance=ExtResource("4_sxuwk")]
 position = Vector2(231, 169)
 gameOver = NodePath("../CanvasLayer3/GameOver")
+scoreLabel = NodePath("../CanvasLayer/Score/NinePatchRect/ScoreLabel")
 healthBar = NodePath("../CanvasLayer/HealthBar/NinePatchRect/MarginContainer/ProgressBar")
-camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 drag_horizontal_enabled = true
@@ -323,7 +407,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_sdmoe"), SubResource("Resource_fphqi"), SubResource("Resource_db1bg"), SubResource("Resource_h222p"), SubResource("Resource_apqwu"), SubResource("Resource_8pxxd"), SubResource("Resource_cmukf"), SubResource("Resource_1bx52"), SubResource("Resource_t2i5l"), SubResource("Resource_b2pgh")]
+waves = [SubResource("Resource_sfyoq"), SubResource("Resource_8jlrn"), SubResource("Resource_as038"), SubResource("Resource_fveri"), SubResource("Resource_l5ls3"), SubResource("Resource_nremr"), SubResource("Resource_i5cv0"), SubResource("Resource_6fg2d"), SubResource("Resource_sgy26"), SubResource("Resource_r8tvk")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")
@@ -331,7 +415,7 @@ waves = [SubResource("Resource_g6x13"), SubResource("Resource_k7qhj"), SubResour
 
 [node name="SnailSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_io174")
-waves = [SubResource("Resource_si4fr"), SubResource("Resource_0eaii"), SubResource("Resource_j42b5"), SubResource("Resource_uv6wd"), SubResource("Resource_d78ro"), SubResource("Resource_tgs8q"), SubResource("Resource_palrg"), SubResource("Resource_vv8je"), SubResource("Resource_w13fe"), SubResource("Resource_1pfkw")]
+waves = [SubResource("Resource_si4fr"), SubResource("Resource_0eaii"), SubResource("Resource_j42b5"), SubResource("Resource_uv6wd"), SubResource("Resource_d78ro"), SubResource("Resource_tgs8q"), SubResource("Resource_palrg"), SubResource("Resource_vv8je"), SubResource("Resource_w13fe"), SubResource("Resource_ox45i")]
 
 [connection signal="timeout" from="WaveTimer" to="." method="OnWaveTimerTimeout"]
 

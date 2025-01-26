@@ -1,12 +1,15 @@
 using Godot;
 using System;
 
+#nullable enable
+
 public partial class PauseMenu : Control
 {
 	[Export] public PackedScene OptionsPackedScene;
 	// [Export] public CanvasLayer HealthBarLayer;
 	
 	private AnimationPlayer _animationPlayer;
+	private Options? _options;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -26,7 +29,6 @@ public partial class PauseMenu : Control
 	{
 		GetTree().Paused = true;
 		Show();
-		// HealthBarLayer.Hide();
 		_animationPlayer.Play("blur");
 	}
 
@@ -35,7 +37,6 @@ public partial class PauseMenu : Control
 		GetTree().Paused = false;
 		_animationPlayer.PlayBackwards("blur");
 		Hide();
-		// HealthBarLayer.Show();
 	}
 
 	private void Restart()
@@ -44,16 +45,26 @@ public partial class PauseMenu : Control
 		GetTree().ReloadCurrentScene();
 	}
 
+	private void BackToMainMenu()
+	{
+		Resume();
+		GetTree().ChangeSceneToFile("res://scenes/menu.tscn");
+	}
+
+	private void OpenOptions()
+	{
+		_options = OptionsPackedScene.Instantiate<Options>();
+		GetParent().AddChild(_options);
+	}
+
 	private void TestPauseAction()
 	{
-		if (Input.IsActionJustPressed("pause") && !GetTree().Paused) {
+		if (!Input.IsActionJustPressed("pause")) return;
+		if (!GetTree().Paused) {
 			Pause();
-		} else if (Input.IsActionJustPressed("pause") && GetTree().Paused) {
+		} else if (GetTree().Paused && Visible && !IsInstanceValid(_options)) {
 			Resume();
 		}
-		/* else if (Input.IsActionJustPressed("ui_cancel")) {
-			Resume();
-		}*/
 	}
 
 	private void _OnResumeButtonPressed()
@@ -68,14 +79,12 @@ public partial class PauseMenu : Control
 
 	private void _OnOptionsButtonPressed()
 	{
-		var optionsScene = OptionsPackedScene.Instantiate();
-		GetParent().AddChild(optionsScene);
+		OpenOptions();
 	}
 
 	private void _OnMainMenuButtonPressed()
 	{
-		Resume();
-		GetTree().ChangeSceneToFile("res://scenes/menu.tscn");
+		BackToMainMenu();
 	}
 	
 	private void _OnQuitButtonPressed()

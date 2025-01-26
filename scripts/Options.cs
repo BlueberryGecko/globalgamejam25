@@ -14,15 +14,33 @@ public partial class Options : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		TestUiCancel();
 	}
 
-	private void _OnBackButtonPressed()
+	private void Close()
 	{
 		QueueFree();
 	}
 
-	private void _OnFullscreenCheckboxChanged(bool fullscreen)
+	private void SetFullScreen(bool fullscreen)
 	{
 		DisplayServer.WindowSetMode(fullscreen ? DisplayServer.WindowMode.ExclusiveFullscreen : DisplayServer.WindowMode.Windowed);
+	}
+
+	private void TestUiCancel()
+	{
+		if (Input.IsActionJustPressed("ui_cancel")) {
+			Close();
+		}
+	}
+
+	private void _OnBackButtonPressed()
+	{
+		Close();
+	}
+
+	private void _OnFullscreenCheckboxChanged(bool fullscreen)
+	{
+		SetFullScreen(fullscreen);
 	}
 }
