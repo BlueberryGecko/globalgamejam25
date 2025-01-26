@@ -109,6 +109,29 @@ public partial class Bubble : CharacterBody2D {
 		}
 	}
 	
+	public void EnemyHit(Enemy enemy)
+	{
+		if (isPoppping)
+			return;
+
+		if (bubbleModifier.HasFlag(BubbleModifier.Ice) && enemy.isFrozen)
+			return;
+		
+		ApplyModifier(enemy);
+		if (bubbleModifier.HasFlag(BubbleModifier.Explode)) 
+			ExplodeBubble();
+		enemy.Damage(damage);
+		Burst();
+	}
+
+	public void ExplodeBubble()
+	{
+		var explosion = explosionScene.Instantiate<Explosion>();
+		explosion.Position = Position;
+		explosion.bubble = this;
+		Consts.world.AddChild(explosion);
+	}
+	
 	public void ApplyModifier(Enemy enemy) {
 		if ((bubbleModifier & BubbleModifier.Ice) != 0) {
 			enemy.Freeze(this);

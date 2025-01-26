@@ -33,17 +33,8 @@ public abstract partial class Enemy : DamageEntity {
     
     public override void OnBodyEntered(Node2D body) {
         base.OnBodyEntered(body);
-        if (body is Bubble b && !b.isPoppping) {
-            b.ApplyModifier(this);
-            if ((b.bubbleModifier & BubbleModifier.Explode) != 0) {
-                var explosion = b.explosionScene.Instantiate<Explosion>();
-                explosion.Position = b.Position;
-                explosion.bubble = b;
-                Consts.world.AddChild(explosion);
-            }
-            Damage(b.damage);
-            b.Burst();
-        }
+        if (body is Bubble b)
+            b.EnemyHit(this);
     }
 
     public void Freeze(Bubble b) {
@@ -65,6 +56,10 @@ public abstract partial class Enemy : DamageEntity {
 
     public void Damage(int d) {
         if (Consts.world.player.cushion) return;
+        
+        if (isFrozen)
+            d *= 2;
+        
         health -= d;
         this.BlinkWithTween();
         if (health <= 0) {

@@ -27,8 +27,10 @@ public partial class Explosion : Area2D {
 	}
 	
 	public void OnBodyEntered(Node2D a) {
-		if (a is Bubble e) {
-			e.QueueFree();
+		if (a is Bubble { isPoppping: false } e) {
+			if (e.bubbleModifier.HasFlag(BubbleModifier.Explode))
+				e.ExplodeBubble();
+			e.Burst();
 		}
 	}
 

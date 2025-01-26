@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5rpnwosjd783"]
+[gd_scene load_steps=13 format=3 uid="uid://57ghe4i677m5"]
 
 [ext_resource type="Script" path="res://scripts/Explosion.cs" id="1_53q5t"]
 [ext_resource type="Texture2D" uid="uid://d1qwuif6wfj30" path="res://sprites/explosion.png" id="1_wtigk"]
@@ -71,7 +71,7 @@ animations = [{
 radius = 32.0156
 
 [node name="Explosion" type="Area2D"]
-collision_mask = 19
+collision_mask = 26
 script = ExtResource("1_53q5t")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
