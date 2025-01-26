@@ -12,73 +12,73 @@
 [ext_resource type="PackedScene" uid="uid://dc4e46646h2fd" path="res://scenes/magnet_puddle.tscn" id="5_t4vp4"]
 [ext_resource type="PackedScene" uid="uid://d4jdu7gq4bvmq" path="res://scenes/eColiEnemy.tscn" id="5_yklap"]
 [ext_resource type="PackedScene" uid="uid://bmg88icl2b0m5" path="res://scenes/healthBar.tscn" id="6_pbme0"]
-[ext_resource type="PackedScene" uid="uid://dljonu25kvadv" path="res://scenes/explosive_puddle.tscn" id="6_vx4qt"]
+[ext_resource type="PackedScene" path="res://scenes/explosive_puddle.tscn" id="6_vx4qt"]
 [ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="8_as6a7"]
 [ext_resource type="PackedScene" uid="uid://b6vey6hm1sjux" path="res://scenes/dirt_thrower_enemy.tscn" id="9_rkdkj"]
 [ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_s557l"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
+[ext_resource type="PackedScene" uid="uid://dl3b1ilgeu4g4" path="res://scenes/enemy_spawner.tscn" id="10_okt3o"]
 [ext_resource type="Script" path="res://scripts/WaveSettings.cs" id="12_x6u3w"]
 [ext_resource type="Script" path="res://scripts/Camera2d.cs" id="14_71mw7"]
 
-[sub_resource type="Resource" id="Resource_puohv"]
+[sub_resource type="Resource" id="Resource_e33vx"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_f8pa6"]
+[sub_resource type="Resource" id="Resource_ujuka"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.75
+spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_nt8dl"]
+[sub_resource type="Resource" id="Resource_2licy"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 1.0
+
+[sub_resource type="Resource" id="Resource_wouqt"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.9
+
+[sub_resource type="Resource" id="Resource_1de7e"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.8
+
+[sub_resource type="Resource" id="Resource_qeimp"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.7
+
+[sub_resource type="Resource" id="Resource_10je0"]
+resource_local_to_scene = true
+script = ExtResource("12_x6u3w")
+isActive = true
+spawnInterval = 0.6
+
+[sub_resource type="Resource" id="Resource_rmf2e"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
 
-[sub_resource type="Resource" id="Resource_mb500"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.5
-
-[sub_resource type="Resource" id="Resource_usn2s"]
+[sub_resource type="Resource" id="Resource_mw50j"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.4
 
-[sub_resource type="Resource" id="Resource_31sv5"]
+[sub_resource type="Resource" id="Resource_wfswf"]
 resource_local_to_scene = true
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.3
-
-[sub_resource type="Resource" id="Resource_iuae5"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.3
-
-[sub_resource type="Resource" id="Resource_ncy83"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.2
-
-[sub_resource type="Resource" id="Resource_w02m0"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.2
-
-[sub_resource type="Resource" id="Resource_oyqmt"]
-resource_local_to_scene = true
-script = ExtResource("12_x6u3w")
-isActive = true
-spawnInterval = 0.1
 
 [sub_resource type="Resource" id="Resource_g6x13"]
 script = ExtResource("12_x6u3w")
@@ -88,37 +88,37 @@ spawnInterval = 0.0
 [sub_resource type="Resource" id="Resource_k7qhj"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.0
+spawnInterval = 1.5
 
 [sub_resource type="Resource" id="Resource_sjaug"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.75
+spawnInterval = 1.25
 
 [sub_resource type="Resource" id="Resource_q1erd"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.6
+spawnInterval = 1.0
 
 [sub_resource type="Resource" id="Resource_ccuab"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 0.8
 
 [sub_resource type="Resource" id="Resource_f3cym"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 0.7
 
 [sub_resource type="Resource" id="Resource_3fv1w"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.5
+spawnInterval = 0.6
 
 [sub_resource type="Resource" id="Resource_lk8ha"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.4
+spawnInterval = 0.5
 
 [sub_resource type="Resource" id="Resource_0ej75"]
 script = ExtResource("12_x6u3w")
@@ -143,39 +143,39 @@ spawnInterval = 0.0
 [sub_resource type="Resource" id="Resource_j42b5"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 2.0
+spawnInterval = 4.0
 
 [sub_resource type="Resource" id="Resource_uv6wd"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.5
+spawnInterval = 3.0
 
 [sub_resource type="Resource" id="Resource_d78ro"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.25
+spawnInterval = 2.5
 
 [sub_resource type="Resource" id="Resource_tgs8q"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 1.0
+spawnInterval = 2.0
 
 [sub_resource type="Resource" id="Resource_palrg"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.9
+spawnInterval = 1.5
 
 [sub_resource type="Resource" id="Resource_vv8je"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.75
+spawnInterval = 1.25
 
 [sub_resource type="Resource" id="Resource_w13fe"]
 script = ExtResource("12_x6u3w")
 isActive = true
-spawnInterval = 0.6
+spawnInterval = 1.0
 
-[sub_resource type="Resource" id="Resource_1pfkw"]
+[sub_resource type="Resource" id="Resource_ox45i"]
 script = ExtResource("12_x6u3w")
 isActive = true
 spawnInterval = 0.5
@@ -233,7 +233,7 @@ autostart = true
 
 [node name="EColiSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_yklap")
-waves = [SubResource("Resource_puohv"), SubResource("Resource_f8pa6"), SubResource("Resource_nt8dl"), SubResource("Resource_mb500"), SubResource("Resource_usn2s"), SubResource("Resource_31sv5"), SubResource("Resource_iuae5"), SubResource("Resource_ncy83"), SubResource("Resource_w02m0"), SubResource("Resource_oyqmt")]
+waves = [SubResource("Resource_e33vx"), SubResource("Resource_ujuka"), SubResource("Resource_2licy"), SubResource("Resource_wouqt"), SubResource("Resource_1de7e"), SubResource("Resource_qeimp"), SubResource("Resource_10je0"), SubResource("Resource_rmf2e"), SubResource("Resource_mw50j"), SubResource("Resource_wfswf")]
 
 [node name="DirtThrowerSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("9_rkdkj")
@@ -241,7 +241,7 @@ waves = [SubResource("Resource_g6x13"), SubResource("Resource_k7qhj"), SubResour
 
 [node name="SnailSpawner" parent="." instance=ExtResource("10_okt3o")]
 enemy = ExtResource("5_io174")
-waves = [SubResource("Resource_si4fr"), SubResource("Resource_0eaii"), SubResource("Resource_j42b5"), SubResource("Resource_uv6wd"), SubResource("Resource_d78ro"), SubResource("Resource_tgs8q"), SubResource("Resource_palrg"), SubResource("Resource_vv8je"), SubResource("Resource_w13fe"), SubResource("Resource_1pfkw")]
+waves = [SubResource("Resource_si4fr"), SubResource("Resource_0eaii"), SubResource("Resource_j42b5"), SubResource("Resource_uv6wd"), SubResource("Resource_d78ro"), SubResource("Resource_tgs8q"), SubResource("Resource_palrg"), SubResource("Resource_vv8je"), SubResource("Resource_w13fe"), SubResource("Resource_ox45i")]
 
 [connection signal="timeout" from="WaveTimer" to="." method="OnWaveTimerTimeout"]
 
