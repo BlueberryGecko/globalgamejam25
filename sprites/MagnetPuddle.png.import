@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf3xssj444817"
-path="res://.godot/imported/icePuddle.png-78059e760fcb3b233287c9555b5f4c2d.ctex"
+uid="uid://chs3gpdb8ycvp"
+path="res://.godot/imported/MagnetPuddle.png-d9b823abffde7210fd9d3e38123cb478.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/icePuddle.png"
-dest_files=["res://.godot/imported/icePuddle.png-78059e760fcb3b233287c9555b5f4c2d.ctex"]
+source_file="res://sprites/MagnetPuddle.png"
+dest_files=["res://.godot/imported/MagnetPuddle.png-d9b823abffde7210fd9d3e38123cb478.ctex"]
 
 [params]
 

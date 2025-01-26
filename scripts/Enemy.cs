@@ -17,7 +17,7 @@ public abstract partial class Enemy : DamageEntity {
     public bool isMagnetized = false;
     private MagnetComponent magnetComponent;
     
-	[Export] public float magneticForce = 2000;
+	[Export] public float magneticForce = 5000;
     [Export] public float forceMaxDistance = 10;
     protected HashSet<Enemy> magnetizationPulls = new();
     
