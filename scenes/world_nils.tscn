@@ -252,7 +252,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0693642
+anchor_left = -0.017341
 anchor_top = 0.166667
 anchor_right = 0.936416
 anchor_bottom = 1.4
@@ -294,7 +294,7 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.963822, 0.765088, 0.816196, 1)
-text = "NEXT: 10S"
+text = "NEXT: 10s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
