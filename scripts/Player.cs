@@ -37,6 +37,7 @@ public partial class Player : Area2D {
 
     private List<Sprite2D> eyes = new();
     private bool godmode = false;
+    public bool cushion = false;
     
     private List<float> superChargeSpawnTimerModifiers = new();
     [Export] private float superChargeFactor = 0.5f;
@@ -93,6 +94,8 @@ public partial class Player : Area2D {
             move.X += 1;
         if (Input.IsActionJustPressed("godmode"))
             godmode = !godmode;
+        if (Input.IsActionJustPressed("nodamage"))
+            cushion = !cushion;
 
         if (lastMovement != Vector2.Zero) {
             var difference = move.Angle() - lastMovement.Angle();

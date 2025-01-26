@@ -24,9 +24,9 @@ public partial class MagnetPuddle : Puddle {
 	public static Vector2 GetMagneticPull(HashSet<Enemy> pulls, double delta, Vector2 atPosition) {
 		var totalAccel = Vector2.Zero;
 		foreach (var e in pulls) {
-			totalAccel += e.magneticForce / Mathf.Max((e.Position - atPosition).LengthSquared(), e.forceMaxDistance * e.forceMaxDistance) *
+			totalAccel += e.magneticForce / (0.5f*Mathf.Max((atPosition - e.Position).LengthSquared(), e.forceMaxDistance * e.forceMaxDistance)) *
 			              (e.Position - atPosition).Normalized();
 		}
-		return totalAccel;
+		return totalAccel * (float)delta;
 	}
 }

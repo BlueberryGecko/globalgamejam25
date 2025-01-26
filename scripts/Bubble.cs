@@ -55,7 +55,7 @@ public partial class Bubble : CharacterBody2D {
 		if (!boundingBox.HasPoint(Position)) {
 			QueueFree();
 		}
-		Velocity += acceleration * (float)delta + MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position) / mass * (float)delta;
+		Velocity += acceleration * (float)delta + MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position) / mass;
 		// Velocity *= (1 - frictionCoeff * (float)delta);
 		acceleration = Vector2.Zero;
 		MoveAndSlide();

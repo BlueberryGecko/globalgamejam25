@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Globalgamejam25.scripts;
 
@@ -16,7 +17,7 @@ public abstract partial class Enemy : DamageEntity {
     public bool isMagnetized = false;
     private MagnetComponent magnetComponent;
     
-	[Export] public float magneticForce = 500;
+	[Export] public float magneticForce = 2000;
     [Export] public float forceMaxDistance = 10;
     protected HashSet<Enemy> magnetizationPulls = new();
     
@@ -30,8 +31,9 @@ public abstract partial class Enemy : DamageEntity {
 			if ((b.bubbleModifier & BubbleModifier.Ice) != 0) {
 				frozenTime = b.freezeTime;
 				iceBlock.Visible = true;
-                freezeAudioPlayer.Play();
-			} else if ((b.bubbleModifier & BubbleModifier.Magnet) != 0) {
+                freezeAudioPlayer?.Play();
+			}
+			if ((b.bubbleModifier & BubbleModifier.Magnet) != 0) {
                 isMagnetized = true;
                 if (magnetComponent == null) {
                     var mc = magnetComponentScene.Instantiate<MagnetComponent>();
@@ -42,7 +44,9 @@ public abstract partial class Enemy : DamageEntity {
                     AddChild(mc);
                 }
             }
-            health -= b.damage;
+            if (!Consts.world.player.cushion) {
+                health -= b.damage;
+            }
             this.BlinkWithTween();
             if (health <= 0) {
                 Die();

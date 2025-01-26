@@ -20,6 +20,8 @@ public partial class RangedEnemy : Enemy
     private Vector2 randomTargetOffset = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
     
     private float timer;
+    private Vector2 magneticVelocity = Vector2.Zero; // track this separately so it can accumulate over multiple frames
+    [Export] public float magneticFriction = 0.99f; // small friction term so magnetic influence doesn't last forever.
     
     public override void _Process(double delta)
     {
@@ -46,7 +48,10 @@ public partial class RangedEnemy : Enemy
             return;
         
         var dir = difference.Normalized();
-        Position += Mathf.Min(speed * (float)delta, distance) * dir + MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position);
+        var velocity = Mathf.Min(speed * (float)delta, distance) * dir;
+        magneticVelocity *= magneticFriction;
+        magneticVelocity += MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position);
+        Position += velocity + magneticVelocity;
     }
 
     private void Shoot()
