@@ -61,7 +61,7 @@ public static class Util {
 
 	public static Rect2 GetViewBorderRect(this Player p, float grow = 0) {
 		var viewportRect = p.GetViewportRect();
-		var boundingBox = viewportRect.Grow(grow) .plus(p.Position - viewportRect.Size / 2);
+		var boundingBox = viewportRect.Grow(grow).plus(p.Position - viewportRect.Size / 2);
 		return boundingBox;
 	}
 

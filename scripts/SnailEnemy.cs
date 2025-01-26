@@ -14,13 +14,9 @@ public partial class SnailEnemy : Enemy
 	
 	public override void _Process(double delta)
 	{
-		frozenTime -= delta;
-		if (frozenTime > 0) {
+		base._Process(delta);
+		if (isFrozen)
 			return;
-		}
-		else {
-			iceBlock.Visible = false;
-		}
 		
 		var targetPosition = Consts.world.player.Position;
 		
@@ -29,9 +25,12 @@ public partial class SnailEnemy : Enemy
 		var direction = difference.Normalized();
 		
 		var accelerationMultiplier = Mathf.Min(distance / slowDownRadius, 1);
-		
+
 		velocity += direction * acceleration * accelerationMultiplier * (float)delta;
 		velocity = velocity.LimitLength(maxSpeed);
+		
+		var magneticAcceleration = MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position, this);
+		velocity += magneticAcceleration; // do this after since magnetic accel can be faster than maxSpeed.
 		
 		Position += velocity * (float)delta;
 		Rotation = direction.Angle();

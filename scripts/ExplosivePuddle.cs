@@ -1,7 +1,7 @@
-using System;
 using Godot;
+using System;
 
-public partial class IcePuddle : Puddle
+public partial class ExplosivePuddle : Puddle
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -14,8 +14,6 @@ public partial class IcePuddle : Puddle
 	}
 	
 	public override void OnBubbleEntered(Bubble b) {
-		b.bubbleModifier |= BubbleModifier.Ice;
-		b.health = b.frozenBubbleHealth;
-		b.sprite.Stop();
+		b.bubbleModifier |= BubbleModifier.Explode;
 	}
 }

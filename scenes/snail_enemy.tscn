@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c04b5wy2sq7vs"]
+[gd_scene load_steps=7 format=3 uid="uid://c04b5wy2sq7vs"]
 
 [ext_resource type="Script" path="res://scripts/SnailEnemy.cs" id="1_r2eqb"]
 [ext_resource type="Texture2D" uid="uid://dw8rf8dg57371" path="res://sprites/Snail.png" id="2_a576r"]
+[ext_resource type="PackedScene" uid="uid://rlwweu40v4mw" path="res://scenes/magnet_component.tscn" id="2_rneqm"]
 [ext_resource type="PackedScene" uid="uid://3wved672dd4x" path="res://scenes/iceCrystal.tscn" id="3_qvvwk"]
 [ext_resource type="AudioStream" uid="uid://dbruy7i5arxll" path="res://sound/enemyFrozen.wav" id="4_qc8m2"]
 
@@ -17,6 +18,7 @@ acceleration = 1000.0
 score = 30
 iceBlock = NodePath("IceBlock")
 freezeAudioPlayer = NodePath("AudioStreamPlayer2D")
+magnetComponentScene = ExtResource("2_rneqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

@@ -20,16 +20,14 @@ public partial class RangedEnemy : Enemy
     private Vector2 randomTargetOffset = new(Random.Shared.NextSingle() * 2 - 1, Random.Shared.NextSingle() * 2 - 1);
     
     private float timer;
+    private Vector2 magneticVelocity = Vector2.Zero; // track this separately so it can accumulate over multiple frames
+    [Export] public float magneticFriction = 0.9f; // small friction term so magnetic influence doesn't last forever.
     
     public override void _Process(double delta)
     {
-		frozenTime -= delta;
-		if (frozenTime > 0) {
-			return;
-		}
-		else {
-			iceBlock.Visible = false;
-		}
+        base._Process(delta);
+        if (isFrozen)
+            return;
         
         timer += (float)delta;
         var spawnCount = Mathf.Floor(timer / shootInterval);
@@ -46,7 +44,10 @@ public partial class RangedEnemy : Enemy
             return;
         
         var dir = difference.Normalized();
-        Position += Mathf.Min(speed * (float)delta, distance) * dir;
+        var velocity = Mathf.Min(speed * (float)delta, distance) * dir;
+        magneticVelocity *= (float)(magneticFriction * delta);
+        magneticVelocity += MagnetPuddle.GetMagneticPull(magnetizationPulls, delta, Position, this);
+        Position += velocity + magneticVelocity * (float)delta;
     }
 
     private void Shoot()
