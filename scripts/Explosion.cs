@@ -4,7 +4,8 @@ using Globalgamejam25.scripts;
 
 public partial class Explosion : Area2D {
 	[Export] public int damage = 40;
-	
+	public Bubble bubble;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,7 +18,8 @@ public partial class Explosion : Area2D {
 
 	public void OnAreaEntered(Area2D a) {
 		if (a is Enemy e) {
-			e.damage(damage);
+			e.Damage(damage);
+			bubble.ApplyModifier(e);
 		}
 		if (a is Player p) {
 			p.damage(damage);

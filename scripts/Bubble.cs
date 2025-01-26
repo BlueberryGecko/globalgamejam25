@@ -15,7 +15,17 @@ public partial class Bubble : CharacterBody2D {
 	[Export] public float frictionCoeff = 0.1f;
 	[Export] public AnimatedSprite2D sprite;
 	[Export] private BubbleModifierSprite[] bubbleModifierSprites;
-	[Export] public int damage = 20;
+	public int damage {
+		get {
+			if (bubbleModifier.HasFlag(BubbleModifier.Ice) || bubbleModifier.HasFlag(BubbleModifier.Magnet)) {
+				return 0;
+			} else if (bubbleModifier.HasFlag(BubbleModifier.Explode)) {
+				return 40;
+			}
+			return 10;
+		}
+	}
+	
 	[Export] public int health = 1;
 	[Export] public int frozenBubbleHealth = 4;
 	public BubbleModifier bubbleModifier = 0;
@@ -96,6 +106,15 @@ public partial class Bubble : CharacterBody2D {
 	public void OnAnimationFinished() {
 		if (isPoppping) {
 			QueueFree();
+		}
+	}
+	
+	public void ApplyModifier(Enemy enemy) {
+		if ((bubbleModifier & BubbleModifier.Ice) != 0) {
+			enemy.Freeze(this);
+		}
+		if ((bubbleModifier & BubbleModifier.Magnet) != 0) {
+			enemy.Magnetize();
 		}
 	}
 }

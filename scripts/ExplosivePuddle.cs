@@ -15,6 +15,5 @@ public partial class ExplosivePuddle : Puddle
 	
 	public override void OnBubbleEntered(Bubble b) {
 		b.bubbleModifier |= BubbleModifier.Explode;
-		// TODO: sprite.
 	}
 }

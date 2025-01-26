@@ -34,32 +34,36 @@ public abstract partial class Enemy : DamageEntity {
     public override void OnBodyEntered(Node2D body) {
         base.OnBodyEntered(body);
         if (body is Bubble b && !b.isPoppping) {
-			if ((b.bubbleModifier & BubbleModifier.Ice) != 0) {
-				frozenTime = b.freezeTime;
-                freezeAudioPlayer?.Play();
-			}
-			if ((b.bubbleModifier & BubbleModifier.Magnet) != 0) {
-                isMagnetized = true;
-                if (magnetComponent == null) {
-                    magnetComponent = magnetComponentScene.Instantiate<MagnetComponent>();
-                    magnetComponent.AreaEntered += PullArea;
-                    magnetComponent.BodyEntered += PullBody;
-                    magnetComponent.AreaExited += ReleaseArea;
-                    magnetComponent.BodyExited += ReleaseBody;
-                    AddChild(magnetComponent);
-                }
-            }
+            b.ApplyModifier(this);
             if ((b.bubbleModifier & BubbleModifier.Explode) != 0) {
                 var explosion = b.explosionScene.Instantiate<Explosion>();
                 explosion.Position = b.Position;
+                explosion.bubble = b;
                 Consts.world.AddChild(explosion);
             }
-            damage(b.damage);
+            Damage(b.damage);
             b.Burst();
         }
     }
 
-    public void damage(int d) {
+    public void Freeze(Bubble b) {
+        frozenTime = b.freezeTime;
+        freezeAudioPlayer?.Play();
+    }
+
+    public void Magnetize() {
+        isMagnetized = true;
+        if (magnetComponent == null) {
+            magnetComponent = magnetComponentScene.Instantiate<MagnetComponent>();
+            magnetComponent.AreaEntered += PullArea;
+            magnetComponent.BodyEntered += PullBody;
+            magnetComponent.AreaExited += ReleaseArea;
+            magnetComponent.BodyExited += ReleaseBody;
+            AddChild(magnetComponent);
+        }
+    }
+
+    public void Damage(int d) {
         if (Consts.world.player.cushion) return;
         health -= d;
         this.BlinkWithTween();
