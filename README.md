@@ -2,6 +2,8 @@
 
 A game where you play as a soap, shoot bubbles at enemies, and try to get the highest possible score before dying to a snail.
 
+![Screenshot of Gameplay](./screenshot1.png)
+
 ## Gameplay
 
 WASD for movement, space to dash, left mouse button (hold) to collect bubbles.
